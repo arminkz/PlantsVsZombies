@@ -4,8 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Armin on 6/25/2016.
@@ -22,7 +25,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     Image normalZombieImage;
     Image coneHeadZombieImage;
     Collider[] colliders;
-
+    
     ArrayList<ArrayList<Zombie>> laneZombies;
     ArrayList<ArrayList<Pea>> lanePeas;
     ArrayList<Sun> activeSuns;
@@ -96,7 +99,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
         activeSuns = new ArrayList<>();
 
-        redrawTimer = new Timer(30,(ActionEvent e) -> {
+        redrawTimer = new Timer(25,(ActionEvent e) -> {
             repaint();
         });
         redrawTimer.start();
@@ -114,13 +117,16 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
         zombieProducer = new Timer(7000,(ActionEvent e) -> {
             Random rnd = new Random();
-            int t = rnd.nextInt(2);
+            LevelData lvl = new LevelData();
+            String [] Level = lvl.Level[Integer.parseInt(lvl.Lvl)-1];
+            int [][] LevelValue = lvl.LevelValue[Integer.parseInt(lvl.Lvl)-1];
             int l = rnd.nextInt(5);
-            Zombie z;
-            if(t==1){
-                z = new NormalZombie(GamePanel.this,l);
-            }else{
-                z = new ConeHeadZombie(GamePanel.this,l);
+            int t = rnd.nextInt(100);
+            Zombie z = null;
+            for(int i = 0;i<LevelValue.length;i++) {
+                if(t>=LevelValue[i][0]&&t<=LevelValue[i][1]) {
+                    z = Zombie.getZombie(Level[i],GamePanel.this,l);
+                }
             }
             laneZombies.get(l).add(z);
         });
@@ -243,5 +249,23 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     public void mouseMoved(MouseEvent e) {
         mouseX = e.getX();
         mouseY = e.getY();
+    }
+    static int progress = 0;
+    public static void setProgress(int num) {
+        progress = progress + num;
+        System.out.println(progress);
+        if(progress>=150) {
+           if("1".equals(LevelData.Lvl)) {
+            JOptionPane.showMessageDialog(null,"Level Completed !!!" + '\n' + "Starting next Level");
+            GameWindow.gw.dispose();
+            LevelData.write("2");
+            GameWindow.gw = new GameWindow();
+            }  else {
+               JOptionPane.showMessageDialog(null,"Level Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
+               LevelData.write("1");
+               System.exit(0);
+           }
+           progress = 0;
+        }
     }
 }

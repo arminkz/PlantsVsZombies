@@ -47,7 +47,9 @@ public class Zombie {
             }
             if (posX < 0) {
                 isMoving = false;
-                JOptionPane.showMessageDialog(gp,"ZOMBIES ATE YOUR BRAIN !");
+                JOptionPane.showMessageDialog(gp,"ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+                GameWindow.gw.dispose();
+                GameWindow.gw = new GameWindow();
             }
         }
     }
@@ -56,6 +58,15 @@ public class Zombie {
     public void slow(){
         slowInt = 1000;
     }
-
+    public static Zombie getZombie(String type,GamePanel parent, int lane) {
+        Zombie z = new Zombie(parent,lane);
+       switch(type) {
+           case "NormalZombie" : z = new NormalZombie(parent,lane);
+                                 break;
+           case "ConeHeadZombie" : z = new ConeHeadZombie(parent,lane);
+                                 break;
+    }
+       return z;
+    }
 
 }
