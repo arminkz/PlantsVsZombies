@@ -31,21 +31,21 @@ public class GameWindow extends JFrame {
         PlantCard sunflower = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_sunflower.png")).getImage());
         sunflower.setLocation(110, 8);
         sunflower.setAction((ActionEvent e) -> {
-            gp.activePlantingBrush = PlantType.Sunflower;
+            gp.setActivePlantingBrush(PlantType.Sunflower);
         });
         getLayeredPane().add(sunflower, new Integer(3));
 
         PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_peashooter.png")).getImage());
         peashooter.setLocation(175, 8);
         peashooter.setAction((ActionEvent e) -> {
-            gp.activePlantingBrush = PlantType.Peashooter;
+            gp.setActivePlantingBrush(PlantType.Peashooter);
         });
         getLayeredPane().add(peashooter, new Integer(3));
 
         PlantCard freezepeashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_freezepeashooter.png")).getImage());
         freezepeashooter.setLocation(240, 8);
         freezepeashooter.setAction((ActionEvent e) -> {
-            gp.activePlantingBrush = PlantType.FreezePeashooter;
+            gp.setActivePlantingBrush(PlantType.FreezePeashooter);
         });
         getLayeredPane().add(freezepeashooter, new Integer(3));
 

@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
  */
 public class Collider extends JPanel implements MouseListener {
 
-    ActionListener al;
+    private ActionListener al;
 
     public Collider() {
         //setBorder(new LineBorder(Color.RED));

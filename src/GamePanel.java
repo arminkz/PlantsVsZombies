@@ -12,30 +12,30 @@ import java.util.Random;
  */
 public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
-    Image bgImage;
-    Image peashooterImage;
-    Image freezePeashooterImage;
-    Image sunflowerImage;
-    Image peaImage;
-    Image freezePeaImage;
+    private Image bgImage;
+    private Image peashooterImage;
+    private Image freezePeashooterImage;
+    private Image sunflowerImage;
+    private Image peaImage;
+    private Image freezePeaImage;
 
-    Image normalZombieImage;
-    Image coneHeadZombieImage;
-    Collider[] colliders;
+    private Image normalZombieImage;
+    private Image coneHeadZombieImage;
+    private Collider[] colliders;
 
-    ArrayList<ArrayList<Zombie>> laneZombies;
-    ArrayList<ArrayList<Pea>> lanePeas;
-    ArrayList<Sun> activeSuns;
+    private ArrayList<ArrayList<Zombie>> laneZombies;
+    private ArrayList<ArrayList<Pea>> lanePeas;
+    private ArrayList<Sun> activeSuns;
 
-    Timer redrawTimer;
-    Timer advancerTimer;
-    Timer sunProducer;
-    Timer zombieProducer;
-    JLabel sunScoreboard;
+    private Timer redrawTimer;
+    private Timer advancerTimer;
+    private Timer sunProducer;
+    private Timer zombieProducer;
+    private JLabel sunScoreboard;
 
-    GameWindow.PlantType activePlantingBrush = GameWindow.PlantType.None;
+    private GameWindow.PlantType activePlantingBrush = GameWindow.PlantType.None;
 
-    int mouseX, mouseY;
+    private int mouseX, mouseY;
 
     private int sunScore;
 
@@ -115,8 +115,8 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         zombieProducer = new Timer(7000, (ActionEvent e) -> {
             Random rnd = new Random();
             LevelData lvl = new LevelData();
-            String[] Level = lvl.Level[Integer.parseInt(lvl.Lvl) - 1];
-            int[][] LevelValue = lvl.LevelValue[Integer.parseInt(lvl.Lvl) - 1];
+            String[] Level = lvl.LEVEL_CONTENT[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
+            int[][] LevelValue = lvl.LEVEL_VALUE[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
             int l = rnd.nextInt(5);
             int t = rnd.nextInt(100);
             Zombie z = null;
@@ -175,18 +175,18 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         for (int i = 0; i < 5; i++) {
             for (Zombie z : laneZombies.get(i)) {
                 if (z instanceof NormalZombie) {
-                    g.drawImage(normalZombieImage, z.posX, 109 + (i * 120), null);
+                    g.drawImage(normalZombieImage, z.getPosX(), 109 + (i * 120), null);
                 } else if (z instanceof ConeHeadZombie) {
-                    g.drawImage(coneHeadZombieImage, z.posX, 109 + (i * 120), null);
+                    g.drawImage(coneHeadZombieImage, z.getPosX(), 109 + (i * 120), null);
                 }
             }
 
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
-                Pea p = lanePeas.get(i).get(j);
-                if (p instanceof FreezePea) {
-                    g.drawImage(freezePeaImage, p.posX, 130 + (i * 120), null);
+                Pea pea = lanePeas.get(i).get(j);
+                if (pea instanceof FreezePea) {
+                    g.drawImage(freezePeaImage, pea.getPosX(), 130 + (i * 120), null);
                 } else {
-                    g.drawImage(peaImage, p.posX, 130 + (i * 120), null);
+                    g.drawImage(peaImage, pea.getPosX(), 130 + (i * 120), null);
                 }
             }
 
@@ -203,7 +203,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
     }
 
-    class PlantActionListener implements ActionListener {
+    private class PlantActionListener implements ActionListener {
 
         int x, y;
 
@@ -254,17 +254,57 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         progress = progress + num;
         System.out.println(progress);
         if (progress >= 150) {
-            if ("1".equals(LevelData.Lvl)) {
-                JOptionPane.showMessageDialog(null, "Level Completed !!!" + '\n' + "Starting next Level");
+            if ("1".equals(LevelData.LEVEL_NUMBER)) {
+                JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
                 GameWindow.gw.dispose();
                 LevelData.write("2");
                 GameWindow.gw = new GameWindow();
             } else {
-                JOptionPane.showMessageDialog(null, "Level Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
+                JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
                 LevelData.write("1");
                 System.exit(0);
             }
             progress = 0;
         }
+    }
+
+    public GameWindow.PlantType getActivePlantingBrush() {
+        return activePlantingBrush;
+    }
+
+    public void setActivePlantingBrush(GameWindow.PlantType activePlantingBrush) {
+        this.activePlantingBrush = activePlantingBrush;
+    }
+
+    public ArrayList<ArrayList<Zombie>> getLaneZombies() {
+        return laneZombies;
+    }
+
+    public void setLaneZombies(ArrayList<ArrayList<Zombie>> laneZombies) {
+        this.laneZombies = laneZombies;
+    }
+
+    public ArrayList<ArrayList<Pea>> getLanePeas() {
+        return lanePeas;
+    }
+
+    public void setLanePeas(ArrayList<ArrayList<Pea>> lanePeas) {
+        this.lanePeas = lanePeas;
+    }
+
+    public ArrayList<Sun> getActiveSuns() {
+        return activeSuns;
+    }
+
+    public void setActiveSuns(ArrayList<Sun> activeSuns) {
+        this.activeSuns = activeSuns;
+    }
+
+    public Collider[] getColliders() {
+        return colliders;
+    }
+
+    public void setColliders(Collider[] colliders) {
+        this.colliders = colliders;
     }
 }

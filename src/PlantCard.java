@@ -10,8 +10,8 @@ import java.awt.event.MouseListener;
  */
 public class PlantCard extends JPanel implements MouseListener {
 
-    Image img;
-    ActionListener al;
+    private Image img;
+    private ActionListener al;
 
     public PlantCard(Image img) {
         setSize(64, 90);

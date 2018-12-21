@@ -8,14 +8,14 @@ import java.awt.event.MouseListener;
  */
 public class Sun extends JPanel implements MouseListener {
 
-    GamePanel gp;
-    Image sunImage;
+    private GamePanel gp;
+    private Image sunImage;
 
-    int myX;
-    int myY;
-    int endY;
+    private int myX;
+    private int myY;
+    private int endY;
 
-    int destruct = 200;
+    private int destruct = 200;
 
     public Sun(GamePanel parent, int startX, int startY, int endY) {
         this.gp = parent;
@@ -42,7 +42,7 @@ public class Sun extends JPanel implements MouseListener {
             destruct--;
             if (destruct < 0) {
                 gp.remove(this);
-                gp.activeSuns.remove(this);
+                gp.getActiveSuns().remove(this);
             }
         }
         setLocation(myX, myY);
@@ -62,7 +62,7 @@ public class Sun extends JPanel implements MouseListener {
     public void mouseReleased(MouseEvent e) {
         gp.setSunScore(gp.getSunScore() + 25);
         gp.remove(this);
-        gp.activeSuns.remove(this);
+        gp.getActiveSuns().remove(this);
     }
 
     @Override

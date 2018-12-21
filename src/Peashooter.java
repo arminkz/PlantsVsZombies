@@ -13,8 +13,8 @@ public class Peashooter extends Plant {
         super(parent, x, y);
         shootTimer = new Timer(2000, (ActionEvent e) -> {
             //System.out.println("SHOOT");
-            if (gp.laneZombies.get(y).size() > 0) {
-                gp.lanePeas.get(y).add(new Pea(gp, y, 103 + this.x * 100));
+            if (getGp().getLaneZombies().get(y).size() > 0) {
+                getGp().getLanePeas().get(y).add(new Pea(getGp(), y, 103 + this.getX() * 100));
             }
         });
         shootTimer.start();

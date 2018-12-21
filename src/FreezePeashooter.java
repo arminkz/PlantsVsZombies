@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
  */
 public class FreezePeashooter extends Plant {
 
-    public Timer shootTimer;
+    private Timer shootTimer;
 
 
     public FreezePeashooter(GamePanel parent, int x, int y) {
         super(parent, x, y);
         shootTimer = new Timer(2000, (ActionEvent e) -> {
             //System.out.println("SHOOT");
-            if (gp.laneZombies.get(y).size() > 0) {
-                gp.lanePeas.get(y).add(new FreezePea(gp, y, 103 + this.x * 100));
+            if (getGp().getLaneZombies().get(y).size() > 0) {
+                getGp().getLanePeas().get(y).add(new FreezePea(getGp(), y, 103 + this.getX() * 100));
             }
         });
         shootTimer.start();

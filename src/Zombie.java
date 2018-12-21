@@ -5,14 +5,14 @@ import javax.swing.*;
  */
 public class Zombie {
 
-    public int health = 1000;
-    public int speed = 1;
+    private int health = 1000;
+    private int speed = 1;
 
     private GamePanel gp;
 
-    public int posX = 1000;
-    public int myLane;
-    public boolean isMoving = true;
+    private int posX = 1000;
+    private int myLane;
+    private boolean isMoving = true;
 
     public Zombie(GamePanel parent, int lane) {
         this.gp = parent;
@@ -24,9 +24,9 @@ public class Zombie {
             boolean isCollides = false;
             Collider collided = null;
             for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-                if (gp.colliders[i].assignedPlant != null && gp.colliders[i].isInsideCollider(posX)) {
+                if (gp.getColliders()[i].assignedPlant != null && gp.getColliders()[i].isInsideCollider(posX)) {
                     isCollides = true;
-                    collided = gp.colliders[i];
+                    collided = gp.getColliders()[i];
                 }
             }
             if (!isCollides) {
@@ -39,8 +39,8 @@ public class Zombie {
                     posX -= 1;
                 }
             } else {
-                collided.assignedPlant.health -= 10;
-                if (collided.assignedPlant.health < 0) {
+                collided.assignedPlant.setHealth(collided.assignedPlant.getHealth() - 10);
+                if (collided.assignedPlant.getHealth() < 0) {
                     collided.removePlant();
                 }
             }
@@ -72,4 +72,59 @@ public class Zombie {
         return z;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public GamePanel getGp() {
+        return gp;
+    }
+
+    public void setGp(GamePanel gp) {
+        this.gp = gp;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getMyLane() {
+        return myLane;
+    }
+
+    public void setMyLane(int myLane) {
+        this.myLane = myLane;
+    }
+
+    public boolean isMoving() {
+        return isMoving;
+    }
+
+    public void setMoving(boolean moving) {
+        isMoving = moving;
+    }
+
+    public int getSlowInt() {
+        return slowInt;
+    }
+
+    public void setSlowInt(int slowInt) {
+        this.slowInt = slowInt;
+    }
 }
