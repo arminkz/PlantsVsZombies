@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 
 /**
  * Created by Armin on 6/25/2016.
@@ -15,13 +14,13 @@ public class Zombie {
     public int myLane;
     public boolean isMoving = true;
 
-    public Zombie(GamePanel parent,int lane){
+    public Zombie(GamePanel parent, int lane) {
         this.gp = parent;
         myLane = lane;
     }
 
-    public void advance(){
-        if(isMoving) {
+    public void advance() {
+        if (isMoving) {
             boolean isCollides = false;
             Collider collided = null;
             for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
@@ -31,12 +30,12 @@ public class Zombie {
                 }
             }
             if (!isCollides) {
-                if(slowInt>0){
-                    if(slowInt % 2 == 0) {
+                if (slowInt > 0) {
+                    if (slowInt % 2 == 0) {
                         posX--;
                     }
                     slowInt--;
-                }else {
+                } else {
                     posX -= 1;
                 }
             } else {
@@ -47,7 +46,7 @@ public class Zombie {
             }
             if (posX < 0) {
                 isMoving = false;
-                JOptionPane.showMessageDialog(gp,"ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+                JOptionPane.showMessageDialog(gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
                 GameWindow.gw.dispose();
                 GameWindow.gw = new GameWindow();
             }
@@ -55,18 +54,22 @@ public class Zombie {
     }
 
     int slowInt = 0;
-    public void slow(){
+
+    public void slow() {
         slowInt = 1000;
     }
-    public static Zombie getZombie(String type,GamePanel parent, int lane) {
-        Zombie z = new Zombie(parent,lane);
-       switch(type) {
-           case "NormalZombie" : z = new NormalZombie(parent,lane);
-                                 break;
-           case "ConeHeadZombie" : z = new ConeHeadZombie(parent,lane);
-                                 break;
-    }
-       return z;
+
+    public static Zombie getZombie(String type, GamePanel parent, int lane) {
+        Zombie z = new Zombie(parent, lane);
+        switch (type) {
+            case "NormalZombie":
+                z = new NormalZombie(parent, lane);
+                break;
+            case "ConeHeadZombie":
+                z = new ConeHeadZombie(parent, lane);
+                break;
+        }
+        return z;
     }
 
 }

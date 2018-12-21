@@ -1,5 +1,5 @@
-import java.awt.event.ActionEvent;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  * Created by Armin on 6/25/2016.
@@ -9,11 +9,11 @@ public class Peashooter extends Plant {
     public Timer shootTimer;
 
 
-    public Peashooter(GamePanel parent,int x,int y) {
-        super(parent,x,y);
-        shootTimer = new Timer(2000,(ActionEvent e) -> {
+    public Peashooter(GamePanel parent, int x, int y) {
+        super(parent, x, y);
+        shootTimer = new Timer(2000, (ActionEvent e) -> {
             //System.out.println("SHOOT");
-            if(gp.laneZombies.get(y).size() > 0) {
+            if (gp.laneZombies.get(y).size() > 0) {
                 gp.lanePeas.get(y).add(new Pea(gp, y, 103 + this.x * 100));
             }
         });
@@ -21,7 +21,7 @@ public class Peashooter extends Plant {
     }
 
     @Override
-    public void stop(){
+    public void stop() {
         shootTimer.stop();
     }
 
