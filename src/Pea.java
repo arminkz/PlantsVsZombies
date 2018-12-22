@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -6,33 +5,33 @@ import java.awt.*;
  */
 public class Pea {
 
-    public int posX;
+    private int posX;
     protected GamePanel gp;
-    public int myLane;
+    private int myLane;
 
-    public Pea(GamePanel parent,int lane,int startX){
+    public Pea(GamePanel parent, int lane, int startX) {
         this.gp = parent;
         this.myLane = lane;
         posX = startX;
     }
 
-    public void advance(){
-        Rectangle pRect = new Rectangle(posX,130+myLane*120,28,28);
-        for (int i = 0; i < gp.laneZombies.get(myLane).size(); i++) {
-            Zombie z = gp.laneZombies.get(myLane).get(i);
-            Rectangle zRect = new Rectangle(z.posX,109 + myLane*120,400,120);
-            if(pRect.intersects(zRect)){
-                z.health -= 300;
+    public void advance() {
+        Rectangle pRect = new Rectangle(posX, 130 + myLane * 120, 28, 28);
+        for (int i = 0; i < gp.getLaneZombies().get(myLane).size(); i++) {
+            Zombie z = gp.getLaneZombies().get(myLane).get(i);
+            Rectangle zRect = new Rectangle(z.getPosX(), 109 + myLane * 120, 400, 120);
+            if (pRect.intersects(zRect)) {
+                z.setHealth(z.getHealth() - 300);
                 boolean exit = false;
-                if(z.health < 0){
-                    System.out.println("ZOMBIE DIE");
-                    
-                    gp.laneZombies.get(myLane).remove(i);
+                if (z.getHealth() < 0) {
+                    System.out.println("ZOMBIE DIED");
+
+                    gp.getLaneZombies().get(myLane).remove(i);
                     GamePanel.setProgress(10);
                     exit = true;
                 }
-                gp.lanePeas.get(myLane).remove(this);
-                if(exit) break;
+                gp.getLaneZombies().get(myLane).remove(this);
+                if (exit) break;
             }
         }
         /*if(posX > 2000){
@@ -41,4 +40,19 @@ public class Pea {
         posX += 15;
     }
 
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getMyLane() {
+        return myLane;
+    }
+
+    public void setMyLane(int myLane) {
+        this.myLane = myLane;
+    }
 }

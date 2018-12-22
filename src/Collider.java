@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -11,32 +9,32 @@ import java.awt.event.MouseListener;
  */
 public class Collider extends JPanel implements MouseListener {
 
-    ActionListener al;
+    private ActionListener al;
 
-    public Collider(){
+    public Collider() {
         //setBorder(new LineBorder(Color.RED));
         setOpaque(false);
         addMouseListener(this);
         //setBackground(Color.green);
-        setSize(100,120);
+        setSize(100, 120);
     }
 
     public Plant assignedPlant;
 
-    public void setPlant(Plant p){
+    public void setPlant(Plant p) {
         assignedPlant = p;
     }
 
-    public void removePlant(){
+    public void removePlant() {
         assignedPlant.stop();
         assignedPlant = null;
     }
 
-    public boolean isInsideCollider(int tx){
+    public boolean isInsideCollider(int tx) {
         return (tx > getLocation().x) && (tx < getLocation().x + 100);
     }
 
-    public void setAction(ActionListener al){
+    public void setAction(ActionListener al) {
         this.al = al;
     }
 
@@ -53,8 +51,8 @@ public class Collider extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(al != null){
-            al.actionPerformed(new ActionEvent(this,ActionEvent.RESERVED_ID_MAX+1,""));
+        if (al != null) {
+            al.actionPerformed(new ActionEvent(this, ActionEvent.RESERVED_ID_MAX + 1, ""));
         }
     }
 
