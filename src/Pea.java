@@ -40,10 +40,10 @@ public class Pea {
         posX += 15;
     }
     
-    public void advance(Zombie zomb,int numOfZomb) {
+    public void advance(Zombie[] zomb) {
         Rectangle pRect = new Rectangle(posX, 130 + myLane * 120, 28, 28);
-        for (int i = 0; i < numOfZomb; i++) {
-            Zombie z = zomb;
+        for (int i = 0; i <zomb.length; i++) {
+            Zombie z = zomb[i];
             Rectangle zRect = new Rectangle(z.getPosX(), 109 + myLane * 120, 400, 120);
             if (pRect.intersects(zRect)) {
                 z.setHealth(z.getHealth() - 300);
