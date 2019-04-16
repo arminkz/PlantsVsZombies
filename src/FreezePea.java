@@ -34,5 +34,31 @@ public class FreezePea extends Pea {
         }*/
         setPosX(getPosX() - 15);
     }
+    
+    @Override
+    public void advance(Zombie[] zomb) {
+        Rectangle pRect = new Rectangle(getPosX(), 130 + getMyLane() * 120, 28, 28);
+        for (int i = 0; i < zomb.length; i++) {
+            Zombie z = zomb[i];
+            Rectangle zRect = new Rectangle(z.getPosX(), 109 + getMyLane() * 120, 400, 120);
+            if (pRect.intersects(zRect)) {
+                z.setHealth(z.getHealth() - 300);
+                z.slow();
+                boolean exit = false;
+                if (z.getHealth() < 0) {
+                    System.out.println("ZOMBIE DIE");
+                    GamePanel.setProgress(10);
+                    gp.getLaneZombies().get(getMyLane()).remove(i);
+                    exit = true;
+                }
+                gp.getLanePeas().get(getMyLane()).remove(this);
+                if (exit) break;
+            }
+        }
+        /*if(posX > 2000){
+            gp.lanePeas.get(myLane).remove(this);
+        }*/
+        setPosX(getPosX() - 15);
+    }
 
 }
