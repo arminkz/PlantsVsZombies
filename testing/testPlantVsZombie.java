@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import org.junit.Test;
 import org.junit.Rule;
@@ -38,7 +39,9 @@ public class testPlantVsZombie {
 	public void testPeaAdvanceOne() {
 		
 		
+		
 		GamePanel gamePanel = new GamePanel(new JLabel ("hello"));
+		
 		int lane = 1;
 		int xPos = 1;
 //		when(gamePanelMock.getLaneZombies().get(lane).size()).thenReturn(1);
@@ -46,10 +49,25 @@ public class testPlantVsZombie {
 		Pea pea = new Pea(gamePanel,xPos,lane);
 		Zombie[] zomb = new Zombie[2];
 		zomb[0] = new Zombie(gamePanel,1);
+		zomb[0].setPosX(xPos);
 		zomb[1] = new Zombie(gamePanel,2);
+		boolean[] collide = new boolean[2];
+		for( boolean i: collide) {
+			i=false;
+		}
 //		Zombie zomb = new Zombie(gamePanelMock,1);
-		pea.advance(zomb);
+		pea.testAdvance(zomb,collide);
 
+		for(int i = 0; i<collide.length;i++) {
+			
+			if(i==0) {
+				assertEquals("collide[i] should return \"true \" ", true , collide[i]);
+			}
+			else {
+			assertEquals("collide[i] should return \"false \" ", false , collide[i]);
+			}
+			assertNotNull("zomb[i] should return a zombie with lowered health ", zomb[i]);
+		}
 		assertEquals("pea.getPosX() should return \"16 \" ", 16 , pea.getPosX());
 	}
 
