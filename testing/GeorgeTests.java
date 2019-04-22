@@ -1,11 +1,11 @@
 //George Harrington
-//testing commit
+//testing commit, no testing done yet
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class testSun {
+public class GeorgeTests {
 
 	@Test
 	public void test() {
