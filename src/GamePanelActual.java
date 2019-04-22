@@ -157,7 +157,7 @@ public class GamePanelActual extends JLayeredPane implements MouseMotionListener
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(bgImage, 0, 0, null);
 
@@ -349,4 +349,16 @@ public class GamePanelActual extends JLayeredPane implements MouseMotionListener
     public void setColliders(Collider[] colliders) {
         this.colliders = colliders;
     }
+
+	@Override
+	public void remove(Sun sun) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void add(Sun sta, Integer integer) {
+		// TODO Auto-generated method stub
+		
+	}
 }
