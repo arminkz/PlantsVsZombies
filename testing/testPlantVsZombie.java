@@ -40,7 +40,7 @@ public class testPlantVsZombie {
 		
 		
 		
-		GamePanel gamePanel = new GamePanel(new JLabel ("hello"));
+		GamePanelActual gamePanel = new GamePanelActual(new JLabel ("hello"));
 		
 		int lane = 1;
 		int xPos = 1;
@@ -75,7 +75,7 @@ public class testPlantVsZombie {
 	public void testPeaAdvanceTwo() {
 		
 		
-		GamePanel gamePanel = new GamePanel(new JLabel ("hello"));
+		GamePanelActual gamePanel = new GamePanelActual(new JLabel ("hello"));
 		int lane = 1;
 		int xPos = 1;
 		Pea pea = new Pea(gamePanel,xPos,lane);

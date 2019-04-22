@@ -9,7 +9,7 @@ public class Peashooter extends Plant {
     public Timer shootTimer;
 
 
-    public Peashooter(GamePanel parent, int x, int y) {
+    public Peashooter(GamePanelActual parent, int x, int y) {
         super(parent, x, y);
         shootTimer = new Timer(2000, (ActionEvent e) -> {
             //System.out.println("SHOOT");

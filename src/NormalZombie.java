@@ -3,7 +3,7 @@
  */
 public class NormalZombie extends Zombie {
 
-    public NormalZombie(GamePanel parent, int lane) {
+    public NormalZombie(GamePanelActual parent, int lane) {
         super(parent, lane);
     }
 

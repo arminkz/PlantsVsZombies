@@ -5,7 +5,7 @@ import java.awt.*;
  */
 public class FreezePea extends Pea {
 
-    public FreezePea(GamePanel parent, int lane, int startX) {
+    public FreezePea(GamePanelActual parent, int lane, int startX) {
         super(parent, lane, startX);
     }
 
@@ -21,7 +21,7 @@ public class FreezePea extends Pea {
                 boolean exit = false;
                 if (z.getHealth() < 0) {
                     System.out.println("ZOMBIE DIE");
-                    GamePanel.setProgress(10);
+                    GamePanelActual.setProgress(10);
                     gp.getLaneZombies().get(getMyLane()).remove(i);
                     exit = true;
                 }
@@ -48,7 +48,7 @@ public class FreezePea extends Pea {
                 boolean exit = false;
                 if (z.getHealth() < 0) {
                     System.out.println("ZOMBIE DIE");
-                    GamePanel.setProgress(10);
+                    GamePanelActual.setProgress(10);
                     zomb[i]=null;
 //                    gp.getLaneZombies().get(getMyLane()).remove(i);
                     exit = true;

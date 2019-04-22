@@ -6,10 +6,10 @@ import java.awt.*;
 public class Pea {
 
     private int posX;
-    protected GamePanel gp;
+    protected GamePanelActual gp;
     private int myLane;
 
-    public Pea(GamePanel parent, int lane, int startX) {
+    public Pea(GamePanelActual parent, int lane, int startX) {
         this.gp = parent;
         this.myLane = lane;
         posX = startX;
@@ -27,7 +27,7 @@ public class Pea {
                     System.out.println("ZOMBIE DIED");
 
                     gp.getLaneZombies().get(myLane).remove(i);
-                    GamePanel.setProgress(10);
+                    GamePanelActual.setProgress(10);
                     exit = true;
                 }
                 gp.getLaneZombies().get(myLane).remove(this);
@@ -54,7 +54,7 @@ public class Pea {
 
 //                    gp.getLaneZombies().get(myLane).remove(i);
                     zomb[i] = null;
-                    GamePanel.setProgress(10);
+                    GamePanelActual.setProgress(10);
                     exit = true;
                 }
                 zomb[i] = null;

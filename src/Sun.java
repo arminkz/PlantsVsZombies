@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
  */
 public class Sun extends JPanel implements MouseListener {
 
-    private GamePanel gp;
+    private GamePanelActual gp;
     private Image sunImage;
 
     private int myX;
@@ -17,7 +17,7 @@ public class Sun extends JPanel implements MouseListener {
 
     private int destruct = 200;
 
-    public Sun(GamePanel parent, int startX, int startY, int endY) {
+    public Sun(GamePanelActual parent, int startX, int startY, int endY) {
         this.gp = parent;
         this.endY = endY;
         setSize(80, 80);

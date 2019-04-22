@@ -9,7 +9,7 @@ public class FreezePeashooter extends Plant {
     private Timer shootTimer;
 
 
-    public FreezePeashooter(GamePanel parent, int x, int y) {
+    public FreezePeashooter(GamePanelActual parent, int x, int y) {
         super(parent, x, y);
         shootTimer = new Timer(2000, (ActionEvent e) -> {
             //System.out.println("SHOOT");

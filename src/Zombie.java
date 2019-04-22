@@ -8,13 +8,13 @@ public class Zombie {
     private int health = 1000;
     private int speed = 1;
 
-    private GamePanel gp;
+    private GamePanelActual gp;
 
     private int posX = 1000;
     private int myLane;
     private boolean isMoving = true;
 
-    public Zombie(GamePanel parent, int lane) {
+    public Zombie(GamePanelActual parent, int lane) {
         this.gp = parent;
         myLane = lane;
     }
@@ -59,7 +59,7 @@ public class Zombie {
         slowInt = 1000;
     }
 
-    public static Zombie getZombie(String type, GamePanel parent, int lane) {
+    public static Zombie getZombie(String type, GamePanelActual parent, int lane) {
         Zombie z = new Zombie(parent, lane);
         switch (type) {
             case "NormalZombie":
@@ -88,11 +88,11 @@ public class Zombie {
         this.speed = speed;
     }
 
-    public GamePanel getGp() {
+    public GamePanelActual getGp() {
         return gp;
     }
 
-    public void setGp(GamePanel gp) {
+    public void setGp(GamePanelActual gp) {
         this.gp = gp;
     }
 
