@@ -8,10 +8,10 @@ public abstract class Plant {
     private int x;
     private int y;
 
-    private GamePanelActual gp;
+    private GamePanel gp;
 
 
-    public Plant(GamePanelActual parent, int x, int y) {
+    public Plant(GamePanel parent, int x, int y) {
         this.x = x;
         this.y = y;
         gp = parent;
@@ -44,11 +44,11 @@ public abstract class Plant {
         this.y = y;
     }
 
-    public GamePanelActual getGp() {
+    public GamePanel getGp() {
         return gp;
     }
 
-    public void setGp(GamePanelActual gp) {
+    public void setGp(GamePanel gp) {
         this.gp = gp;
     }
 }
