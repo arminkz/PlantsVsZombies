@@ -6,10 +6,10 @@ import java.awt.*;
 public class Pea {
 
     private int posX;
-    protected GamePanelActual gp;
+    protected GamePanel gp;
     private int myLane;
 
-    public Pea(GamePanelActual parent, int lane, int startX) {
+    public Pea(GamePanel parent, int lane, int startX) {
         this.gp = parent;
         this.myLane = lane;
         posX = startX;

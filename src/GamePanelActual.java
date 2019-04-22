@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Created by Armin on 6/25/2016.
  */
-public class GamePanelActual extends JLayeredPane implements MouseMotionListener {
+public class GamePanelActual extends JLayeredPane implements MouseMotionListener, GamePanel {
 
     private Image bgImage;
     private Image peashooterImage;
@@ -39,10 +39,16 @@ public class GamePanelActual extends JLayeredPane implements MouseMotionListener
 
     private int sunScore;
 
+    /* (non-Javadoc)
+	 * @see GamePanel#getSunScore()
+	 */
     public int getSunScore() {
         return sunScore;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#setSunScore(int)
+	 */
     public void setSunScore(int sunScore) {
         this.sunScore = sunScore;
         sunScoreboard.setText(String.valueOf(sunScore));
@@ -237,11 +243,17 @@ public class GamePanelActual extends JLayeredPane implements MouseMotionListener
         }
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#mouseDragged(java.awt.event.MouseEvent)
+	 */
     @Override
     public void mouseDragged(MouseEvent e) {
 
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#mouseMoved(java.awt.event.MouseEvent)
+	 */
     @Override
     public void mouseMoved(MouseEvent e) {
         mouseX = e.getX();
@@ -268,42 +280,72 @@ public class GamePanelActual extends JLayeredPane implements MouseMotionListener
         }
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#getActivePlantingBrush()
+	 */
     public GameWindow.PlantType getActivePlantingBrush() {
         return activePlantingBrush;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#setActivePlantingBrush(GameWindow.PlantType)
+	 */
     public void setActivePlantingBrush(GameWindow.PlantType activePlantingBrush) {
         this.activePlantingBrush = activePlantingBrush;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#getLaneZombies()
+	 */
     public ArrayList<ArrayList<Zombie>> getLaneZombies() {
         return laneZombies;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#setLaneZombies(java.util.ArrayList)
+	 */
     public void setLaneZombies(ArrayList<ArrayList<Zombie>> laneZombies) {
         this.laneZombies = laneZombies;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#getLanePeas()
+	 */
     public ArrayList<ArrayList<Pea>> getLanePeas() {
         return lanePeas;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#setLanePeas(java.util.ArrayList)
+	 */
     public void setLanePeas(ArrayList<ArrayList<Pea>> lanePeas) {
         this.lanePeas = lanePeas;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#getActiveSuns()
+	 */
     public ArrayList<Sun> getActiveSuns() {
         return activeSuns;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#setActiveSuns(java.util.ArrayList)
+	 */
     public void setActiveSuns(ArrayList<Sun> activeSuns) {
         this.activeSuns = activeSuns;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#getColliders()
+	 */
     public Collider[] getColliders() {
         return colliders;
     }
 
+    /* (non-Javadoc)
+	 * @see GamePanel#setColliders(Collider[])
+	 */
     public void setColliders(Collider[] colliders) {
         this.colliders = colliders;
     }

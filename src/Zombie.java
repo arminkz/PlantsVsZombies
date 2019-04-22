@@ -88,7 +88,7 @@ public class Zombie {
         this.speed = speed;
     }
 
-    public GamePanelActual getGp() {
+    public GamePanel getGp() {
         return gp;
     }
 

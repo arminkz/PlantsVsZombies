@@ -5,7 +5,7 @@ import java.awt.*;
  */
 public class FreezePea extends Pea {
 
-    public FreezePea(GamePanelActual parent, int lane, int startX) {
+    public FreezePea(GamePanel parent, int lane, int startX) {
         super(parent, lane, startX);
     }
 
