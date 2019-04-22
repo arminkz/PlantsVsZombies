@@ -89,8 +89,9 @@ public class nickTestPlantVsZombie {
 		int lane = 1;
 		int xPos = 1;
 		boolean[] zombInLane =  {false,true,true,false,true};
-		int[] zombXLoc = {0,50,2,0,60};
+		int[] zombXLoc = {0,50,xPos,0,60};
 		gamePanel.setLaneZombies(createZombieList(2,zombInLane,zombXLoc,gamePanel));
+		
 		Pea pea = new Pea(gamePanel, xPos, lane);
 
 		pea.advance();
@@ -123,6 +124,32 @@ public class nickTestPlantVsZombie {
 		Zombie zomb = new Zombie(gp, lane);
 		zomb.setPosX(xLoc);
 		return zomb;
+
+	}
+	
+	private ArrayList<ArrayList<Pea>> createPeaList(int x, boolean[] lane, int[] xLoc, GamePanel gp) {
+		ArrayList<ArrayList<Pea>> lanePeas;
+		lanePeas = new ArrayList<>();
+		lanePeas.add(new ArrayList<>()); // line 1
+		lanePeas.add(new ArrayList<>()); // line 2
+		lanePeas.add(new ArrayList<>()); // line 3
+		lanePeas.add(new ArrayList<>()); // line 4
+		lanePeas.add(new ArrayList<>()); // line 5
+		for (int i = 0; i < lane.length; i++) {
+
+			if (lane[i]) {
+				lanePeas.get(i).add(createPea(i, xLoc[i], gp));
+			}
+		}
+
+		return lanePeas;
+	}
+
+	private Pea createPea(int lane, int xLoc, GamePanel gp) {
+
+		Pea pea = new Pea(gp, lane, xLoc);
+		
+		return pea;
 
 	}
 }
