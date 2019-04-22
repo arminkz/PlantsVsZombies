@@ -1,3 +1,5 @@
+import java.awt.Component;
+
 import javax.swing.*;
 
 /**
@@ -8,13 +10,13 @@ public class Zombie {
     private int health = 1000;
     private int speed = 1;
 
-    private GamePanelActual gp;
+    private GamePanel gp;
 
     private int posX = 1000;
     private int myLane;
     private boolean isMoving = true;
 
-    public Zombie(GamePanelActual parent, int lane) {
+    public Zombie(GamePanel parent, int lane) {
         this.gp = parent;
         myLane = lane;
     }
@@ -46,7 +48,7 @@ public class Zombie {
             }
             if (posX < 0) {
                 isMoving = false;
-                JOptionPane.showMessageDialog(gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+                JOptionPane.showMessageDialog((Component) gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
                 GameWindow.gw.dispose();
                 GameWindow.gw = new GameWindow();
             }
