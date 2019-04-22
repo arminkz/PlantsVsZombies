@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
@@ -30,5 +31,13 @@ public interface GamePanel {
 	Collider[] getColliders();
 
 	void setColliders(Collider[] colliders);
+
+	void paintComponent(Graphics g);
+
+	void remove(Sun sun);
+
+	void add(Sun sta, Integer integer);
+
+	
 
 }
