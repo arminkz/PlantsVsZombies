@@ -22,7 +22,7 @@ import org.junit.FixMethodOrder;
 import static org.mockito.Mockito.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class testPlantVsZombie {
+public class nickTestPlantVsZombie {
 
 	@Rule
 	public Timeout globalTimeout = new Timeout(20, SECONDS);
