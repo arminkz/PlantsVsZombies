@@ -1,5 +1,4 @@
 //George Harrington
-//testing commit, no testing done yet
 
 import static org.junit.Assert.*;
 
@@ -54,9 +53,9 @@ public class GeorgeTests {
 		lct.delete();
 		lct = new File("LEVEL_CONTENT_TEST.vbhv");
 		BufferedWriter bwr = new BufferedWriter(new FileWriter(lct));
-        bwr.write("15");
-        bwr.close();
-        ld = new LevelData("LEVEL_CONTENT_TEST.vbhv");
+        	bwr.write("15");
+        	bwr.close();
+        	ld = new LevelData("LEVEL_CONTENT_TEST.vbhv");
 		br = new BufferedReader(new FileReader(lct));
 		assertEquals("File read-in", "15", br.readLine());
 		
