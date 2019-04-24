@@ -31,6 +31,8 @@ public class Pea {
                     exit = true;
                 }
                 gp.getLaneZombies().get(myLane).remove(this);
+                // this is added, because it is pulling up the wrong list.  should be lanePeas()
+//                gp.getLanePeas().get(myLane).remove(this);
                 if (exit) break;
             }
         }
@@ -39,34 +41,7 @@ public class Pea {
         }*/
         posX += 15;
     }
-//    
-//    public void testAdvance(Zombie[] zomb, boolean [] collide) {
-//        Rectangle pRect = new Rectangle(posX, 130 + myLane * 120, 28, 28);
-//        for (int i = 0; i <zomb.length; i++) {
-//            Zombie z = zomb[i];
-//            Rectangle zRect = new Rectangle(z.getPosX(), 109 + myLane * 120, 400, 120);
-//            if (pRect.intersects(zRect)) {
-//            	collide[i]=true;
-//                z.setHealth(z.getHealth() - 300);
-//                boolean exit = false;
-//                if (z.getHealth() < 0) {
-//                    System.out.println("ZOMBIE DIED");
-//
-////                    gp.getLaneZombies().get(myLane).remove(i);
-//                    zomb[i] = null;
-//                    GamePanelActual.setProgress(10);
-//                    exit = true;
-//                }
-//                zomb[i] = null;
-////                gp.getLaneZombies().get(myLane).remove(this);
-//                if (exit) break;
-//            }
-//        }
-//        /*if(posX > 2000){
-//            gp.lanePeas.get(myLane).remove(this);
-//        }*/
-//        posX += 15;
-//    }
+
 
     public int getPosX() {
         return posX;

@@ -81,27 +81,205 @@ public class nickTestPlantVsZombie {
 		assertEquals("pea.getPosX() should return \"16 \" ", 16, pea.getPosX());
 	}
 
-	
+	/**
+	 * This test has 3 zombies, but none are in the lane that the pea is, so only change should be
+	 * to move the pea's xPos
+	 */
 	@Test
 	public void testPeaAdvanceThree() {
-
-		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
-		int lane = 1;
-		int xPos = 1;
-		boolean[] zombInLane =  {false,true,true,false,true};
-		int[] zombXLoc = {0,50,xPos,0,60};
-		gamePanel.setLaneZombies(createZombieList(2,zombInLane,zombXLoc,gamePanel));
 		
-		Pea pea = new Pea(gamePanel, xPos, lane);
-
+		
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		boolean[] zombInLane =  {false,true,true,false,true};
+		int[] zombXLoc = {-1,50,peaXPos,-1,60};
+		
+		gamePanel.setLaneZombies(createZombieList(zombInLane,zombXLoc,gamePanel));
+		
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		gamePanel.getLanePeas().get(peaLane).add(pea);
+		ArrayList<Pea> originalPeaList = gamePanel.getLanePeas().get(peaLane);
+		ArrayList<ArrayList<Zombie>> originalZombieList = gamePanel.getLaneZombies();
+		
 		pea.advance();
 
 		assertEquals("pea.getPosX() should return \"16 \" ", 16, pea.getPosX());
+		assertTrue("gamePanel.getLanePeas().get(peaLane).contains should return true ",gamePanel.getLanePeas().get(peaLane).contains(pea) );
+		assertEquals("gamePanel.getLaneZombies() should return the same zombie list ", originalZombieList, gamePanel.getLaneZombies() );
 	}
 
+	/**
+	 * This test has 3 zombies, and one is in the lane that the pea is, so should lower the zombie's health
+	 * and should remove the pea.  Lane 1
+	 */
+	@Test
+	public void testPeaAdvanceFour() {
+		
+		
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		boolean[] zombInLane =  {false,false,true,false,true};
+		int[] zombXLoc = {-1,-1,20,-1,60};
+		Zombie zomb = createZombie(peaLane,peaXPos,gamePanel);
+		
+		gamePanel.setLaneZombies(createZombieList(zombInLane,zombXLoc,gamePanel));
+		gamePanel.getLaneZombies().get(peaLane).add(zomb);
+		
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		gamePanel.getLanePeas().get(peaLane).add(pea);
+			
+		pea.advance();
+
+
+		assertFalse("gamePanel.getLanePeas().get(peaLane).contains(pea) should return false ",gamePanel.getLanePeas().get(peaLane).contains(pea) );
+		assertTrue("gamePanel.getLaneZombies().get(peaLane).contains(zomb) should return true",  gamePanel.getLaneZombies().get(peaLane).contains(zomb)) ;
+		assertEquals("zomb.getHealth() should return 1000-300 ",  1000-300,zomb.getHealth()) ;
+	}
+	/**
+	 * This test has 3 zombies, and one is in the lane that the pea is, so should lower the zombie's health
+	 * and should remove the pea.  Lane 2
+	 */
+	@Test
+	public void testPeaAdvanceFive() {
+		
+		
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 2;
+		int peaXPos= 1;
+		boolean[] zombInLane =  {false,false,true,false,true};
+		int[] zombXLoc = {-1,-1,20,-1,60};
+		Zombie zomb = createZombie(peaLane,peaXPos,gamePanel);
+		
+		gamePanel.setLaneZombies(createZombieList(zombInLane,zombXLoc,gamePanel));
+		gamePanel.getLaneZombies().get(peaLane).add(zomb);
+		
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		gamePanel.getLanePeas().get(peaLane).add(pea);
+			
+		pea.advance();
+
+
+		assertFalse("gamePanel.getLanePeas().get(peaLane).contains(pea) should return false ",gamePanel.getLanePeas().get(peaLane).contains(pea) );
+		assertTrue("gamePanel.getLaneZombies().get(peaLane).contains(zomb) should return true",  gamePanel.getLaneZombies().get(peaLane).contains(zomb)) ;
+		assertEquals("zomb.getHealth() should return 1000-300 ",  1000-300,zomb.getHealth()) ;
+	}
+	/**
+	 * This test has 3 zombies, and one is in the lane that the pea is, so should lower the zombie's health
+	 * and should remove the pea.  Lane 4
+	 */
+	@Test
+	public void testPeaAdvanceSix() {
+		
+		
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 3;
+		int peaXPos= 1;
+		boolean[] zombInLane =  {false,true,false,false,true};
+		int[] zombXLoc = {-1,-1,20,-1,60};
+		Zombie zomb = createZombie(peaLane,peaXPos,gamePanel);
+		
+		gamePanel.setLaneZombies(createZombieList(zombInLane,zombXLoc,gamePanel));
+		gamePanel.getLaneZombies().get(peaLane).add(zomb);
+		
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		gamePanel.getLanePeas().get(peaLane).add(pea);
+			
+		pea.advance();
+
+
+		assertFalse("gamePanel.getLanePeas().get(peaLane).contains(pea) should return false ",gamePanel.getLanePeas().get(peaLane).contains(pea) );
+		assertTrue("gamePanel.getLaneZombies().get(peaLane).contains(zomb) should return true",  gamePanel.getLaneZombies().get(peaLane).contains(zomb)) ;
+		assertEquals("zomb.getHealth() should return 1000-300 ",  1000-300,zomb.getHealth()) ;
+	}
+	/**
+	 * This test has 3 zombies, and one is in the lane that the pea is, so should lower the zombie's health
+	 * and should remove the pea.  Lane 4
+	 */
+	@Test
+	public void testPeaAdvanceSeven() {
+		
+		
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 4;
+		int peaXPos= 1;
+		boolean[] zombInLane =  {false,false,true,false,true};
+		int[] zombXLoc = {-1,-1,20,-1,60};
+		Zombie zomb = createZombie(peaLane,peaXPos,gamePanel);
+		
+		gamePanel.setLaneZombies(createZombieList(zombInLane,zombXLoc,gamePanel));
+		gamePanel.getLaneZombies().get(peaLane).add(zomb);
+		
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		gamePanel.getLanePeas().get(peaLane).add(pea);
+			
+		pea.advance();
+
+
+		assertFalse("gamePanel.getLanePeas().get(peaLane).contains(pea) should return false ",gamePanel.getLanePeas().get(peaLane).contains(pea) );
+		assertTrue("gamePanel.getLaneZombies().get(peaLane).contains(zomb) should return true",  gamePanel.getLaneZombies().get(peaLane).contains(zomb)) ;
+		assertEquals("zomb.getHealth() should return 1000-300 ",  1000-300,zomb.getHealth()) ;
+	}
+	/**
+	 * This test has 3 zombies, and one is in the lane that the pea is, so should lower the zombie's health
+	 * and should remove the pea.  Lane 0
+	 */
+	@Test
+	public void testPeaAdvanceEight() {
+		
+		
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 0;
+		int peaXPos= 1;
+		boolean[] zombInLane =  {false,false,true,true,false};
+		int[] zombXLoc = {-1,-1,20,-1,60};
+		Zombie zomb = createZombie(peaLane,peaXPos,gamePanel);
+		
+		gamePanel.setLaneZombies(createZombieList(zombInLane,zombXLoc,gamePanel));
+		gamePanel.getLaneZombies().get(peaLane).add(zomb);
+		
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		gamePanel.getLanePeas().get(peaLane).add(pea);
+			
+		pea.advance();
+
+
+		assertFalse("gamePanel.getLanePeas().get(peaLane).contains(pea) should return false ",gamePanel.getLanePeas().get(peaLane).contains(pea) );
+		assertTrue("gamePanel.getLaneZombies().get(peaLane).contains(zomb) should return true",  gamePanel.getLaneZombies().get(peaLane).contains(zomb)) ;
+		assertEquals("zomb.getHealth() should return 1000-300 ",  1000-300,zomb.getHealth()) ;
+	}
+	/**
+	 * This test has 3 zombies, and one is in the lane that the pea is, so should lower the zombie's health
+	 * and should remove the pea.  Lane 1
+	 */
+	@Test
+	public void testPeaAdvanceNine() {
+		
+		
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		boolean[] zombInLane =  {false,false,true,false,true};
+		int[] zombXLoc = {-1,-1,20,-1,60};
+		Zombie zomb = createZombie(peaLane,peaXPos,gamePanel);
+		
+		gamePanel.setLaneZombies(createZombieList(zombInLane,zombXLoc,gamePanel));
+		gamePanel.getLaneZombies().get(peaLane).add(zomb);
+		
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		gamePanel.getLanePeas().get(peaLane).add(pea);
+			
+		pea.advance();
+
+
+		assertFalse("gamePanel.getLanePeas().get(peaLane).contains(pea) should return false ",gamePanel.getLanePeas().get(peaLane).contains(pea) );
+		assertTrue("gamePanel.getLaneZombies().get(peaLane).contains(zomb) should return true",  gamePanel.getLaneZombies().get(peaLane).contains(zomb)) ;
+		assertEquals("zomb.getHealth() should return 1000-300 ",  1000-300,zomb.getHealth()) ;
+	}
 	
 	
-	private ArrayList<ArrayList<Zombie>> createZombieList(int x, boolean[] lane, int[] xLoc, GamePanel gp) {
+	private ArrayList<ArrayList<Zombie>> createZombieList( boolean[] lane, int[] xLoc, GamePanel gp) {
 		ArrayList<ArrayList<Zombie>> laneZombies;
 		laneZombies = new ArrayList<>();
 		laneZombies.add(new ArrayList<>()); // line 1
