@@ -631,6 +631,115 @@ public class nickTestPlantVsZombie {
 		
 	}
 
+	/**
+	 * This will test the getPosX method
+	 */
+	@Test
+	public void testPeaGetPosXOne(){
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		assertEquals("pea.getPosX() should return 1 ",  1,pea.getPosX()) ;
+	
+	}
+	/**
+	 * This will test the getPosX method
+	 */
+	@Test
+	public void testFreezePeaGetPosXOne(){
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		FreezePea pea = new FreezePea(gamePanel, peaXPos, peaLane);
+		assertEquals("pea.getPosX() should return 1 ",  1,pea.getPosX()) ;
+	
+	}
+	
+	
+	
+	/**
+	 * This will test the setPosX method
+	 */
+	@Test
+	public void testPeaSetPosXOne(){
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		pea.setPosX(50);
+		assertEquals("pea.getPosX() should return 50 ",  50,pea.getPosX()) ;
+	
+	}
+	
+	/**
+	 * This will test the setPosX method
+	 */
+	@Test
+	public void testFreezePeaSetPosXOne(){
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		FreezePea pea = new FreezePea(gamePanel, peaXPos, peaLane);
+		pea.setPosX(50);
+		assertEquals("pea.getPosX() should return 50 ",  50,pea.getPosX()) ;
+	
+	}
+	/**
+	 * This will test the getMyLane method
+	 */
+	@Test
+	public void testPeaGetMyLane(){
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		assertEquals("pea.getMyLane() should return 1 ",  1,pea.getMyLane()) ;
+	
+	}
+	/**
+	 * This will test the getMyLane method
+	 */
+	@Test
+	public void testFreezePeaGetMyLane(){
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		FreezePea pea = new FreezePea(gamePanel, peaXPos, peaLane);
+		assertEquals("pea.getMyLane() should return 1 ",  1,pea.getMyLane()) ;
+	
+	}
+	
+	
+	
+	/**
+	 * This will test the setMyLane method
+	 */
+	@Test
+	public void testPeaSetMyLaneOne(){
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		Pea pea = new Pea(gamePanel, peaXPos, peaLane);
+		pea.setMyLane(3);
+		assertEquals("pea.getMyLane() should return 3 ",  3,pea.getMyLane()) ;
+	
+	}
+	
+	/**
+	 * This will test the setMyLane method
+	 */
+	@Test
+	public void testFreezePeaSetMyLane(){
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		int peaLane = 1;
+		int peaXPos= 1;
+		FreezePea pea = new FreezePea(gamePanel, peaXPos, peaLane);
+		pea.setMyLane(3);
+		assertEquals("pea.getMyLane() should return 3 ",  3,pea.getMyLane()) ;
+	
+	}
+
 	
 	
 	private ArrayList<ArrayList<Zombie>> createZombieList( boolean[] lane, int[] xLoc, GamePanel gp) {
