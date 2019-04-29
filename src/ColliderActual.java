@@ -19,7 +19,7 @@ public class ColliderActual extends JPanel implements MouseListener, Collider {
         setSize(100, 120);
     }
 
-    public Plant assignedPlant;
+    private Plant assignedPlant;
 
     /* (non-Javadoc)
 	 * @see ColliderInterface#setPlant(Plant)
@@ -96,4 +96,10 @@ public class ColliderActual extends JPanel implements MouseListener, Collider {
     public void mouseExited(MouseEvent e) {
 
     }
+
+	@Override
+	public Plant getPlant() {
+
+		return assignedPlant;
+	}
 }
