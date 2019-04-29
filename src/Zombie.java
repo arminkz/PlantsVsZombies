@@ -26,7 +26,7 @@ public class Zombie {
             boolean isCollides = false;
             Collider collided = null;
             for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-                if (gp.getColliders()[i].assignedPlant != null && gp.getColliders()[i].isInsideCollider(posX)) {
+                if (gp.getColliders()[i].getPlant() != null && gp.getColliders()[i].isInsideCollider(posX)) {
                     isCollides = true;
                     collided = gp.getColliders()[i];
                 }
@@ -41,8 +41,8 @@ public class Zombie {
                     posX -= 1;
                 }
             } else {
-                collided.assignedPlant.setHealth(collided.assignedPlant.getHealth() - 10);
-                if (collided.assignedPlant.getHealth() < 0) {
+                collided.getPlant().setHealth(collided.getPlant().getHealth() - 10);
+                if (collided.getPlant().getHealth() < 0) {
                     collided.removePlant();
                 }
             }

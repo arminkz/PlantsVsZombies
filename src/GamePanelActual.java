@@ -86,9 +86,9 @@ public class GamePanelActual extends JLayeredPane implements MouseMotionListener
         lanePeas.add(new ArrayList<>()); //line 4
         lanePeas.add(new ArrayList<>()); //line 5
 
-        colliders = new Collider[45];
+        colliders = new ColliderActual[45];
         for (int i = 0; i < 45; i++) {
-            Collider a = new Collider();
+            ColliderActual a = new ColliderActual();
             a.setLocation(44 + (i % 9) * 100, 109 + (i / 9) * 120);
             a.setAction(new PlantActionListener((i % 9), (i / 9)));
             colliders[i] = a;
@@ -164,8 +164,8 @@ public class GamePanelActual extends JLayeredPane implements MouseMotionListener
         //Draw Plants
         for (int i = 0; i < 45; i++) {
             Collider c = colliders[i];
-            if (c.assignedPlant != null) {
-                Plant p = c.assignedPlant;
+            if (c.getPlant() != null) {
+                Plant p = c.getPlant();
                 if (p instanceof Peashooter) {
                     g.drawImage(peashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
                 }
