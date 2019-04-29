@@ -6,6 +6,8 @@ public interface Collider {
 
 	
 	void setPlant(Plant p);
+	
+	Plant getPlant();
 
 	void removePlant();
 
