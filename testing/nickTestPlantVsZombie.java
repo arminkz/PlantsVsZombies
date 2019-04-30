@@ -2,6 +2,8 @@
 // Author: Nick Patchen
 
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -757,6 +759,113 @@ public class nickTestPlantVsZombie {
 		FreezePea pea = new FreezePea(gamePanel, peaXPos, peaLane);
 		pea.setMyLane(3);
 		assertEquals("pea.getMyLane() should return 3 ", 3, pea.getMyLane());
+
+	}
+	/**
+	 * This will test the collider class - .removePlant method
+	 */
+	@Test
+	public void testColliderOne() {
+		
+		Collider collide = new ColliderActual();
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Sunflower plant = new Sunflower(gp,1,1);
+	
+		collide.setPlant(plant);
+		collide.removePlant();
+
+		assertEquals("collide.getPlant() should return null ", null, collide.getPlant());
+
+	}
+	
+	/**
+	 * This will test the collider class - .setPlant method
+	 */
+	@Test
+	public void testColliderTwo() {
+		
+		Collider collide = new ColliderActual();
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Sunflower plant = new Sunflower(gp,1,1);
+	
+		collide.setPlant(plant);
+
+
+		assertEquals("collide.getPlant() should return the plant object ", plant, collide.getPlant());
+
+	}
+	
+	
+	/**
+	 * This will test the collider class - .isInsideCollider method - true
+	 */
+	@Test
+	public void testColliderThree() {
+		
+		Collider collide = new ColliderActual();
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Sunflower plant = new Sunflower(gp,1,1);
+	
+		collide.setPlant(plant);
+		
+
+		assertEquals("collide.isInsideCollider(1) should return true ", true, collide.isInsideCollider(1));
+
+	}
+	/**
+	 * This will test the collider class - .isInsideCollider method - False
+	 */
+	@Test
+	public void testColliderFour() {
+		
+		Collider collide = new ColliderActual();
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Sunflower plant = new Sunflower(gp,1,1);
+	
+		collide.setPlant(plant);
+		
+
+		assertEquals("collide.isInsideCollider(100) should return false ", false, collide.isInsideCollider(100));
+
+	}
+	
+	/**
+	 * This will test the collider class - .isInsideCollider method - true, high value edge
+	 */
+	@Test
+	public void testColliderFive() {
+		
+		Collider collide = new ColliderActual();
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Sunflower plant = new Sunflower(gp,1,1);
+	
+		collide.setPlant(plant);
+		
+
+		assertEquals("collide.isInsideCollider(99) should return true", true, collide.isInsideCollider(99));
+
+	}
+	
+	/**
+	 * This will test the collider class - .isInsideCollider method - false, low value edge
+	 */
+	@Test
+	public void testColliderSix() {
+		
+		Collider collide = new ColliderActual();
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Sunflower plant = new Sunflower(gp,1,1);
+	
+		collide.setPlant(plant);
+		
+
+		assertEquals("collide.isInsideCollider(0) should return false", false, collide.isInsideCollider(0));
 
 	}
 
