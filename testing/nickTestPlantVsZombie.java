@@ -893,7 +893,28 @@ public class nickTestPlantVsZombie {
 
 	}
 	
+	/**
+	 * This will test the GameWindow class - Ensures compiles
+	 */
+	@Test
+	public void testGameWindowOne() {
+		
+		GameWindow gw = new GameWindow();
+		assertNotNull("gw should not be null ", gw);
+
+	}
 	
+	
+	/**
+	 * This will test the GameWindow class - Ensures other constructor compiles
+	 */
+	@Test
+	public void testGameWindowTwo() {
+		
+		GameWindow gw = new GameWindow(true);
+		assertNotNull("gw should not be null ", gw);
+
+	}
 
 
 	
