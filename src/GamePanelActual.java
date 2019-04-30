@@ -86,7 +86,7 @@ public class GamePanelActual extends JLayeredPane implements MouseMotionListener
         lanePeas.add(new ArrayList<>()); //line 4
         lanePeas.add(new ArrayList<>()); //line 5
 
-        colliders = new ColliderActual[45];
+        colliders = new Collider[45];
         for (int i = 0; i < 45; i++) {
             ColliderActual a = new ColliderActual();
             a.setLocation(44 + (i % 9) * 100, 109 + (i / 9) * 120);
