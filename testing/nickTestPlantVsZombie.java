@@ -868,7 +868,35 @@ public class nickTestPlantVsZombie {
 		assertEquals("collide.isInsideCollider(0) should return false", false, collide.isInsideCollider(0));
 
 	}
+	
+	
+	/**
+	 * This will test the GamePanel class - .getSunScore and .setSunScore method
+	 */
+	@Test
+	public void testGamePanelOne() {
+		
+		GamePanelActual gp =new GamePanelActual(new JLabel("testing"));
+		gp.setSunScore(100);
+		assertEquals("gp.getSunScore() should return 100", 100, gp.getSunScore());
 
+	}
+
+	/**
+	 * This will test the GamePanel class - .getSunScore method
+	 */
+	@Test
+	public void testGamePanelTwo() {
+		
+		GamePanelActual gp =new GamePanelActual(new JLabel("testing"));
+		assertEquals("gp.getSunScore() should return 150", 150, gp.getSunScore());
+
+	}
+	
+	
+
+
+	
 	private ArrayList<ArrayList<Zombie>> createZombieList(boolean[] lane, int[] xLoc, GamePanel gp) {
 		ArrayList<ArrayList<Zombie>> laneZombies;
 		laneZombies = new ArrayList<>();
