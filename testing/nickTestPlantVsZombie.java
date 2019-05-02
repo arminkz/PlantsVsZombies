@@ -916,7 +916,97 @@ public class nickTestPlantVsZombie {
 
 	}
 
+	/**
+	 * This will test the Zombie class - .getSunScore and .setSunScore method
+	 */
+	@Test
+	public void testZombieOne() {
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Zombie zombZero = new Zombie(gp,0);
+		Zombie zombOne = new Zombie(gp,1);
+		Zombie zombTwo = new Zombie(gp,2);
+		Zombie zombThree = new Zombie(gp,3);
+		Zombie zombFour = new Zombie(gp,4);
+		
+		assertNotNull("zombZero should not be null",zombZero);
+		assertNotNull("zombOne should not be null",zombOne);
+		assertNotNull("zombTwo should not be null",zombTwo);
+		assertNotNull("zombThree should not be null",zombThree);
+		assertNotNull("zombFour should not be null",zombFour);
+//		assertEquals("zomb.getSlowInt() should return \"0\" ", 0, zomb.getSlowInt());
 
+	}
+	
+	
+	/**
+	 * This will test the Zombie class - getZombie("ConeHeadZombie", gp, 0-4);
+	 */
+	@Test
+	public void testZombieTwo() {
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Zombie zombZero = Zombie.getZombie("ConeHeadZombie", gp, 0);
+		Zombie zombOne = Zombie.getZombie("ConeHeadZombie", gp, 1);
+		Zombie zombTwo = Zombie.getZombie("ConeHeadZombie", gp, 2);
+		Zombie zombThree = Zombie.getZombie("ConeHeadZombie", gp, 3);
+		Zombie zombFour = Zombie.getZombie("ConeHeadZombie", gp, 4);
+		
+
+		assertNotNull("zombZero should not be null",zombZero);
+		assertNotNull("zombOne should not be null",zombOne);
+		assertNotNull("zombTwo should not be null",zombTwo);
+		assertNotNull("zombThree should not be null",zombThree);
+		assertNotNull("zombFour should not be null",zombFour);
+		
+		assertTrue("zombZero instanceof ConeHeadZombie is true" , zombZero instanceof ConeHeadZombie);
+		assertTrue("zombOne instanceof ConeHeadZombie is true" , zombOne instanceof ConeHeadZombie);
+		assertTrue("zombTwo instanceof ConeHeadZombie is true" , zombTwo instanceof ConeHeadZombie);
+		assertTrue("zombThree instanceof ConeHeadZombie is true" , zombThree instanceof ConeHeadZombie);
+		assertTrue("zombFour instanceof ConeHeadZombie is true" , zombFour instanceof ConeHeadZombie);
+	
+		assertFalse("zombZero instanceof NormalZombie is false" , zombZero instanceof NormalZombie);
+		assertFalse("zombOne instanceof NormalZombie is false" , zombOne instanceof NormalZombie);
+		assertFalse("zombTwo instanceof NormalZombie is false" , zombTwo instanceof NormalZombie);
+		assertFalse("zombThree instanceof NormalZombie is false" , zombThree instanceof NormalZombie);
+		assertFalse("zombFour instanceof NormalZombie is false" , zombFour instanceof NormalZombie);
+	}
+	
+	
+	/**
+	 * This will test the Zombie class - getZombie("NormalZombie", gp, 0-4);
+	 */
+	@Test
+	public void testZombieThree() {
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Zombie zombZero = Zombie.getZombie("NormalZombie", gp, 0);
+		Zombie zombOne = Zombie.getZombie("NormalZombie", gp, 1);
+		Zombie zombTwo = Zombie.getZombie("NormalZombie", gp, 2);
+		Zombie zombThree = Zombie.getZombie("NormalZombie", gp, 3);
+		Zombie zombFour = Zombie.getZombie("NormalZombie", gp, 4);
+		
+
+		assertNotNull("zombZero should not be null",zombZero);
+		assertNotNull("zombOne should not be null",zombOne);
+		assertNotNull("zombTwo should not be null",zombTwo);
+		assertNotNull("zombThree should not be null",zombThree);
+		assertNotNull("zombFour should not be null",zombFour);
+		
+		assertTrue("zombZero instanceof NormalZombie is true" , zombZero instanceof NormalZombie);
+		assertTrue("zombOne instanceof NormalZombie is true" , zombOne instanceof NormalZombie);
+		assertTrue("zombTwo instanceof NormalZombie is true" , zombTwo instanceof NormalZombie);
+		assertTrue("zombThree instanceof NormalZombie is true" , zombThree instanceof NormalZombie);
+		assertTrue("zombFour instanceof NormalZombie is true" , zombFour instanceof NormalZombie);
+	
+		assertFalse("zombZero instanceof ConeHeadZombie is false" , zombZero instanceof ConeHeadZombie);
+		assertFalse("zombOne instanceof ConeHeadZombie is false" , zombOne instanceof ConeHeadZombie);
+		assertFalse("zombTwo instanceof ConeHeadZombie is false" , zombTwo instanceof ConeHeadZombie);
+		assertFalse("zombThree instanceof ConeHeadZombie is false" , zombThree instanceof ConeHeadZombie);
+		assertFalse("zombFour instanceof ConeHeadZombie is false" , zombFour instanceof ConeHeadZombie);
+		
+		
+	}
 	
 	private ArrayList<ArrayList<Zombie>> createZombieList(boolean[] lane, int[] xLoc, GamePanel gp) {
 		ArrayList<ArrayList<Zombie>> laneZombies;
