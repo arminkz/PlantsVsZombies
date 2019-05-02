@@ -94,7 +94,7 @@ public class Zombie {
         return gp;
     }
 
-    public void setGp(GamePanelActual gp) {
+    public void setGp(GamePanel gp) {
         this.gp = gp;
     }
 
