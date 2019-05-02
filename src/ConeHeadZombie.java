@@ -3,7 +3,7 @@
  */
 public class ConeHeadZombie extends Zombie {
 
-    public ConeHeadZombie(GamePanelActual parent, int lane) {
+    public ConeHeadZombie(GamePanel parent, int lane) {
         super(parent, lane);
         setHealth(1800);
     }
