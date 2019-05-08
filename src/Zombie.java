@@ -41,10 +41,7 @@ public class Zombie {
                     posX -= 1;
                 }
             } else {
-                collided.getPlant().setHealth(collided.getPlant().getHealth() - 10);
-                if (collided.getPlant().getHealth() < 0) {
-                    collided.removePlant();
-                }
+                changePlantHealth(collided);
             }
             if (posX < 0) {
                 isMoving = false;
@@ -55,13 +52,20 @@ public class Zombie {
         }
     }
 
+	private void changePlantHealth(Collider collided) {
+		collided.getPlant().setHealth(collided.getPlant().getHealth() - 10);
+		if (collided.getPlant().getHealth() < 0) {
+		    collided.removePlant();
+		}
+	}
+
     int slowInt = 0;
 
     public void slow() {
         slowInt = 1000;
     }
 
-    public static Zombie getZombie(String type, GamePanelActual parent, int lane) {
+    public static Zombie getZombie(String type, GamePanel parent, int lane) {
         Zombie z = new Zombie(parent, lane);
         switch (type) {
             case "NormalZombie":
@@ -94,7 +98,7 @@ public class Zombie {
         return gp;
     }
 
-    public void setGp(GamePanelActual gp) {
+    public void setGp(GamePanel gp) {
         this.gp = gp;
     }
 
