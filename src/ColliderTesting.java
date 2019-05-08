@@ -43,8 +43,8 @@ public class ColliderTesting extends JPanel implements MouseListener, Collider {
 	 */
     @Override
 	public boolean isInsideCollider(int tx) {
-        return (tx > getLocation().x) && (tx < getLocation().x + 100);
-    	
+//        return (tx > getLocation().x) && (tx < getLocation().x + 100);
+    	return true;
     }
 
     /* (non-Javadoc)
