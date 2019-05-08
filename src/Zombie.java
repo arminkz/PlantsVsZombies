@@ -41,10 +41,7 @@ public class Zombie {
                     posX -= 1;
                 }
             } else {
-                collided.getPlant().setHealth(collided.getPlant().getHealth() - 10);
-                if (collided.getPlant().getHealth() < 0) {
-                    collided.removePlant();
-                }
+                changePlantHealth(collided);
             }
             if (posX < 0) {
                 isMoving = false;
@@ -54,6 +51,13 @@ public class Zombie {
             }
         }
     }
+
+	private void changePlantHealth(Collider collided) {
+		collided.getPlant().setHealth(collided.getPlant().getHealth() - 10);
+		if (collided.getPlant().getHealth() < 0) {
+		    collided.removePlant();
+		}
+	}
 
     int slowInt = 0;
 
