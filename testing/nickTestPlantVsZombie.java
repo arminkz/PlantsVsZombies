@@ -1192,18 +1192,12 @@ public class nickTestPlantVsZombie {
 		int origHealth = ps.getHealth();
 		collide = testSetColliderArr(zombLane, collide, ps);
 		gp.setColliders(collide);
-//		collide[0].setPlant(ps);
 		
 		zomb.advance();
 	
 		assertEquals("ps.getHealth() should return ps.getHealth()-10 ", origHealth-10, ps.getHealth());
-//		assertEquals("zomb.getSpeed() should return 1 ", 1, zomb.getSpeed());
-//		assertEquals("zomb.getPosX() should return 999 ", 999, zomb.getPosX());
 		assertEquals("zomb.getPosX() should return 1000 ", 1000, zomb.getPosX());
-//		assertEquals("zomb.getGp() should return gp ", gp, zomb.getGp());
-//		assertEquals("zomb.getMyLane() should return 0 ", 0, zomb.getMyLane());
-//		assertEquals("zomb.isMoving() should return true ", true, zomb.isMoving());
-//		assertEquals("zomb.getSlowInt() should return 0 ", 0, zomb.getSlowInt());
+		assertEquals("zomb.getSlowInt() should return 0 ", 0, zomb.getSlowInt());
 	}
 
 
@@ -1227,6 +1221,126 @@ public class nickTestPlantVsZombie {
 		assertEquals("zomb.isMoving() should return true ", false, zomb.isMoving());
 		
 	}
+	/**
+	 * This will test the Zombie.advance() 
+	 */
+	@Test
+	public void testZombieAdvanceThree() {
+		
+       
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		int zombLane = 0;
+		Zombie zomb = Zombie.getZombie("ConeHeadZombie", gp, zombLane);
+		Collider [] collide = getColliderArr(); 
+		
+		Peashooter ps = new Peashooter(gp,zomb.getPosX(),0);
+		int origHealth = ps.getHealth();
+		collide = testSetColliderArr(3, collide, ps);
+		gp.setColliders(collide);
+		
+		zomb.advance();
+	
+		assertEquals("ps.getHealth() should return origHealth ", origHealth, ps.getHealth());
+		assertEquals("zomb.getPosX() should return 999 ", 999, zomb.getPosX());
+		assertEquals("zomb.getSlowInt() should return 0 ", 0, zomb.getSlowInt());
+	}
+	
+	/**
+	 * This will test the Zombie.advance() 
+	 */
+	@Test
+	public void testZombieAdvanceFour() {
+		
+       
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		int zombLane = 0;
+		Zombie zomb = Zombie.getZombie("ConeHeadZombie", gp, zombLane);
+		Collider [] collide = getColliderArr(); 
+		
+		Peashooter ps = new Peashooter(gp,zomb.getPosX(),0);
+		int origHealth = ps.getHealth();
+		collide = testSetColliderArr(3, collide, ps);
+		gp.setColliders(collide);
+		zomb.slow();
+		zomb.advance();
+	
+		assertEquals("ps.getHealth() should return origHealth ", origHealth, ps.getHealth());
+		assertEquals("zomb.getPosX() should return 999 ", 999, zomb.getPosX());
+		assertEquals("zomb.getSlowInt() should return 999 ", 999, zomb.getSlowInt());
+	}
+	
+	/**
+	 * This will test the Zombie.advance() 
+	 */
+	@Test
+	public void testZombieAdvanceFive() {
+		
+       
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		int zombLane = 0;
+		Zombie zomb = Zombie.getZombie("ConeHeadZombie", gp, zombLane);
+		Collider [] collide = getColliderArr(); 
+		
+		Peashooter ps = new Peashooter(gp,zomb.getPosX(),0);
+		int origHealth = ps.getHealth();
+		collide = testSetColliderArr(3, collide, ps);
+		gp.setColliders(collide);
+		zomb.setSlowInt(999);
+		zomb.advance();
+	
+		assertEquals("ps.getHealth() should return origHealth ", origHealth, ps.getHealth());
+		assertEquals("zomb.getPosX() should return 1000 ", 1000, zomb.getPosX());
+		assertEquals("zomb.getSlowInt() should return 998 ", 998, zomb.getSlowInt());
+	}
+	
+	/**
+	 * This will test the Zombie.advance() 
+	 */
+	@Test
+	public void testZombieAdvanceSix() {
+		
+       
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		int zombLane = 0;
+		Zombie zomb = Zombie.getZombie("ConeHeadZombie", gp, zombLane);
+		Collider [] collide = getColliderArr(); 
+		
+		Peashooter ps = new Peashooter(gp,zomb.getPosX(),0);
+		ps.setHealth(9);
+		int origHealth = ps.getHealth();
+		collide = testSetColliderArr(zombLane, collide, ps);
+		gp.setColliders(collide);
+		zomb.advance();
+	
+		assertEquals("ps.getHealth() should return -1 ", -1, ps.getHealth());
+		assertEquals("zomb.getPosX() should return 1000 ", 1000, zomb.getPosX());
+		assertEquals("zomb.getSlowInt() should return 0 ", 0, zomb.getSlowInt());
+	}
+	
+	/**
+	 * This will test the Zombie.advance() 
+	 */
+	@Test
+	public void testZombieAdvanceSeven() {
+		
+       
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		int zombLane = 0;
+		Zombie zomb = Zombie.getZombie("ConeHeadZombie", gp, zombLane);
+		Collider [] collide = getColliderArr(); 
+		zomb.setPosX(0);
+		Peashooter ps = new Peashooter(gp,zomb.getPosX(),0);
+
+		int origHealth = ps.getHealth();
+		collide = testSetColliderArr(zombLane, collide, ps);
+		gp.setColliders(collide);
+		zomb.advance();
+	
+		assertEquals("ps.getHealth() should return origHealth-10 ", origHealth-10, ps.getHealth());
+		assertEquals("zomb.getPosX() should return 0 ", 0, zomb.getPosX());
+		assertEquals("zomb.getSlowInt() should return 0 ", 0, zomb.getSlowInt());
+	}
+
 	
 	private ArrayList<ArrayList<Zombie>> createZombieList(boolean[] lane, int[] xLoc, GamePanel gp) {
 		ArrayList<ArrayList<Zombie>> laneZombies;
