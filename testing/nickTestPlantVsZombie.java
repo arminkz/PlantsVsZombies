@@ -4,13 +4,10 @@
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
-
 import javax.swing.JLabel;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -28,8 +25,8 @@ import org.junit.FixMethodOrder;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class nickTestPlantVsZombie {
 
-	@Rule
-	public Timeout globalTimeout = new Timeout(20, SECONDS);
+//	@Rule
+//	public Timeout globalTimeout = new Timeout(20, SECONDS);
 
 	/*
 	 * This tests the add method - ascending and the normal iterator
@@ -1162,7 +1159,7 @@ public class nickTestPlantVsZombie {
 	}
 	
 	/**
-	 * This will test the Zombie class, NormalZombie - Tests the initial values after instantiation
+	 * This will test the Zombie class, ConeHeadZombie - Tests the initial values after instantiation
 	 */
 	@Test
 	public void testZombieFourteen() {
@@ -1177,6 +1174,58 @@ public class nickTestPlantVsZombie {
 		assertEquals("zomb.getMyLane() should return 0 ", 0, zomb.getMyLane());
 		assertEquals("zomb.isMoving() should return true ", true, zomb.isMoving());
 		assertEquals("zomb.getSlowInt() should return 0 ", 0, zomb.getSlowInt());
+	}
+	
+	/**
+	 * This will test the Zombie.advance() 
+	 */
+	@Test
+	public void testZombieAdvanceOne() {
+		
+       
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		int zombLane = 0;
+		Zombie zomb = Zombie.getZombie("ConeHeadZombie", gp, zombLane);
+		Collider [] collide = getColliderArr(); 
+		
+		Peashooter ps = new Peashooter(gp,zomb.getPosX(),0);
+		int origHealth = ps.getHealth();
+		collide = testSetColliderArr(zombLane, collide, ps);
+		gp.setColliders(collide);
+//		collide[0].setPlant(ps);
+		
+		zomb.advance();
+	
+		assertEquals("ps.getHealth() should return ps.getHealth()-10 ", origHealth-10, ps.getHealth());
+//		assertEquals("zomb.getSpeed() should return 1 ", 1, zomb.getSpeed());
+//		assertEquals("zomb.getPosX() should return 999 ", 999, zomb.getPosX());
+		assertEquals("zomb.getPosX() should return 1000 ", 1000, zomb.getPosX());
+//		assertEquals("zomb.getGp() should return gp ", gp, zomb.getGp());
+//		assertEquals("zomb.getMyLane() should return 0 ", 0, zomb.getMyLane());
+//		assertEquals("zomb.isMoving() should return true ", true, zomb.isMoving());
+//		assertEquals("zomb.getSlowInt() should return 0 ", 0, zomb.getSlowInt());
+	}
+
+
+
+	/**
+	 * This will test the Zombie.advance() method - testing the false part of if statement
+	 */
+	@Test
+	public void testZombieAdvanceTwo() {
+		
+		GamePanelTesting gp =new GamePanelTesting(new JLabel("testing"));
+		Zombie zomb = Zombie.getZombie("ConeHeadZombie", gp, 0);
+		
+		int xPos = 50;
+		zomb.setPosX(xPos);
+		zomb.setMoving(false);
+		zomb.advance();
+
+		assertEquals("zomb.getPosX() should return 50 ", xPos, zomb.getPosX());
+		assertEquals("zomb.getHealth() should return 1000 ", 1800, zomb.getHealth());
+		assertEquals("zomb.isMoving() should return true ", false, zomb.isMoving());
+		
 	}
 	
 	private ArrayList<ArrayList<Zombie>> createZombieList(boolean[] lane, int[] xLoc, GamePanel gp) {
@@ -1200,10 +1249,38 @@ public class nickTestPlantVsZombie {
 
 	private Zombie createZombie(int lane, int xLoc, GamePanel gp) {
 
-		Zombie zomb = new Zombie(gp, lane);
+		Zombie zomb = Zombie.getZombie("NormalZombie", gp, lane);
+				
+//				new Zombie(gp, lane);
 		zomb.setPosX(xLoc);
 		return zomb;
 
+	}
+	
+	
+	/**
+	 * This helper method creates the collider array
+	 */
+	private Collider[] getColliderArr() {
+		Collider [] colliders = new Collider[45];
+        for (int i = 0; i < 45; i++) {
+            ColliderTesting a = new ColliderTesting();
+            colliders[i] = a;
+            }
+        return colliders;
+	}
+	
+	/**
+	 * This helper method sets up the plants into each spot of the collider arr 
+	 * @param zombLane
+	 * @param collide
+	 * @param ps
+	 */
+	private Collider[] testSetColliderArr(int zombLane, Collider[] collide, Peashooter ps) {
+		for (int i = zombLane * 9; i < (zombLane + 1) * 9; i++) {
+            collide[i].setPlant(ps);
+        }
+		return collide;
 	}
 
 }
