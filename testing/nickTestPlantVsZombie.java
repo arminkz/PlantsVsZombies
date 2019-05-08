@@ -25,8 +25,8 @@ import org.junit.FixMethodOrder;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class nickTestPlantVsZombie {
 
-//	@Rule
-//	public Timeout globalTimeout = new Timeout(20, SECONDS);
+	@Rule
+	public Timeout globalTimeout = new Timeout(20, SECONDS);
 
 	/*
 	 * This tests the add method - ascending and the normal iterator
@@ -1341,7 +1341,13 @@ public class nickTestPlantVsZombie {
 		assertEquals("zomb.getSlowInt() should return 0 ", 0, zomb.getSlowInt());
 	}
 
-	
+	/**
+	 * This is a helper method that creates zombieLists
+	 * @param lane
+	 * @param xLoc
+	 * @param gp
+	 * @return
+	 */
 	private ArrayList<ArrayList<Zombie>> createZombieList(boolean[] lane, int[] xLoc, GamePanel gp) {
 		ArrayList<ArrayList<Zombie>> laneZombies;
 		laneZombies = new ArrayList<>();
@@ -1361,6 +1367,13 @@ public class nickTestPlantVsZombie {
 		return laneZombies;
 	}
 
+	/**
+	 * This is a helper method that creates zombies in the specific lane and loc
+	 * @param lane
+	 * @param xLoc
+	 * @param gp
+	 * @return
+	 */
 	private Zombie createZombie(int lane, int xLoc, GamePanel gp) {
 
 		Zombie zomb = Zombie.getZombie("NormalZombie", gp, lane);
