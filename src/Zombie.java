@@ -32,14 +32,7 @@ public class Zombie {
                 }
             }
             if (!isCollides) {
-                if (slowInt > 0) {
-                    if (slowInt % 2 == 0) {
-                        posX--;
-                    }
-                    slowInt--;
-                } else {
-                    posX -= 1;
-                }
+                changeZombSpeed();
             } else {
                 changePlantHealth(collided);
             }
@@ -51,6 +44,21 @@ public class Zombie {
             }
         }
     }
+
+    /**
+     * This method is called during the advance() method to change the posX and
+     * update the slowInt value
+     */
+	private void changeZombSpeed() {
+		if (slowInt > 0) {
+		    if (slowInt % 2 == 0) {
+		        posX--;
+		    }
+		    slowInt--;
+		} else {
+		    posX -= 1;
+		}
+	}
 
 	private void changePlantHealth(Collider collided) {
 		collided.getPlant().setHealth(collided.getPlant().getHealth() - 10);

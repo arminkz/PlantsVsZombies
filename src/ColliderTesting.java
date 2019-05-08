@@ -26,7 +26,7 @@ public class ColliderTesting extends JPanel implements MouseListener, Collider {
 	 */
     @Override
 	public void setPlant(Plant p) {
-//        assignedPlant = p;
+        assignedPlant = p;
     }
 
     /* (non-Javadoc)
@@ -34,8 +34,8 @@ public class ColliderTesting extends JPanel implements MouseListener, Collider {
 	 */
     @Override
 	public void removePlant() {
-//        assignedPlant.stop();
-//        assignedPlant = null;
+        assignedPlant.stop();
+        assignedPlant = null;
     }
 
     /* (non-Javadoc)
