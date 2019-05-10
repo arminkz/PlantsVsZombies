@@ -57,16 +57,29 @@ public class LevelData {
 		}
 	}
 
-	public static void write(String lvl) {
-		// File f = new File("LEVEL_CONTENT.vbhv");
-		try {
-			BufferedWriter bwr = new BufferedWriter(new FileWriter(f));
-			bwr.write(lvl);
-			bwr.close();
-			LEVEL_NUMBER = lvl;
-		} catch (IOException ex) {
-			Logger.getLogger(LevelData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
+    public static void write(String lvl) {
+        File f = new File("LEVEL_CONTENT.vbhv");
+        try {
+            BufferedWriter bwr = new BufferedWriter(new FileWriter(f));
+            bwr.write(lvl);
+            bwr.close();
+            LEVEL_NUMBER = lvl;
+        } catch (IOException ex) {
+            Logger.getLogger(LevelData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 
-	}
+    }
+	
+//	public static void write(String lvl) {
+////		 File f = new File("LEVEL_CONTENT.vbhv");
+//		try {
+//			BufferedWriter bwr = new BufferedWriter(new FileWriter(f));
+//			bwr.write(lvl);
+//			bwr.close();
+//			LEVEL_NUMBER = lvl;
+//		} catch (IOException ex) {
+//			Logger.getLogger(LevelData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//		}
+//
+//	}
 }
