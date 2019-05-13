@@ -17,7 +17,17 @@ public class LevelData {
 	public static String[][] LEVEL_CONTENT = { { "NormalZombie" }, { "NormalZombie", "ConeHeadZombie" } };
 	public static int[][][] LEVEL_VALUE = { { { 0, 99 } }, { { 0, 49 }, { 50, 99 } } };
 
+
 	public static File f; // Added by George Harrington, 4/24/19
+=======
+    public static File f; //Added by George Harrington, 4/24/19
+    
+    //Constructor originally had no parameters, changed by GH for testing purposes
+    public LevelData(String filename) {
+        try {
+            //File f = new File("LEVEL_CONTENT.vbhv");
+        	f = new File(filename); //GH, 4/24/19
+
 
 	// Constructor originally had no parameters, changed by GH for testing purposes
 	public LevelData(String filename) {
@@ -58,7 +68,7 @@ public class LevelData {
 	}
 
     public static void write(String lvl) {
-        File f = new File("LEVEL_CONTENT.vbhv");
+        //File f = new File("LEVEL_CONTENT.vbhv");
         try {
             BufferedWriter bwr = new BufferedWriter(new FileWriter(f));
             bwr.write(lvl);
