@@ -19,17 +19,9 @@ public class LevelData {
 
 
 	public static File f; // Added by George Harrington, 4/24/19
-=======
-    public static File f; //Added by George Harrington, 4/24/19
+
     
-    //Constructor originally had no parameters, changed by GH for testing purposes
-    public LevelData(String filename) {
-        try {
-            //File f = new File("LEVEL_CONTENT.vbhv");
-        	f = new File(filename); //GH, 4/24/19
-
-
-	// Constructor originally had no parameters, changed by GH for testing purposes
+   	// Constructor originally had no parameters, changed by GH for testing purposes
 	public LevelData(String filename) {
 		try {
 			// File f = new File("LEVEL_CONTENT.vbhv");
