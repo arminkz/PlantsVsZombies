@@ -32,7 +32,7 @@ public class Zombie {
                 }
             }
             if (!isCollides) {
-                changeZombSpeed();
+                changeZombPosition();
             } else {
                 changePlantHealth(collided);
             }
@@ -49,7 +49,7 @@ public class Zombie {
      * This method is called during the advance() method to change the posX and
      * update the slowInt value
      */
-	private void changeZombSpeed() {
+	private void changeZombPosition() {
 		if (slowInt > 0) {
 		    if (slowInt % 2 == 0) {
 		        posX--;
