@@ -30,7 +30,7 @@ public class Pea {
                     GamePanel.setProgress(10);
                     exit = true;
                 }
-                gp.getLanePeas().get(myLane).remove(this);
+                gp.getLaneZombies().get(myLane).remove(this);
                 if (exit) break;
             }
         }
