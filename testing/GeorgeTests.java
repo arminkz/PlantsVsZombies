@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JLabel;
 
@@ -67,5 +68,40 @@ public class GeorgeTests {
 		assertEquals("File read-in", "20", br.readLine());
 		
 		//Not sure how to cause IOException to finish coverage
+	}
+	
+	//Was unable to figure out how to properly test GUI classes PlantCard and Menu in time
+	//Upon further inspection, Nick included tests in his test class.
+	
+	//Plant is an abstract class and cannot be instantiated. I was not aware of this at the
+	//time of the writing of the test plan.
+	
+	@Test
+	public void testSunflower() throws InterruptedException {
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		Sunflower s = new Sunflower(gamePanel, 1, 1);
+		int suns = gamePanel.getActiveSuns().size();
+		TimeUnit.SECONDS.sleep(15);
+		assertFalse("Sunflower did not generate sun", suns == gamePanel.getActiveSuns().size());
+	}
+	
+	//PlantButton is just an empty class at this point. No idea what its purpose is.
+	//Instantiating it for code coverage.
+	@Test
+	public void testPlantButton() {
+		PlantButton p = new PlantButton();
+		fail("PlantButton not implemented");
+	}
+	
+	//Zombie not landing in same lane, and/or shootTimer not registering Zombie?
+	//Confusion
+	@Test
+	public void testPeaShooter() throws InterruptedException {
+		GamePanel gamePanel = new GamePanelTesting(new JLabel("hello"));
+		Peashooter p = new Peashooter(gamePanel, 1, 1);
+		int peas = gamePanel.getLanePeas().size();
+		Zombie z = new Zombie(gamePanel, 1);
+		TimeUnit.SECONDS.sleep(2);
+		assertFalse("Pea not shot", peas == gamePanel.getLanePeas().size());
 	}
 }
