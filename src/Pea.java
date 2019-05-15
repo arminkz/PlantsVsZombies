@@ -27,10 +27,12 @@ public class Pea {
                     System.out.println("ZOMBIE DIED");
 
                     gp.getLaneZombies().get(myLane).remove(i);
-                    GamePanel.setProgress(10);
+                    GamePanelActual.setProgress(10);
                     exit = true;
                 }
                 gp.getLaneZombies().get(myLane).remove(this);
+                // this is added, because it is pulling up the wrong list.  should be lanePeas()
+//                gp.getLanePeas().get(myLane).remove(this);
                 if (exit) break;
             }
         }
@@ -39,6 +41,7 @@ public class Pea {
         }*/
         posX += 15;
     }
+
 
     public int getPosX() {
         return posX;

@@ -1,3 +1,5 @@
+import java.awt.Component;
+
 import javax.swing.*;
 
 /**
@@ -24,34 +26,46 @@ public class Zombie {
             boolean isCollides = false;
             Collider collided = null;
             for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-                if (gp.getColliders()[i].assignedPlant != null && gp.getColliders()[i].isInsideCollider(posX)) {
+                if (gp.getColliders()[i].getPlant() != null && gp.getColliders()[i].isInsideCollider(posX)) {
                     isCollides = true;
                     collided = gp.getColliders()[i];
                 }
             }
             if (!isCollides) {
-                if (slowInt > 0) {
-                    if (slowInt % 2 == 0) {
-                        posX--;
-                    }
-                    slowInt--;
-                } else {
-                    posX -= 1;
-                }
+                changeZombPosition();
             } else {
-                collided.assignedPlant.setHealth(collided.assignedPlant.getHealth() - 10);
-                if (collided.assignedPlant.getHealth() < 0) {
-                    collided.removePlant();
-                }
+                changePlantHealth(collided);
             }
             if (posX < 0) {
                 isMoving = false;
-                JOptionPane.showMessageDialog(gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+                JOptionPane.showMessageDialog((Component) gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
                 GameWindow.gw.dispose();
                 GameWindow.gw = new GameWindow();
             }
         }
     }
+
+    /**
+     * This method is called during the advance() method to change the posX and
+     * update the slowInt value
+     */
+	private void changeZombPosition() {
+		if (slowInt > 0) {
+		    if (slowInt % 2 == 0) {
+		        posX--;
+		    }
+		    slowInt--;
+		} else {
+		    posX -= 1;
+		}
+	}
+
+	private void changePlantHealth(Collider collided) {
+		collided.getPlant().setHealth(collided.getPlant().getHealth() - 10);
+		if (collided.getPlant().getHealth() < 0) {
+		    collided.removePlant();
+		}
+	}
 
     int slowInt = 0;
 
