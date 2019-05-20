@@ -21,7 +21,7 @@ public class Pea {
             Zombie z = gp.getLaneZombies().get(myLane).get(i);
             Rectangle zRect = new Rectangle(z.getPosX(), 109 + myLane * 120, 400, 120);
             if (pRect.intersects(zRect)) {
-                z.setHealth(z.getHealth() - 300);
+                z.setHealth(z.getHealth() - 250);
                 boolean exit = false;
                 if (z.getHealth() < 0) {
                     System.out.println("ZOMBIE DIED");
