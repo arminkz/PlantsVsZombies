@@ -1,3 +1,6 @@
+
+import java.awt.Image;
+
 /**
  * Created by Armin on 6/25/2016.
  */
@@ -9,7 +12,7 @@ public abstract class Plant {
     private int y;
 
     private GamePanel gp;
-
+    Image image;
 
     public Plant(GamePanel parent, int x, int y) {
         this.x = x;

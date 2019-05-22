@@ -13,9 +13,6 @@ import java.util.Random;
 public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
     private Image bgImage;
-    private Image peashooterImage;
-    private Image freezePeashooterImage;
-    private Image sunflowerImage;
     private Image peaImage;
     private Image freezePeaImage;
 
@@ -56,10 +53,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         setSunScore(150);  //pool avalie
 
         bgImage = new ImageIcon(this.getClass().getResource("images/mainBG.png")).getImage();
-
-        peashooterImage = new ImageIcon(this.getClass().getResource("images/plants/peashooter.gif")).getImage();
-        freezePeashooterImage = new ImageIcon(this.getClass().getResource("images/plants/freezepeashooter.gif")).getImage();
-        sunflowerImage = new ImageIcon(this.getClass().getResource("images/plants/sunflower.gif")).getImage();
+        
         peaImage = new ImageIcon(this.getClass().getResource("images/pea.png")).getImage();
         freezePeaImage = new ImageIcon(this.getClass().getResource("images/freezepea.png")).getImage();
 
@@ -160,18 +154,9 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             Collider c = colliders[i];
             if (c.assignedPlant != null) {
                 Plant p = c.assignedPlant;
-                if (p instanceof Peashooter) {
-                    g.drawImage(peashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
-                if (p instanceof FreezePeashooter) {
-                    g.drawImage(freezePeashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
-                if (p instanceof Sunflower) {
-                    g.drawImage(sunflowerImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
+                g.drawImage(p.image, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
             }
         }
-
         for (int i = 0; i < 5; i++) {
             for (Zombie z : laneZombies.get(i)) {
                 if (z instanceof NormalZombie) {
@@ -231,6 +216,12 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
                 if (getSunScore() >= 175) {
                     colliders[x + y * 9].setPlant(new FreezePeashooter(GamePanel.this, x, y));
                     setSunScore(getSunScore() - 175);
+                }
+            }
+            if (activePlantingBrush == GameWindow.PlantType.Wallnut) {
+                if (getSunScore() >= 50) {
+                    colliders[x + y * 9].setPlant(new Wallnut(GamePanel.this, x, y));
+                    setSunScore(getSunScore() - 50);
                 }
             }
             activePlantingBrush = GameWindow.PlantType.None;

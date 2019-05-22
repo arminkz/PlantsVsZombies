@@ -39,7 +39,7 @@ public class Zombie {
                     posX -= 1;
                 }
             } else {
-                collided.assignedPlant.setHealth(collided.assignedPlant.getHealth() - 10);
+                collided.assignedPlant.setHealth(collided.assignedPlant.getHealth() - 5);
                 if (collided.assignedPlant.getHealth() < 0) {
                     collided.removePlant();
                 }
