@@ -53,66 +53,26 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         setLayout(null);
         addMouseMotionListener(this);
         this.sunScoreboard = sunScoreboard;
-        setSunScore(150);  //pool avalie
+        
+        setSunScore(150);
+        loadBackGroundImage();
+        loadPlantImage();
+        loadZombieImage();
 
-        bgImage = new ImageIcon(this.getClass().getResource("images/mainBG.png")).getImage();
+        produceLaneZombies();
+        produceLanePeas();
+        produceColliders();
+        produceSuns();
 
-        peashooterImage = new ImageIcon(this.getClass().getResource("images/plants/peashooter.gif")).getImage();
-        freezePeashooterImage = new ImageIcon(this.getClass().getResource("images/plants/freezepeashooter.gif")).getImage();
-        sunflowerImage = new ImageIcon(this.getClass().getResource("images/plants/sunflower.gif")).getImage();
-        peaImage = new ImageIcon(this.getClass().getResource("images/pea.png")).getImage();
-        freezePeaImage = new ImageIcon(this.getClass().getResource("images/freezepea.png")).getImage();
+        setRedrawTimer();
+        setAdvanceTimer();
+        setSunProducer();
+        setZombieProducer();
 
-        normalZombieImage = new ImageIcon(this.getClass().getResource("images/zombies/zombie1.png")).getImage();
-        coneHeadZombieImage = new ImageIcon(this.getClass().getResource("images/zombies/zombie2.png")).getImage();
+    }
 
-        laneZombies = new ArrayList<>();
-        laneZombies.add(new ArrayList<>()); //line 1
-        laneZombies.add(new ArrayList<>()); //line 2
-        laneZombies.add(new ArrayList<>()); //line 3
-        laneZombies.add(new ArrayList<>()); //line 4
-        laneZombies.add(new ArrayList<>()); //line 5
-
-        lanePeas = new ArrayList<>();
-        lanePeas.add(new ArrayList<>()); //line 1
-        lanePeas.add(new ArrayList<>()); //line 2
-        lanePeas.add(new ArrayList<>()); //line 3
-        lanePeas.add(new ArrayList<>()); //line 4
-        lanePeas.add(new ArrayList<>()); //line 5
-
-        colliders = new Collider[45];
-        for (int i = 0; i < 45; i++) {
-            Collider a = new Collider();
-            a.setLocation(44 + (i % 9) * 100, 109 + (i / 9) * 120);
-            a.setAction(new PlantActionListener((i % 9), (i / 9)));
-            colliders[i] = a;
-            add(a, new Integer(0));
-        }
-
-        //colliders[0].setPlant(new FreezePeashooter(this,0,0));
-/*
-        colliders[9].setPlant(new Peashooter(this,0,1));
-        laneZombies.get(1).add(new NormalZombie(this,1));*/
-
-        activeSuns = new ArrayList<>();
-
-        redrawTimer = new Timer(25, (ActionEvent e) -> {
-            repaint();
-        });
-        redrawTimer.start();
-
-        advancerTimer = new Timer(60, (ActionEvent e) -> advance());
-        advancerTimer.start();
-
-        sunProducer = new Timer(5000, (ActionEvent e) -> {
-            Random rnd = new Random();
-            Sun sta = new Sun(this, rnd.nextInt(800) + 100, 0, rnd.nextInt(300) + 200);
-            activeSuns.add(sta);
-            add(sta, new Integer(1));
-        });
-        sunProducer.start();
-
-        zombieProducer = new Timer(7000, (ActionEvent e) -> {
+	private void setZombieProducer() {
+		zombieProducer = new Timer(7000, (ActionEvent e) -> {
             Random rnd = new Random();
             LevelData lvl = new LevelData();
             String[] Level = lvl.LEVEL_CONTENT[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
@@ -128,8 +88,79 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             laneZombies.get(l).add(z);
         });
         zombieProducer.start();
+	}
 
-    }
+	private void setSunProducer() {
+		sunProducer = new Timer(5000, (ActionEvent e) -> {
+            Random rnd = new Random();
+            Sun sta = new Sun(this, rnd.nextInt(800) + 100, 0, rnd.nextInt(300) + 200);
+            activeSuns.add(sta);
+            add(sta, new Integer(1));
+        });
+        sunProducer.start();
+	}
+
+	private void setAdvanceTimer() {
+		advancerTimer = new Timer(60, (ActionEvent e) -> advance());
+        advancerTimer.start();
+	}
+
+	private void setRedrawTimer() {
+		redrawTimer = new Timer(25, (ActionEvent e) -> {
+            repaint();
+        });
+        redrawTimer.start();
+	}
+
+	private void produceSuns() {
+		activeSuns = new ArrayList<>();
+	}
+
+	private void produceColliders() {
+		colliders = new Collider[45];
+        for (int i = 0; i < 45; i++) {
+            Collider a = new Collider();
+            a.setLocation(44 + (i % 9) * 100, 109 + (i / 9) * 120);
+            a.setAction(new PlantActionListener((i % 9), (i / 9)));
+            colliders[i] = a;
+            add(a, new Integer(0));
+        }
+	}
+
+	private void produceLanePeas() {
+		lanePeas = new ArrayList<>();
+        lanePeas.add(new ArrayList<>()); //line 1
+        lanePeas.add(new ArrayList<>()); //line 2
+        lanePeas.add(new ArrayList<>()); //line 3
+        lanePeas.add(new ArrayList<>()); //line 4
+        lanePeas.add(new ArrayList<>()); //line 5
+	}
+
+	private void produceLaneZombies() {
+		laneZombies = new ArrayList<>();
+        laneZombies.add(new ArrayList<>()); //line 1
+        laneZombies.add(new ArrayList<>()); //line 2
+        laneZombies.add(new ArrayList<>()); //line 3
+        laneZombies.add(new ArrayList<>()); //line 4
+        laneZombies.add(new ArrayList<>()); //line 5
+	}
+
+	private void loadZombieImage() {
+		normalZombieImage = new ImageIcon(this.getClass().getResource("images/zombies/zombie1.png")).getImage();
+        coneHeadZombieImage = new ImageIcon(this.getClass().getResource("images/zombies/zombie2.png")).getImage();
+	}
+
+	private void loadPlantImage() {
+		peashooterImage = new ImageIcon(this.getClass().getResource("images/plants/peashooter.gif")).getImage();
+        freezePeashooterImage = new ImageIcon(this.getClass().getResource("images/plants/freezepeashooter.gif")).getImage();
+        sunflowerImage = new ImageIcon(this.getClass().getResource("images/plants/sunflower.gif")).getImage();
+        peaImage = new ImageIcon(this.getClass().getResource("images/pea.png")).getImage();
+        freezePeaImage = new ImageIcon(this.getClass().getResource("images/freezepea.png")).getImage();
+	}
+
+	private void loadBackGroundImage() {
+		bgImage = new ImageIcon(this.getClass().getResource("images/mainBG.png")).getImage();
+	}
 
     private void advance() {
         for (int i = 0; i < 5; i++) {
