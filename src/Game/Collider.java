@@ -1,4 +1,4 @@
-package window;
+package Game;
 
 import plant.model.Plant;
 

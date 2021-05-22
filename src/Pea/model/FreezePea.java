@@ -1,6 +1,6 @@
 package Pea.model;
 
-import window.GamePanel;
+import Game.view.GamePanel;
 import zombie.model.Zombie;
 
 import java.awt.*;
@@ -10,8 +10,8 @@ import java.awt.*;
  */
 public class FreezePea extends Pea {
 
-    public FreezePea(GamePanel parent, int lane, int startX) {
-        super(parent, lane, startX);
+    public FreezePea(int lane, int startX) {
+        super(lane, startX);
     }
 
     @Override

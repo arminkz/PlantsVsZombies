@@ -1,8 +1,8 @@
 package zombie.model;
 
-import window.Collider;
-import window.GamePanel;
-import window.GameWindow;
+import Game.Collider;
+import Game.view.GamePanel;
+import Game.view.GameWindow;
 
 import javax.swing.*;
 

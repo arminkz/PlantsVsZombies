@@ -1,6 +1,6 @@
 package plant.model;
 
-import window.GamePanel;
+import Game.view.GamePanel;
 
 /**
  * Created by Armin on 6/25/2016.
@@ -15,10 +15,10 @@ public abstract class Plant {
     private GamePanel gp;
 
 
-    public Plant(GamePanel parent, int x, int y) {
+    public Plant(int x, int y) {
         this.x = x;
         this.y = y;
-        gp = parent;
+        gp = gp.getInstance();
     }
 
     public void stop() {

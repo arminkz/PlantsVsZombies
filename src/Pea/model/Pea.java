@@ -1,6 +1,6 @@
 package Pea.model;
 
-import window.GamePanel;
+import Game.view.GamePanel;
 import zombie.model.Zombie;
 
 import java.awt.*;
@@ -14,8 +14,8 @@ public class Pea {
     protected GamePanel gp;
     private int myLane;
 
-    public Pea(GamePanel parent, int lane, int startX) {
-        this.gp = parent;
+    public Pea( int lane, int startX) {
+        gp = gp.getInstance();
         this.myLane = lane;
         posX = startX;
     }

@@ -1,5 +1,7 @@
-package window;
+package Game.view;
 
+import Game.Collider;
+import Game.LevelData;
 import Pea.model.FreezePea;
 import Pea.model.Pea;
 import plant.model.FreezePeashooter;
@@ -7,6 +9,8 @@ import plant.model.Peashooter;
 import plant.model.Plant;
 import plant.model.Sunflower;
 import sun.model.Sun;
+import sun.presenter.SunPresenter;
+import sun.view.SunView;
 import zombie.model.ConeHeadZombie;
 import zombie.model.NormalZombie;
 import zombie.model.Zombie;
@@ -24,10 +28,12 @@ import java.util.Random;
  */
 public class GamePanel extends JLayeredPane {
 
+    private static GamePanel gamePanel = null;
+
     private Image bgImage;
+    private Image sunflowerImage;
     private Image peashooterImage;
     private Image freezePeashooterImage;
-    private Image sunflowerImage;
     private Image peaImage;
     private Image freezePeaImage;
 
@@ -37,7 +43,6 @@ public class GamePanel extends JLayeredPane {
 
     private ArrayList<ArrayList<Zombie>> laneZombies;
     private ArrayList<ArrayList<Pea>> lanePeas;
-    private ArrayList<Sun> activeSuns;
 
     private Timer redrawTimer;
     private Timer advancerTimer;
@@ -49,27 +54,22 @@ public class GamePanel extends JLayeredPane {
 
     private int sunScore;
 
-    public int getSunScore() {
-        return sunScore;
-    }
-
-    public void setSunScore(int sunScore) {
-        this.sunScore = sunScore;
-        sunScoreboard.setText(String.valueOf(sunScore));
-    }
 /**
 * 복잡하게 구현되어 있던 하나의 메소드를 Extract Method Refactoring을 통하여
 * Code의 Readablity와 understandavility를 높혔다.
  * Design Pattern을 적용시키기 전에 Class의 동작을 이해하기 쉽도록 하였다.
 * */
-    public GamePanel(JLabel sunScoreboard) {
-        initializeLayout(sunScoreboard);
+    private GamePanel() {
+        JLabel sun = new JLabel("SUN");
+        sun.setLocation(37, 80);
+        sun.setSize(60, 20);
+
+        initializeLayout(sun);
         loadImages();
 
         initializeLaneZombies();
         initializeLanePeas();
         initializeCollider();
-        activeSuns = new ArrayList<>();
         setSunScore(150);  //pool avalie
 
 
@@ -77,6 +77,11 @@ public class GamePanel extends JLayeredPane {
         setAdvancerTimer();
         setSunProducerTimer();
         setZombieProducerTimer();
+    }
+
+    public static GamePanel getInstance(){
+        if(gamePanel == null) {gamePanel=new GamePanel();}
+        return gamePanel;
     }
 
     private void setZombieProducerTimer() {
@@ -101,9 +106,12 @@ public class GamePanel extends JLayeredPane {
     private void setSunProducerTimer() {
         sunProducer = new Timer(5000, (ActionEvent e) -> {
             Random rnd = new Random();
-            Sun sta = new Sun(this, rnd.nextInt(800) + 100, 0, rnd.nextInt(300) + 200);
-            activeSuns.add(sta);
-            add(sta, new Integer(1));
+            Sun sta = new Sun(rnd.nextInt(800) + 100, 0, rnd.nextInt(300) + 200);
+            SunView sunView = new SunView(sta.getXPosition(), sta.getYPosition());
+            SunPresenter sunPresenter = new SunPresenter(sunView,sta);
+            sunView.init(sunPresenter);
+            sunPresenter.start();
+            add(sunView, new Integer(1));
         });
         sunProducer.start();
     }
@@ -153,19 +161,20 @@ public class GamePanel extends JLayeredPane {
         setSize(1000, 752);
         setLayout(null);
         this.sunScoreboard = sunScoreboard;
+        add(sunScoreboard, new Integer(2));
     }
 
     private void loadImages() {
-        bgImage = new ImageIcon(this.getClass().getResource("../images/mainBG.png")).getImage();
+        bgImage = new ImageIcon(this.getClass().getResource("../../images/mainBG.png")).getImage();
 
-        peashooterImage = new ImageIcon(this.getClass().getResource("../images/plants/peashooter.gif")).getImage();
-        freezePeashooterImage = new ImageIcon(this.getClass().getResource("../images/plants/freezepeashooter.gif")).getImage();
-        sunflowerImage = new ImageIcon(this.getClass().getResource("../images/plants/sunflower.gif")).getImage();
-        peaImage = new ImageIcon(this.getClass().getResource("../images/pea.png")).getImage();
-        freezePeaImage = new ImageIcon(this.getClass().getResource("../images/freezepea.png")).getImage();
+        peashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
+        freezePeashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/freezepeashooter.gif")).getImage();
+        sunflowerImage = new ImageIcon(this.getClass().getResource("../../images/plants/sunflower.gif")).getImage();
+        peaImage = new ImageIcon(this.getClass().getResource("../../images/pea.png")).getImage();
+        freezePeaImage = new ImageIcon(this.getClass().getResource("../../images/freezepea.png")).getImage();
 
-        normalZombieImage = new ImageIcon(this.getClass().getResource("../images/zombies/zombie1.png")).getImage();
-        coneHeadZombieImage = new ImageIcon(this.getClass().getResource("../images/zombies/zombie2.png")).getImage();
+        normalZombieImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie1.png")).getImage();
+        coneHeadZombieImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie2.png")).getImage();
     }
 
     private void advance() {
@@ -180,11 +189,6 @@ public class GamePanel extends JLayeredPane {
             }
 
         }
-
-        for (int i = 0; i < activeSuns.size(); i++) {
-            activeSuns.get(i).advance();
-        }
-
     }
 
     @Override
@@ -228,16 +232,6 @@ public class GamePanel extends JLayeredPane {
             }
 
         }
-
-        //if(!"".equals(activePlantingBrush)){
-        //System.out.println(activePlantingBrush);
-            /*if(activePlantingBrush == window.GameWindow.PlantType.plant.model.Sunflower) {
-                g.drawImage(sunflowerImage,mouseX,mouseY,null);
-            }*/
-
-        //}
-
-
     }
 
     private class PlantActionListener implements ActionListener {
@@ -253,20 +247,20 @@ public class GamePanel extends JLayeredPane {
         public void actionPerformed(ActionEvent e) {
             if (activePlantingBrush == GameWindow.PlantType.Sunflower) {
                 if (getSunScore() >= 50) {
-                    colliders[x + y * 9].setPlant(new Sunflower(GamePanel.this, x, y));
+                    colliders[x + y * 9].setPlant(new Sunflower( x, y));
                     setSunScore(getSunScore() - 50);
                 }
             }
             if (activePlantingBrush == GameWindow.PlantType.Peashooter) {
                 if (getSunScore() >= 100) {
-                    colliders[x + y * 9].setPlant(new Peashooter(GamePanel.this, x, y));
+                    colliders[x + y * 9].setPlant(new Peashooter( x, y));
                     setSunScore(getSunScore() - 100);
                 }
             }
 
             if (activePlantingBrush == GameWindow.PlantType.FreezePeashooter) {
                 if (getSunScore() >= 175) {
-                    colliders[x + y * 9].setPlant(new FreezePeashooter(GamePanel.this, x, y));
+                    colliders[x + y * 9].setPlant(new FreezePeashooter( x, y));
                     setSunScore(getSunScore() - 175);
                 }
             }
@@ -318,19 +312,19 @@ public class GamePanel extends JLayeredPane {
         this.lanePeas = lanePeas;
     }
 
-    public ArrayList<Sun> getActiveSuns() {
-        return activeSuns;
-    }
-
-    public void setActiveSuns(ArrayList<Sun> activeSuns) {
-        this.activeSuns = activeSuns;
-    }
-
     public Collider[] getColliders() {
         return colliders;
     }
 
     public void setColliders(Collider[] colliders) {
         this.colliders = colliders;
+    }
+    public int getSunScore() {
+        return sunScore;
+    }
+
+    public void setSunScore(int sunScore) {
+        this.sunScore = sunScore;
+        sunScoreboard.setText(String.valueOf(sunScore));
     }
 }

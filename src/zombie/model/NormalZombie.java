@@ -1,6 +1,6 @@
 package zombie.model;
 
-import window.GamePanel;
+import Game.view.GamePanel;
 
 /**
  * Created by Armin on 6/25/2016.
