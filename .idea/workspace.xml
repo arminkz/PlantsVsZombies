@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/Collider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConeHeadZombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/ConeHeadZombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FreezePea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/FreezePea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LevelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/LevelData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NormalZombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/NormalZombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/Pea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Peashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlantButton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlantCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantCard/model/PlantCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/model/Sun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sunflower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Sunflower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
