@@ -9,7 +9,7 @@ import java.awt.event.MouseListener;
  */
 public class Collider extends JPanel implements MouseListener {
 
-    private ActionListener actionListener;
+    private ActionListener al;
 
     public Collider() {
         //setBorder(new LineBorder(Color.RED));
@@ -21,8 +21,8 @@ public class Collider extends JPanel implements MouseListener {
 
     public Plant assignedPlant;
 
-    public void setPlant(Plant plant) {
-        assignedPlant = plant;
+    public void setPlant(Plant p) {
+        assignedPlant = p;
     }
 
     public void removePlant() {
@@ -30,12 +30,12 @@ public class Collider extends JPanel implements MouseListener {
         assignedPlant = null;
     }
 
-    public boolean isInsideCollider(int xPosition) {
-        return (xPosition > getLocation().x) && (xPosition < getLocation().x + 100);
+    public boolean isInsideCollider(int tx) {
+        return (tx > getLocation().x) && (tx < getLocation().x + 100);
     }
 
-    public void setAction(ActionListener actionListener) {
-        this.actionListener = actionListener;
+    public void setAction(ActionListener al) {
+        this.al = al;
     }
 
 
@@ -51,8 +51,8 @@ public class Collider extends JPanel implements MouseListener {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (actionListener != null) {
-            actionListener.actionPerformed(new ActionEvent(this, ActionEvent.RESERVED_ID_MAX + 1, ""));
+        if (al != null) {
+            al.actionPerformed(new ActionEvent(this, ActionEvent.RESERVED_ID_MAX + 1, ""));
         }
     }
 
