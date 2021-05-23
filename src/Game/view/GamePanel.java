@@ -75,7 +75,6 @@ public class GamePanel extends JLayeredPane {
 
         setRedrawTimer();
         setAdvancerTimer();
-        setSunProducerTimer();
         setZombieProducerTimer();
     }
 
@@ -111,7 +110,6 @@ public class GamePanel extends JLayeredPane {
             SunPresenter sunPresenter = new SunPresenter(sunView,sta);
             sunView.init(sunPresenter);
             sunPresenter.start();
-            add(sunView, new Integer(1));
         });
         sunProducer.start();
     }

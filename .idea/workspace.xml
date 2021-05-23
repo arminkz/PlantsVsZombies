@@ -1,44 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
-      <change afterPath="$PROJECT_DIR$/src/sun/presenter/SunPresenter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sun/view/SunView.java" afterDir="false" />
+    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Apply MVP Design Pattern In Sun and GamePanel Class&#10;&#10;- MVP Design Pattern&#10;- GamePanel is Large Class, it Administrate So many Data such as laneZombies, lanePeas, ... &#10;- ActivateSuns is also administrated by GamePanel&#10;- GamePanel class has low cohesion.&#10;- So I tried to make GamePanel has higher cohesion.&#10;- I made GamePanel Singletone Class.&#10;- and I tried to seperate Sun Class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/FreezePea.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/FreezePea.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/Pea.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/Pea.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/FreezePeashooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plant/model/FreezePeashooter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Peashooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Peashooter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Plant.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Plant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Sunflower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Sunflower.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/window/Collider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/window/GamePanel$PlantActionListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/window/GamePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/window/GameWindow$PlantType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/window/GameWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/window/LevelData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/window/Menu$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/window/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/ConeHeadZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/ConeHeadZombie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/NormalZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/NormalZombie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/Zombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/Zombie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pea/model/FreezePea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/FreezePea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pea/model/Pea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/Pea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Peashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Sunflower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Sunflower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sun/model/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/model/Sun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/window/Collider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/window/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/window/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/window/LevelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/LevelData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/window/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zombie/model/ConeHeadZombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/ConeHeadZombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zombie/model/NormalZombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/NormalZombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zombie/model/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sun/presenter/SunPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/presenter/SunPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sun/view/SunView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/view/SunView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -443,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545395229844</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Apply MVP Design Pattern In Sun and GamePanel Class&#10;&#10;- MVP Design Pattern&#10;- GamePanel is Large Class, it Administrate So many Data such as laneZombies, lanePeas, ... &#10;- ActivateSuns is also administrated by GamePanel&#10;- GamePanel class has low cohesion.&#10;- So I tried to make GamePanel has higher cohesion.&#10;- I made GamePanel Singletone Class.&#10;- and I tried to seperate Sun Class.">
+      <created>1621698948884</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1621698948884</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -510,7 +490,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reformatted code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformatted code" />
+    <MESSAGE value="Apply MVP Design Pattern In Sun and GamePanel Class&#10;&#10;- MVP Design Pattern&#10;- GamePanel is Large Class, it Administrate So many Data such as laneZombies, lanePeas, ... &#10;- ActivateSuns is also administrated by GamePanel&#10;- GamePanel class has low cohesion.&#10;- So I tried to make GamePanel has higher cohesion.&#10;- I made GamePanel Singletone Class.&#10;- and I tried to seperate Sun Class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Apply MVP Design Pattern In Sun and GamePanel Class&#10;&#10;- MVP Design Pattern&#10;- GamePanel is Large Class, it Administrate So many Data such as laneZombies, lanePeas, ... &#10;- ActivateSuns is also administrated by GamePanel&#10;- GamePanel class has low cohesion.&#10;- So I tried to make GamePanel has higher cohesion.&#10;- I made GamePanel Singletone Class.&#10;- and I tried to seperate Sun Class." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Game/view/GamePanel.java</url>
+          <line>157</line>
+          <properties class="Game.view.GamePanel" method="initializeLayout">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
