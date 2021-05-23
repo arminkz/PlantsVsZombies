@@ -46,7 +46,6 @@ public class GamePanel extends JLayeredPane {
 
     private Timer redrawTimer;
     private Timer advancerTimer;
-    private Timer sunProducer;
     private Timer zombieProducer;
     private JLabel sunScoreboard;
 
@@ -100,18 +99,6 @@ public class GamePanel extends JLayeredPane {
             laneZombies.get(l).add(z);
         });
         zombieProducer.start();
-    }
-
-    private void setSunProducerTimer() {
-        sunProducer = new Timer(5000, (ActionEvent e) -> {
-            Random rnd = new Random();
-            Sun sta = new Sun(rnd.nextInt(800) + 100, 0, rnd.nextInt(300) + 200);
-            SunView sunView = new SunView(sta.getXPosition(), sta.getYPosition());
-            SunPresenter sunPresenter = new SunPresenter(sunView,sta);
-            sunView.init(sunPresenter);
-            sunPresenter.start();
-        });
-        sunProducer.start();
     }
 
     private void setAdvancerTimer() {

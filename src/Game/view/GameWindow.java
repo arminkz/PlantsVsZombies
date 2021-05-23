@@ -1,6 +1,8 @@
 package Game.view;
 
 import plantCard.model.PlantCard;
+import sun.producer.RandomSunProducer;
+import sun.producer.SunProducer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +19,7 @@ public class GameWindow extends JFrame {
         FreezePeashooter
     }
     private GamePanel gp;
+    private static SunProducer sunProducer;
 
     //PlantType activePlantingBrush = PlantType.None;
 
@@ -24,12 +27,15 @@ public class GameWindow extends JFrame {
         setSize(1012, 785);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
+        setResizable(false);
+        setVisible(true);
 
-        JLabel sun = new JLabel("SUN");
-        sun.setLocation(37, 80);
-        sun.setSize(60, 20);
+        addPlantCard();
+        sunProducer = new RandomSunProducer(5000);
+    }
 
-        gp = gp.getInstance();
+    private void addPlantCard() {
+        gp = GamePanel.getInstance();
         gp.setLocation(0, 0);
         getLayeredPane().add(gp, new Integer(0));
 
@@ -53,9 +59,6 @@ public class GameWindow extends JFrame {
             gp.setActivePlantingBrush(PlantType.FreezePeashooter);
         });
         getLayeredPane().add(freezepeashooter, new Integer(3));
-
-        setResizable(false);
-        setVisible(true);
     }
 
     public GameWindow(boolean b) {
@@ -74,6 +77,7 @@ public class GameWindow extends JFrame {
     public static void begin() {
         gw.dispose();
         gw = new GameWindow();
+        sunProducer.start();
     }
 
     public static void main(String[] args) {
