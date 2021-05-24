@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * 원래는 MouseMotionListener interface를 implement 하고 있었는데
- * 하지만 window.GamePanel Class가 구현하는 화면에서는 마우스 입력을 각각의 객체에서 처리하도록 하고 삭제하였다.
+ * �썝�옒�뒗 MouseMotionListener interface瑜� implement �븯怨� �엳�뿀�뒗�뜲
+ * �븯吏�留� window.GamePanel Class媛� 援ы쁽�븯�뒗 �솕硫댁뿉�꽌�뒗 留덉슦�뒪 �엯�젰�쓣 媛곴컖�쓽 媛앹껜�뿉�꽌 泥섎━�븯�룄濡� �븯怨� �궘�젣�븯���떎.
  */
 public class GamePanel extends JLayeredPane {
 
@@ -54,9 +54,9 @@ public class GamePanel extends JLayeredPane {
     private int sunScore;
 
 /**
-* 복잡하게 구현되어 있던 하나의 메소드를 Extract Method Refactoring을 통하여
-* Code의 Readablity와 understandavility를 높혔다.
- * Design Pattern을 적용시키기 전에 Class의 동작을 이해하기 쉽도록 하였다.
+* 蹂듭옟�븯寃� 援ы쁽�릺�뼱 �엳�뜕 �븯�굹�쓽 硫붿냼�뱶瑜� Extract Method Refactoring�쓣 �넻�븯�뿬
+* Code�쓽 Readablity�� understandavility瑜� �넂�삍�떎.
+ * Design Pattern�쓣 �쟻�슜�떆�궎湲� �쟾�뿉 Class�쓽 �룞�옉�쓣 �씠�빐�븯湲� �돺�룄濡� �븯���떎.
 * */
     private GamePanel() {
         JLabel sun = new JLabel("SUN");
@@ -263,7 +263,7 @@ public class GamePanel extends JLayeredPane {
                 JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
                 GameWindow.gw.dispose();
                 LevelData.write("2");
-                GameWindow.gw = new GameWindow();
+                GameWindow.gw.gameStart();
             } else {
                 JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
                 LevelData.write("1");
