@@ -44,9 +44,7 @@ public class Menu extends JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-
         setPreferredSize(new java.awt.Dimension(1012, 785));
-
         jPanel1.setOpaque(false);
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -84,7 +82,6 @@ public class Menu extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        // TODO add your handling code here:
         GameWindow.begin();
     }//GEN-LAST:event_jPanel1MouseClicked
 

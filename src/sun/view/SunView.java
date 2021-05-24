@@ -20,8 +20,8 @@ public class SunView extends JPanel {
 
     public void init(SunPresenter sunPresenter){
         bindTo(sunPresenter);
-        GamePanel.getInstance().add(this);
         this.setVisible(true);
+        GamePanel.getInstance().add(this,1);
     }
 
     @Override
