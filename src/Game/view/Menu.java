@@ -82,7 +82,7 @@ public class Menu extends JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        GameWindow.begin();
+        GameWindow.gameStart();
     }//GEN-LAST:event_jPanel1MouseClicked
 
 

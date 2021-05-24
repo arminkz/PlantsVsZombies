@@ -12,76 +12,84 @@ import java.awt.event.ActionEvent;
  */
 public class GameWindow extends JFrame {
 
-    enum PlantType {
-        None,
-        Sunflower,
-        Peashooter,
-        FreezePeashooter
-    }
-    private GamePanel gp;
-    private static SunProducer sunProducer;
+  enum PlantType {
+    None, Sunflower, Peashooter, FreezePeashooter
+  }
 
-    //PlantType activePlantingBrush = PlantType.None;
+  private GamePanel gp;
+  static public GameWindow gw;
+  private static SunProducer sunProducer;
+  public static MenuFrame mw;
+  PlantType activePlantingBrush = PlantType.None;
 
-    public GameWindow() {
-        setSize(1012, 785);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLayout(null);
-        setResizable(false);
-        setVisible(true);
+  public GameWindow() {
+    setSize(1012, 785);
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    setLayout(null);
+    setResizable(false);
+    setVisible(true);
+    initPlantCard();
+    sunProducer = new RandomSunProducer(5000);
+  }
 
-        addPlantCard();
-        sunProducer = new RandomSunProducer(5000);
-    }
 
-    private void addPlantCard() {
-        gp = GamePanel.getInstance();
-        gp.setLocation(0, 0);
-        getLayeredPane().add(gp, new Integer(0));
+  // Attach Card into Panel 재사용성을 높이기 위해 분리 Parameter : GamePanel , X-coordinate, Image_path
+  private void AttachCard(GamePanel gp, int xCoordinate, String imagePath, PlantType plantType) {
+    // gp = gp.getInstance();
+    // gp.setLocation(0, 0);
+    // getLayeredPane().add(gp, new Integer(0));
+    PlantCard newCard =
+        new PlantCard(new ImageIcon(this.getClass().getResource(imagePath)).getImage());
+    newCard.setLocation(xCoordinate, 8);
+    newCard.setAction((ActionEvent e) -> {
+      gp.setActivePlantingBrush(plantType);
+    });
+    getLayeredPane().add(newCard, new Integer(3));
+  }
 
-        PlantCard sunflower = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_sunflower.png")).getImage());
-        sunflower.setLocation(110, 8);
-        sunflower.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Sunflower);
-        });
-        getLayeredPane().add(sunflower, new Integer(3));
+  private void initPlantCard() {
+    gp = GamePanel.getInstance();
+    gp.setLocation(0, 0);
+    getLayeredPane().add(gp, new Integer(0));
+    AttachCard(gp, 110, "../../images/cards/card_sunflower.png", PlantType.Sunflower);
+    AttachCard(gp, 175, "../../images/cards/card_peashooter.png", PlantType.Peashooter);
+    AttachCard(gp, 240, "../../images/cards/card_freezepeashooter.png", PlantType.FreezePeashooter);
+  }
 
-        PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_peashooter.png")).getImage());
-        peashooter.setLocation(175, 8);
-        peashooter.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Peashooter);
-        });
-        getLayeredPane().add(peashooter, new Integer(3));
 
-        PlantCard freezepeashooter = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_freezepeashooter.png")).getImage());
-        freezepeashooter.setLocation(240, 8);
-        freezepeashooter.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.FreezePeashooter);
-        });
-        getLayeredPane().add(freezepeashooter, new Integer(3));
-    }
+  public static void gameStart() {
+    mw.disposeMenuFrame();
+    gw = new GameWindow();
+    sunProducer.start();
+  }
 
-    public GameWindow(boolean b) {
-        Menu menu = new Menu();
-        menu.setLocation(0, 0);
-        setSize(1012, 785);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        getLayeredPane().add(menu, new Integer(0));
-        menu.repaint();
-        setResizable(false);
-        setVisible(true);
-    }
-
-    static public GameWindow gw;
-
-    public static void begin() {
-        gw.dispose();
-        gw = new GameWindow();
-        sunProducer.start();
-    }
-
-    public static void main(String[] args) {
-        gw = new GameWindow(true);
-    }
+  public static void main(String[] args) {
+    mw = new MenuFrame();
+  }
 
 }
+
+
+class MenuFrame extends JFrame {
+  boolean isTrue = true;
+
+  public MenuFrame() {
+    Menu menu = new Menu();
+    menu.setLocation(0, 0);
+    setSize(1012, 785);
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    getLayeredPane().add(menu, new Integer(0));
+    menu.repaint();
+    setResizable(false);
+    setVisible(true);
+  }
+
+  public void disposeMenuFrame() {
+    if (isTrue) {
+      this.dispose();
+    }
+    this.isTrue = false;
+  }
+
+}
+
