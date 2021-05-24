@@ -79,7 +79,7 @@ public class GameWindow extends JFrame {
         gw = new GameWindow();
         sunProducer.start();
     }
-
+    
     public static void main(String[] args) {
         gw = new GameWindow(true);
     }

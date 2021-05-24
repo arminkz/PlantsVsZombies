@@ -13,54 +13,58 @@ public class Zombie {
 
     private int health = 1000;
     private int speed = 1;
+    private int slowInt = 0;
+    private int attackPower = 10;
 
-    private GamePanel gp;
+    private GamePanel gamePanel; 
 
     private int posX = 1000;
     private int myLane;
-    private boolean isMoving = true;
+    private boolean alive = true;	// isMoving -> Alive
 
     public Zombie(GamePanel parent, int lane) {
-        this.gp = parent;
+        this.gamePanel = parent;
         myLane = lane;
     }
 
     public void advance() {
-        if (isMoving) {
-            boolean isCollides = false;
-            Collider collided = null;
-            for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-                if (gp.getColliders()[i].assignedPlant != null && gp.getColliders()[i].isInsideCollider(posX)) {
-                    isCollides = true;
-                    collided = gp.getColliders()[i];
-                }
-            }
-            if (!isCollides) {
-                if (slowInt > 0) {
-                    if (slowInt % 2 == 0) {
-                        posX--;
-                    }
-                    slowInt--;
-                } else {
-                    posX -= 1;
-                }
-            } else {
-                collided.assignedPlant.setHealth(collided.assignedPlant.getHealth()     - 10);
-                if (collided.assignedPlant.getHealth() < 0) {
-                    collided.removePlant();
-                }
-            }
-            if (posX < 0) {
-                isMoving = false;
-                JOptionPane.showMessageDialog(gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
-                GameWindow.gw.dispose();
-                GameWindow.gw = new GameWindow();
+
+        boolean isCollided = false;
+        Collider collidedPlant = null;
+        for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
+            if (gamePanel.getColliders()[i].assignedPlant != null && gamePanel.getColliders()[i].isInsideCollider(posX)) {
+                isCollided = true;
+                collidedPlant = gamePanel.getColliders()[i];
             }
         }
+        
+        if (!isCollided) {
+            move();
+        } 
+        else {	// attack plant
+            attackPlant(collidedPlant);
+        }
+        
+        if (health <= 0 || posX < 0) { alive = false; }
+
+        
     }
 
-    int slowInt = 0;
+	private void attackPlant(Collider collidedPlant) {
+		collidedPlant.assignedPlant.setHealth(collidedPlant.assignedPlant.getHealth() - attackPower);
+	}
 
+	private void move() {
+		if (slowInt > 0) {
+		    if (slowInt % 2 == 0) {
+		        posX--;
+		    }
+		    slowInt--;
+		} else {
+		    posX -= 1;
+		}
+	}
+	
     public void slow() {
         slowInt = 1000;
     }
@@ -95,11 +99,11 @@ public class Zombie {
     }
 
     public GamePanel getGp() {
-        return gp;
+        return gamePanel;
     }
 
     public void setGp(GamePanel gp) {
-        this.gp = gp;
+        this.gamePanel = gp;
     }
 
     public int getPosX() {
@@ -118,12 +122,12 @@ public class Zombie {
         this.myLane = myLane;
     }
 
-    public boolean isMoving() {
-        return isMoving;
+    public boolean getAlive() {
+        return alive;
     }
 
     public void setMoving(boolean moving) {
-        isMoving = moving;
+        alive = moving;
     }
 
     public int getSlowInt() {
