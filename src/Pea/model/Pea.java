@@ -16,7 +16,7 @@ public abstract class Pea {
 
     protected abstract void setImage();
 
-    public Image getImage() {
+    public static Image getImage() {
         return peaImage;
     }
 
