@@ -8,9 +8,6 @@ import plant.model.FreezePeashooter;
 import plant.model.Peashooter;
 import plant.model.Plant;
 import plant.model.Sunflower;
-import sun.model.Sun;
-import sun.presenter.SunPresenter;
-import sun.view.SunView;
 import zombie.model.ConeHeadZombie;
 import zombie.model.NormalZombie;
 import zombie.model.Zombie;
@@ -210,9 +207,9 @@ public class GamePanel extends JLayeredPane {
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
                 Pea pea = lanePeas.get(i).get(j);
                 if (pea instanceof FreezePea) {
-                    g.drawImage(freezePeaImage, pea.getPosX(), 130 + (i * 120), null);
+                    g.drawImage(freezePeaImage, pea.getXPosition(), 130 + (i * 120), null);
                 } else {
-                    g.drawImage(peaImage, pea.getPosX(), 130 + (i * 120), null);
+                    g.drawImage(peaImage, pea.getXPosition(), 130 + (i * 120), null);
                 }
             }
 
