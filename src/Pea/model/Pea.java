@@ -42,7 +42,7 @@ public class Pea {
         /*if(posX > 2000){
             gp.lanePeas.get(myLane).remove(this);
         }*/
-        xPosition += 15;
+        setXPosition(getXPosition() + 15);
     }
 
     public int getXPosition() {
