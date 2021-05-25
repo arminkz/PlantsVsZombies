@@ -166,11 +166,12 @@ public class GamePanel extends JLayeredPane {
         for (int i = 0; i < 5; i++) {
             for (Zombie z : laneZombies.get(i)) {
                 z.advance();
-                if (z.getPosX() < 0) { // GameOver. zombie에 존재하던 게임 오버 기능을 옮김
+                if (z.getPosX() < 0) {
                 	gameOver();
                 }
-                if (!z.getAlive()) { // kill zombie. Pea에 있던 기능 옮김
+                if (!z.getAlive()) {
                 	killZombie(i, z);
+                	break;
                 }
             }
 
@@ -179,8 +180,8 @@ public class GamePanel extends JLayeredPane {
                 p.advance();
             }
             
-            for (Collider c: colliders) { // kill plant. 좀비에 있던 plant를 제거하는 기능을 옮김
-            	if(c.assignedPlant.getHealth() <= 0) {
+            for (Collider c: colliders) {
+            	if(c.assignedPlant!=null && c.assignedPlant.getHealth() <= 0) {
             		c.removePlant();
             	}
             }
@@ -196,6 +197,7 @@ public class GamePanel extends JLayeredPane {
 
 	private void gameOver() {
 		JOptionPane.showMessageDialog(this, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+		gamePanel = null;
 		GameWindow.gw.dispose();
 		GameWindow.gw = new GameWindow();
 	}
