@@ -160,39 +160,43 @@ public class GamePanel extends JLayeredPane {
     }
 
     private void advance() {
-        for (int i = 0; i < 5; i++) {
-            for (Zombie z : laneZombies.get(i)) {
+        for (int laneIndex = 0; laneIndex < 5; laneIndex++) {
+            for (Zombie z : laneZombies.get(laneIndex)) {
                 z.advance();
             }
 
-            for (int j = 0; j < lanePeas.get(i).size(); j++) {
-                Pea pea = lanePeas.get(i).get(j);
-                Rectangle peaRectangle = new Rectangle(pea.getXPosition(), 130 + pea.getMyLane() * 120, 28, 28);
-                for (int zombieIndex = 0; zombieIndex < gamePanel.getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
-                    Zombie zombie = gamePanel.getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
-                    Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + pea.getMyLane() * 120, 400, 120);
-                    if (peaRectangle.intersects(zombieRectangle)) {
-                        zombie.setHealth(zombie.getHealth() - 300);
-                        if (pea instanceof FreezePea)
-                            zombie.slow();
-                        boolean exit = false;
-                        if (zombie.getHealth() < 0) {
-                            System.out.println("ZOMBIE DIED");
+            peaAdvance(laneIndex);
 
-                            gamePanel.getLaneZombies().get(pea.getMyLane()).remove(zombieIndex);
-                            GamePanel.setProgress(10);
-                            exit = true;
-                        }
-                        gamePanel.getLaneZombies().get(pea.getMyLane()).remove(pea);
-                        if (exit) break;
+        }
+    }
+
+    private void peaAdvance(int laneIndex) {
+        for (int j = 0; j < lanePeas.get(laneIndex).size(); j++) {
+            Pea pea = lanePeas.get(laneIndex).get(j);
+            Rectangle peaRectangle = new Rectangle(pea.getXPosition(), 130 + pea.getMyLane() * 120, 28, 28);
+            for (int zombieIndex = 0; zombieIndex < gamePanel.getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
+                Zombie zombie = gamePanel.getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
+                Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + pea.getMyLane() * 120, 400, 120);
+                if (peaRectangle.intersects(zombieRectangle)) {
+                    zombie.setHealth(zombie.getHealth() - 300);
+                    if (pea instanceof FreezePea)
+                        zombie.slow();
+                    boolean exit = false;
+                    if (zombie.getHealth() < 0) {
+                        System.out.println("ZOMBIE DIED");
+
+                        gamePanel.getLaneZombies().get(pea.getMyLane()).remove(zombieIndex);
+                        GamePanel.setProgress(10);
+                        exit = true;
                     }
+                    gamePanel.getLaneZombies().get(pea.getMyLane()).remove(pea);
+                    if (exit) break;
                 }
-                /*if(posX > 2000){
-                    gp.lanePeas.get(myLane).remove(this);
-                }*/
-                pea.advance();
             }
-
+            /*if(posX > 2000){
+                gp.lanePeas.get(myLane).remove(this);
+            }*/
+            pea.advance();
         }
     }
 
