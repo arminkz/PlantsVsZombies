@@ -1,17 +1,19 @@
 package Pea.model;
 
-import Game.view.GamePanel;
-import zombie.model.Zombie;
-
+import javax.swing.*;
 import java.awt.*;
 
 /**
  * Created by Armin on 6/28/2016.
  */
-public class FreezePea extends Pea {
+public class FreezePea extends NormalPea {
 
     public FreezePea(int lane, int startX) {
         super(lane, startX);
+    }
+
+    protected void setImage() {
+        peaImage = new ImageIcon(this.getClass().getResource("../../images/freezepea.png")).getImage();
     }
 
     @Override

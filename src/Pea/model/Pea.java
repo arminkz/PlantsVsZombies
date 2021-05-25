@@ -1,28 +1,20 @@
 package Pea.model;
 
-import Game.view.GamePanel;
-import zombie.model.Zombie;
-
+import javax.swing.*;
 import java.awt.*;
 
-/**
- * Created by Armin on 6/25/2016.
- */
-public class Pea {
-
+public abstract class Pea {
     private int xPosition;
-    protected GamePanel gamePanel;
     private int myLane;
+    protected Image peaImage;
 
     public Pea(int lane, int startX) {
-        gamePanel = gamePanel.getInstance();
         this.myLane = lane;
         xPosition = startX;
+        setImage();
     }
 
-    public void advance() {
-        setXPosition(getXPosition() + 15);
-    }
+    protected abstract void setImage();
 
     public int getXPosition() {
         return xPosition;
