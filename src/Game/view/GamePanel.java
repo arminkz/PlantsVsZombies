@@ -22,10 +22,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * 원래는 MouseMotionListener interface를 implement 하고 있었는데
- * 하지만 window.GamePanel Class가 구현하는 화면에서는 마우스 입력을 각각의 객체에서 처리하도록 하고 삭제하였다.
- */
+
 public class GamePanel extends JLayeredPane {
 
     private static GamePanel gamePanel = null;
@@ -53,11 +50,7 @@ public class GamePanel extends JLayeredPane {
 
     private int sunScore;
 
-/**
-* 복잡하게 구현되어 있던 하나의 메소드를 Extract Method Refactoring을 통하여
-* Code의 Readablity와 understandavility를 높혔다.
-* Design Pattern을 적용시키기 전에 Class의 동작을 이해하기 쉽도록 하였다.
-* */
+
     private GamePanel() {
         JLabel sun = new JLabel("SUN");
         sun.setLocation(37, 80);
@@ -287,6 +280,7 @@ public class GamePanel extends JLayeredPane {
         if (progress >= 150) {
             if ("1".equals(LevelData.LEVEL_NUMBER)) {
                 JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
+                gamePanel = null;
                 GameWindow.gw.dispose();
                 LevelData.write("2");
                 GameWindow.gw = new GameWindow();
