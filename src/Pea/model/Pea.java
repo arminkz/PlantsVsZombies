@@ -21,27 +21,6 @@ public class Pea {
     }
 
     public void advance() {
-        Rectangle peaRectangle = new Rectangle(getXPosition(), 130 + getMyLane() * 120, 28, 28);
-        for (int i = 0; i < gamePanel.getLaneZombies().get(getMyLane()).size(); i++) {
-            Zombie zombie = gamePanel.getLaneZombies().get(getMyLane()).get(i);
-            Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + myLane * 120, 400, 120);
-            if (peaRectangle.intersects(zombieRectangle)) {
-                zombie.setHealth(zombie.getHealth() - 300);
-                boolean exit = false;
-                if (zombie.getHealth() < 0) {
-                    System.out.println("ZOMBIE DIED");
-
-                    gamePanel.getLaneZombies().get(getMyLane()).remove(i);
-                    GamePanel.setProgress(10);
-                    exit = true;
-                }
-                gamePanel.getLaneZombies().get(getMyLane()).remove(this);
-                if (exit) break;
-            }
-        }
-        /*if(posX > 2000){
-            gp.lanePeas.get(myLane).remove(this);
-        }*/
         setXPosition(getXPosition() + 15);
     }
 

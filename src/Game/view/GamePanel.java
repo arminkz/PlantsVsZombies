@@ -166,8 +166,31 @@ public class GamePanel extends JLayeredPane {
             }
 
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
-                Pea p = lanePeas.get(i).get(j);
-                p.advance();
+                Pea pea = lanePeas.get(i).get(j);
+                Rectangle peaRectangle = new Rectangle(pea.getXPosition(), 130 + pea.getMyLane() * 120, 28, 28);
+                for (int zombieIndex = 0; zombieIndex < gamePanel.getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
+                    Zombie zombie = gamePanel.getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
+                    Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + pea.getMyLane() * 120, 400, 120);
+                    if (peaRectangle.intersects(zombieRectangle)) {
+                        zombie.setHealth(zombie.getHealth() - 300);
+                        if (pea instanceof FreezePea)
+                            zombie.slow();
+                        boolean exit = false;
+                        if (zombie.getHealth() < 0) {
+                            System.out.println("ZOMBIE DIED");
+
+                            gamePanel.getLaneZombies().get(pea.getMyLane()).remove(zombieIndex);
+                            GamePanel.setProgress(10);
+                            exit = true;
+                        }
+                        gamePanel.getLaneZombies().get(pea.getMyLane()).remove(pea);
+                        if (exit) break;
+                    }
+                }
+                /*if(posX > 2000){
+                    gp.lanePeas.get(myLane).remove(this);
+                }*/
+                pea.advance();
             }
 
         }

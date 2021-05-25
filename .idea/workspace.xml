@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Refactor Pea, FreezePea class&#10;&#10;Rename Variable, Method Name&#10;- Used to explain variable's role and method's role.&#10;- This refactoring increases the code readability.">
+    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pea/model/FreezePea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/FreezePea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pea/model/Pea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/Pea.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +27,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -274,13 +275,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -299,6 +302,12 @@
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -372,8 +381,9 @@
       <workItem from="1490016712390" duration="91000" />
       <workItem from="1545395201972" duration="1059000" />
       <workItem from="1621492919110" duration="4503000" />
-      <workItem from="1621887264983" duration="3520000" />
-      <workItem from="1621902043111" duration="1681000" />
+      <workItem from="1621599731932" duration="3345000" />
+      <workItem from="1621934604164" duration="111000" />
+      <workItem from="1621934719641" duration="804000" />
     </task>
     <task id="LOCAL-00001" summary="Reformatted code">
       <created>1545395229844</created>
@@ -382,14 +392,7 @@
       <option name="project" value="LOCAL" />
       <updated>1545395229844</updated>
     </task>
-    <task id="LOCAL-00002" summary="Refactor Pea, FreezePea class&#10;&#10;Rename Variable, Method Name&#10;- Used to explain variable's role and method's role.&#10;- This refactoring increases the code readability.">
-      <created>1621902924104</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1621902924104</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -456,8 +459,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reformatted code" />
-    <MESSAGE value="Refactor Pea, FreezePea class&#10;&#10;Rename Variable, Method Name&#10;- Used to explain variable's role and method's role.&#10;- This refactoring increases the code readability." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Pea, FreezePea class&#10;&#10;Rename Variable, Method Name&#10;- Used to explain variable's role and method's role.&#10;- This refactoring increases the code readability." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformatted code" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
