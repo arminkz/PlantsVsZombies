@@ -6,7 +6,7 @@ import java.awt.*;
 public abstract class Pea {
     private int xPosition;
     private int myLane;
-    protected Image peaImage;
+    protected static Image peaImage;
 
     public Pea(int lane, int startX) {
         this.myLane = lane;
@@ -15,6 +15,10 @@ public abstract class Pea {
     }
 
     protected abstract void setImage();
+
+    public Image getImage() {
+        return peaImage;
+    }
 
     public int getXPosition() {
         return xPosition;

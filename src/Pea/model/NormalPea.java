@@ -19,10 +19,6 @@ public class NormalPea extends Pea {
         peaImage = new ImageIcon(this.getClass().getResource("../../images/pea.png")).getImage();
     }
 
-    public Image getImage() {
-        return peaImage;
-    }
-
     public void advance() {
         setXPosition(getXPosition() + 15);
     }
