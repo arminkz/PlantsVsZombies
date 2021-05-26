@@ -38,8 +38,10 @@ public class Collider extends JPanel implements MouseListener {
         assignedPlant = null;
     }
 
-    public boolean isInsideCollider(int tx) {
-        return (tx > getLocation().x) && (tx < getLocation().x + 100);
+    public boolean isInsideCollider(int x) {
+        boolean moreThanMin = x > getLocation().x;
+        boolean lessThanMax = x < getLocation().x + 100;
+        return moreThanMin && lessThanMax;
     }
 
     public void setAction(ActionListener actionListener) {
