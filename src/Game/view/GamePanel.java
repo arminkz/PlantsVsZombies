@@ -19,10 +19,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * �썝�옒�뒗 MouseMotionListener interface瑜� implement �븯怨� �엳�뿀�뒗�뜲
- * �븯吏�留� window.GamePanel Class媛� 援ы쁽�븯�뒗 �솕硫댁뿉�꽌�뒗 留덉슦�뒪 �엯�젰�쓣 媛곴컖�쓽 媛앹껜�뿉�꽌 泥섎━�븯�룄濡� �븯怨� �궘�젣�븯���떎.
- */
+
 public class GamePanel extends JLayeredPane {
 
     private static GamePanel gamePanel = null;
@@ -48,11 +45,7 @@ public class GamePanel extends JLayeredPane {
 
     private int sunScore;
 
-/**
-* 蹂듭옟�븯寃� 援ы쁽�릺�뼱 �엳�뜕 �븯�굹�쓽 硫붿냼�뱶瑜� Extract Method Refactoring�쓣 �넻�븯�뿬
-* Code�쓽 Readablity�� understandavility瑜� �넂�삍�떎.
- * Design Pattern�쓣 �쟻�슜�떆�궎湲� �쟾�뿉 Class�쓽 �룞�옉�쓣 �씠�빐�븯湲� �돺�룄濡� �븯���떎.
-* */
+
     private GamePanel() {
         JLabel sun = new JLabel("SUN");
         sun.setLocation(37, 80);
@@ -159,9 +152,21 @@ public class GamePanel extends JLayeredPane {
         for (int laneIndex = 0; laneIndex < 5; laneIndex++) {
             for (Zombie z : laneZombies.get(laneIndex)) {
                 z.advance();
+                if (z.getPosX() < 0) {
+                	gameOver();
+                }
+                if (!z.getAlive()) {
+                	killZombie(laneIndex, z);
+                	break;
+                }
             }
-
             peaAdvance(laneIndex);
+
+            for (Collider c: colliders) {
+            	if(c.assignedPlant!=null && c.assignedPlant.getHealth() <= 0) {
+            		c.removePlant();
+            	}
+            }
 
         }
     }
@@ -178,13 +183,7 @@ public class GamePanel extends JLayeredPane {
                     if (pea instanceof FreezePea)
                         zombie.slow();
                     boolean exit = false;
-                    if (zombie.getHealth() < 0) {
-                        System.out.println("ZOMBIE DIED");
-
-                        gamePanel.getLaneZombies().get(pea.getMyLane()).remove(zombieIndex);
-                        GamePanel.setProgress(10);
-                        exit = true;
-                    }
+                    
                     gamePanel.getLaneZombies().get(pea.getMyLane()).remove(pea);
                     if (exit) break;
                 }
@@ -195,6 +194,19 @@ public class GamePanel extends JLayeredPane {
             pea.advance();
         }
     }
+
+	private void killZombie(int i, Zombie z) {
+		System.out.println("ZOMBIE DIED");
+		laneZombies.get(i).remove(z);
+		setProgress(10);
+	}
+
+	private void gameOver() {
+		JOptionPane.showMessageDialog(this, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+		gamePanel = null;
+		GameWindow.gw.dispose();
+		GameWindow.gw = new GameWindow();
+	}
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -277,6 +289,7 @@ public class GamePanel extends JLayeredPane {
         if (progress >= 150) {
             if ("1".equals(LevelData.LEVEL_NUMBER)) {
                 JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
+                gamePanel = null;
                 GameWindow.gw.dispose();
                 LevelData.write("2");
                 GameWindow.gw.gameStart();

@@ -1,6 +1,9 @@
 package Pea.model;
 
 import javax.swing.*;
+
+import zombie.model.Zombie;
+
 import java.awt.*;
 
 public abstract class Pea {

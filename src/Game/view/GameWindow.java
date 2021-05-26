@@ -73,6 +73,7 @@ public class GameWindow extends JFrame {
 class MenuFrame extends JFrame {
   boolean isTrue = true;
 
+
   public MenuFrame() {
     Menu menu = new Menu();
     menu.setLocation(0, 0);
