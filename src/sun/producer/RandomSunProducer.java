@@ -9,17 +9,8 @@ import java.awt.event.ActionEvent;
 import java.util.Random;
 
 public class RandomSunProducer implements SunProducer{
-    private Timer sunProduceTimer;
-    private int delay;
 
-    public RandomSunProducer(int delay){
-        this.delay = delay;
-        sunProduceTimer = new javax.swing.Timer(delay,(ActionEvent e)->{createSunView();});
-    }
-
-    @Override
-    public void start() {
-        sunProduceTimer.start();
+    public RandomSunProducer(){
     }
 
     @Override

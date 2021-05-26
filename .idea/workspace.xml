@@ -2,10 +2,57 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
+      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pea/model/FreezePea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/FreezePea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pea/model/Pea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/Pea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/Collider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/LevelData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow$PlantType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Menu.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/FreezePea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/Pea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_cherrybomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_freezepeashooter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_peashooter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_sunflower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_wallnut.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/freezepea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/mainBG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/menu.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/pea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/freezepeashooter.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/peashooter.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/sunflower.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/sun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/zombies/zombie1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/zombies/zombie2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/FreezePeashooter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Peashooter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Plant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Sunflower.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plantCard/model/PlantCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/RandomSunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunFlowerSunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/ConeHeadZombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/NormalZombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/Zombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pea/model/NormalPea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pea/model/NormalPea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/model/Sunflower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Sunflower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sun/producer/RandomSunProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/producer/RandomSunProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sun/producer/SunFlowerSunProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/producer/SunFlowerSunProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sun/producer/SunProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/producer/SunProducer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,9 +145,9 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="PsiViewer.ProjectComponent">
     <option name="HIGHLIGHT" value="false" />
@@ -159,6 +206,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="FlashRunConfigurationType">
       <option name="BCName" value="" />
       <option name="IOSSimulatorSdkPath" value="" />
@@ -213,6 +273,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="grailsApplicationRoot" value="" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -262,6 +333,27 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method v="2" />
+    </configuration>
     <configuration name="GameWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Game.view.GameWindow" />
       <module name="jPvZ" />
@@ -275,30 +367,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="grailsApplicationRoot" value="" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -308,6 +376,34 @@
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -329,27 +425,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
@@ -461,14 +536,10 @@
     <MESSAGE value="Reformatted code" />
     <option name="LAST_COMMIT_MESSAGE" value="Reformatted code" />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk1.8.0_45/src.zip!/java/util/ArrayList.java" />
+    <entry file="jar://$USER_HOME$/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/ArrayList.java" />
     <entry file="file://D:/Desktop/WQ/src/GameWindow.java" />
-    <entry file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk1.8.0_45/src.zip!/javax/swing/ImageIcon.java" />
+    <entry file="jar://$USER_HOME$/Program Files/Java/jdk1.8.0_45/src.zip!/javax/swing/ImageIcon.java" />
     <entry file="file://$PROJECT_DIR$/Level.vbhv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>

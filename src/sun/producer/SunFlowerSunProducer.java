@@ -9,22 +9,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class SunFlowerSunProducer implements SunProducer{
-    private Timer sunProduceTimer;
-    private int delay;
     private int xPosition;
     private int yPosition;
 
-    public SunFlowerSunProducer(int delay, int xPosition, int yPosition){
-        this.delay = delay;
+    public SunFlowerSunProducer(int xPosition, int yPosition){
         this.xPosition = xPosition;
         this.yPosition = yPosition;
-
-        sunProduceTimer = new Timer(delay,(ActionEvent e) ->{createSunView();});
-    }
-
-    @Override
-    public void start() {
-        sunProduceTimer.start();
     }
 
     @Override
