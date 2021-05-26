@@ -32,7 +32,7 @@ public class Zombie {
         boolean isCollided = false;
         Collider collidedPlant = null;
         for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-            if (gamePanel.getColliders()[i].assignedPlant != null && gamePanel.getColliders()[i].isInsideCollider(posX)) {
+            if (gamePanel.getColliders()[i].getPlant() != null && gamePanel.getColliders()[i].isInsideCollider(posX)) {
                 isCollided = true;
                 collidedPlant = gamePanel.getColliders()[i];
             }
@@ -51,7 +51,7 @@ public class Zombie {
     }
 
 	private void attackPlant(Collider collidedPlant) {
-		collidedPlant.assignedPlant.setHealth(collidedPlant.assignedPlant.getHealth() - attackPower);
+		collidedPlant.getPlant().setHealth(collidedPlant.getPlant().getHealth() - attackPower);
 	}
 
 	private void move() {
