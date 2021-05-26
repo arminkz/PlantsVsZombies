@@ -41,7 +41,6 @@ public class Collider extends JPanel implements MouseListener {
      * 문제점 : collider.assignedPlant를 쓰는 클래스(GamePanel.java, Zombie.java)에서 getter로 바꿔 줘야 한다.
      */
     //turn public into private and make getter and setter
-    public Plant assignedPlant;
 
     public void setPlant(Plant p) {
         assignedPlant = p;
