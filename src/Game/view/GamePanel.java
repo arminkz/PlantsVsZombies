@@ -163,7 +163,7 @@ public class GamePanel extends JLayeredPane {
             peaAdvance(laneIndex);
 
             for (Collider c: colliders) {
-            	if(c.assignedPlant!=null && c.assignedPlant.getHealth() <= 0) {
+            	if(c.getPlant()!=null && c.getPlant().getHealth() <= 0) {
             		c.removePlant();
             	}
             }
@@ -216,8 +216,8 @@ public class GamePanel extends JLayeredPane {
         //Draw Plants
         for (int i = 0; i < 45; i++) {
             Collider c = colliders[i];
-            if (c.assignedPlant != null) {
-                Plant p = c.assignedPlant;
+            if (c.getPlant() != null) {
+                Plant p = c.getPlant();
                 if (p instanceof Peashooter) {
                     g.drawImage(peashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
                 }
