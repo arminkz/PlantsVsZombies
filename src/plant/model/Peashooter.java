@@ -3,6 +3,7 @@ package plant.model;
 import Pea.model.NormalPea;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
@@ -10,8 +11,9 @@ import java.awt.event.ActionEvent;
  */
 public class Peashooter extends Plant {
 
-    public static final int Peashooter_Price = 100;
+    private static final int Peashooter_Price = 100;
     public Timer shootTimer;
+    public Image peashooterImage;
 
 
     /**
@@ -20,6 +22,7 @@ public class Peashooter extends Plant {
      */
     public Peashooter(int x, int y) {
         super(x, y);
+        peashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
         shootTimer = new Timer(2000, (ActionEvent e) -> {
             //System.out.println("SHOOT");
             if (getLane().getLaneZombies().get(y).size() > 0) {
@@ -32,6 +35,11 @@ public class Peashooter extends Plant {
     @Override
     public int getPrice() {
         return Peashooter_Price;
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        g.drawImage(peashooterImage, 60 + getX() * 100,129 + 120 * getY(),null);
     }
 
     @Override

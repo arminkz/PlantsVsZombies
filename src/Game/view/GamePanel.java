@@ -32,9 +32,6 @@ public class GamePanel extends JLayeredPane {
     private static GamePanel gamePanel = null;
 
     private Image bgImage;
-    private Image sunflowerImage;
-    private Image peashooterImage;
-    private Image freezePeashooterImage;
 
     private Collider[] colliders;
 
@@ -154,10 +151,6 @@ public class GamePanel extends JLayeredPane {
 
     private void loadImages() {
         bgImage = new ImageIcon(this.getClass().getResource("../../images/mainBG.png")).getImage();
-
-        peashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
-        freezePeashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/freezepeashooter.gif")).getImage();
-        sunflowerImage = new ImageIcon(this.getClass().getResource("../../images/plants/sunflower.gif")).getImage();
     }
 
     private void advance() {
@@ -230,18 +223,10 @@ public class GamePanel extends JLayeredPane {
 
         //Draw Plants
         for (int i = 0; i < 45; i++) {
-            Collider c = colliders[i];
-            if (c.getPlant() != null) {
-                Plant p = c.getPlant();
-                if (p instanceof Peashooter) {
-                    g.drawImage(peashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
-                if (p instanceof FreezePeashooter) {
-                    g.drawImage(freezePeashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
-                if (p instanceof Sunflower) {
-                    g.drawImage(sunflowerImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
+            Collider collider = colliders[i];
+            Plant plant = collider.getPlant();
+            if (plant != null) {
+               plant.draw(g);
             }
         }
 
@@ -268,8 +253,11 @@ public class GamePanel extends JLayeredPane {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Plant plant = PlantFactory.getInstance().getPlant(activePlantingBrush.toString(),x,y);
-            setSunScore(sunScore - plant.getPrice());
+            Plant plant = PlantFactory.getInstance().getPlant(activePlantingBrush,x,y);
+            if(plant.getPrice() <= getSunScore()) {
+                colliders[x + y * 9].setPlant(plant);
+                setSunScore(sunScore - plant.getPrice());
+            }
             activePlantingBrush = GameWindow.PlantType.None;
         }
     }

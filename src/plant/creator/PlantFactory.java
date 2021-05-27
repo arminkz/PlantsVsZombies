@@ -1,6 +1,7 @@
 package plant.creator;
 
 import Game.view.GameWindow;
+import plant.model.FreezePeashooter;
 import plant.model.Peashooter;
 import plant.model.Plant;
 import plant.model.Sunflower;
@@ -15,15 +16,18 @@ public class PlantFactory {
         }
         return plantFactory;
     }
-    static public Plant getPlant(String plantType, int XPosition, int YPosition){
+    static public Plant getPlant(GameWindow.PlantType plantType, int XPosition, int YPosition){
         Plant plant = null;
         switch (plantType) {
-            case "Sunflower":
+            case Sunflower:
                 plant = new Sunflower(XPosition,YPosition);
-            case "Peashooter":
+                break;
+            case Peashooter:
                 plant = new Peashooter(XPosition, YPosition);
-            case "FreezePeashooter":
-                plant = new Peashooter(XPosition,YPosition);
+                break;
+            case FreezePeashooter:
+                plant = new FreezePeashooter(XPosition,YPosition);
+                break;
         }
         return plant;
     }
