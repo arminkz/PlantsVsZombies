@@ -28,7 +28,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sun/model/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/model/Sun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sun/presenter/SunPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/presenter/SunPresenter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +70,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545396204491" />
+    <property name="last_opened_file_path" value="$USER_HOME$/eclipse-workspace/PlantsVsZombies" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
