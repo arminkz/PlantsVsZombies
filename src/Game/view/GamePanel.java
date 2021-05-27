@@ -4,6 +4,7 @@ import Game.Collider;
 import Game.LevelData;
 import Pea.model.FreezePea;
 import Pea.model.NormalPea;
+import Pea.model.Pea;
 import plant.model.FreezePeashooter;
 import plant.model.Peashooter;
 import plant.model.Plant;
@@ -91,18 +92,24 @@ public class GamePanel extends JLayeredPane {
             LevelData lvl = new LevelData();
             String[] Level = lvl.LEVEL_CONTENT[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
             int[][] LevelValue = lvl.LEVEL_VALUE[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
-            int l = rnd.nextInt(5);
+            int lane = rnd.nextInt(5);
             int t = rnd.nextInt(100);
-            Zombie z = null;
+            Zombie zombie = null;
             for (int i = 0; i < LevelValue.length; i++) {
                 if (t >= LevelValue[i][0] && t <= LevelValue[i][1]) {
-                    z = Zombie.getZombie(Level[i], l);
+                    zombie = Zombie.getZombie(Level[i], GamePanel.this, lane);
                 }
             }
-            laneZombies.get(l).add(z);
+            addZombie(lane, zombie);
         });
         zombieProducer.start();
     }
+
+	private void addZombie(int lane, Zombie zombie) {
+		if(zombie!=null) {
+			laneZombies.get(lane).add(zombie);
+		}
+	}
 
     private void setAdvancerTimer() {
         advancerTimer = new Timer(ADVANCE_DELAY, (ActionEvent e) -> advance());
@@ -158,33 +165,39 @@ public class GamePanel extends JLayeredPane {
         peashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
         freezePeashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/freezepeashooter.gif")).getImage();
         sunflowerImage = new ImageIcon(this.getClass().getResource("../../images/plants/sunflower.gif")).getImage();
-
-        normalZombieImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie1.png")).getImage();
-        coneHeadZombieImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie2.png")).getImage();
     }
 
     private void advance() {
         for (int laneIndex = 0; laneIndex < 5; laneIndex++) {
-            for (Zombie z : laneZombies.get(laneIndex)) {
-                z.advance();
-                if (z.getPosX() < 0) {
-                	gameOver();
-                }
-                if (!z.getAlive()) {
-                	killZombie(laneIndex, z);
-                	break;
-                }
-            }
+            zombieAdvance(laneIndex);
+            
             peaAdvance(laneIndex);
-
-            for (Collider c: colliders) {
-            	if(c.getPlant()!=null && c.getPlant().getHealth() <= 0) {
-            		c.removePlant();
-            	}
-            }
+            
+            colliderAdvance();
 
         }
     }
+
+	private void colliderAdvance() {
+		for (Collider c: colliders) {
+			if(c.getPlant()!=null && c.getPlant().getHealth() <= 0) {
+				c.removePlant();
+			}
+		}
+	}
+
+	private void zombieAdvance(int laneIndex) {
+		for (Zombie z : laneZombies.get(laneIndex)) {
+		    z.advance();
+		    if (z.getPosX() < 0) {
+		    	gameOver();
+		    }
+		    if (!z.getAlive()) {
+		    	killZombie(laneIndex, z);
+		    	break;
+		    }
+		}
+	}
 
     private void peaAdvance(int laneIndex) {
         for (int j = 0; j < lanePeas.get(laneIndex).size(); j++) {
@@ -243,17 +256,13 @@ public class GamePanel extends JLayeredPane {
         }
 
         for (int i = 0; i < 5; i++) {
-            for (Zombie z : laneZombies.get(i)) {
-                if (z instanceof NormalZombie) {
-                    g.drawImage(normalZombieImage, z.getPosX(), 109 + (i * 120), null);
-                } else if (z instanceof ConeHeadZombie) {
-                    g.drawImage(coneHeadZombieImage, z.getPosX(), 109 + (i * 120), null);
-                }
+            for (Zombie zombie : laneZombies.get(i)) {
+            	g.drawImage(Zombie.getImage(), zombie.getPosX(), 109 + (i * 120), null);
             }
 
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
                 NormalPea pea = lanePeas.get(i).get(j);
-                g.drawImage(pea.getImage(), pea.getXPosition(), 130 + (i * 120), null);
+                g.drawImage(Pea.getImage(), pea.getXPosition(), 130 + (i * 120), null);
             }
         }
     }

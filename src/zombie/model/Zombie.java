@@ -4,47 +4,67 @@ import Game.Collider;
 import Game.view.GamePanel;
 import Game.view.GameWindow;
 
+import java.awt.Image;
+
 import javax.swing.*;
 
 /**
  * Created by Armin on 6/25/2016.
  */
-public class Zombie {
+public abstract class Zombie {
 
-    private int health = 1000;
-    private int speed = 1;
+	protected int health = 1000;
+    protected int speed = 1;
+    protected int attackPower = 10;
+    
+    private GamePanel gamePanel; 
+    protected static Image zombieImage;
+
     private int slowInt = 0;
-    private int attackPower = 10;
-
     private int posX = 1000;
     private int myLane;
     private boolean alive = true;	// isMoving -> Alive
 
     public Zombie(int lane) {
         myLane = lane;
+        
+        setImage();
     }
 
+    protected abstract void setImage();
+    
+    public static Image getImage() {
+        return zombieImage;
+    }
+    
     public void advance() {
 
         boolean isCollided = false;
-        Collider collidedPlant = null;
-        for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-            if (GamePanel.getInstance().getColliders()[i].getPlant() != null && GamePanel.getInstance().getColliders()[i].isInsideCollider(posX)) {
-                isCollided = true;
-                collidedPlant = GamePanel.getInstance().getColliders()[i];
-            }
-        }
+        Collider collidedPlant = getCollidedPlant(isCollided);
         
         if (!isCollided) {
             move();
         } 
-        else {	// attack plant
+        else {
             attackPlant(collidedPlant);
         }
         
         if (health <= 0 || posX < 0) { alive = false; }
-
-        
+    }
+   
+    private Collider getCollidedPlant(boolean isCollided) {
+    	Collider collidedPlant = null;
+    	
+        for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
+            boolean isPlantExist = gamePanel.getColliders()[i].getPlant() != null;
+			boolean isInsideCollider = gamePanel.getColliders()[i].isInsideCollider(posX);
+			
+			if (isPlantExist && isInsideCollider) {
+                isCollided = true;
+                collidedPlant = gamePanel.getColliders()[i];
+            }
+        }
+    	return collidedPlant;
     }
 
 	private void attackPlant(Collider collidedPlant) {
@@ -66,17 +86,17 @@ public class Zombie {
         slowInt = 1000;
     }
 
-    public static Zombie getZombie(String type, int lane) {
-        Zombie z = new Zombie(lane);
+    public static Zombie getZombie(String type, GamePanel parent, int lane) {
+        //Zombie z = new Zombie(parent, lane);
         switch (type) {
             case "zombie.model.NormalZombie":
-                z = new NormalZombie(GamePanel.getInstance(), lane);
-                break;
+            	Zombie normalZombie = new NormalZombie(parent, lane);
+            	return normalZombie;
             case "zombie.model.ConeHeadZombie":
-                z = new ConeHeadZombie(GamePanel.getInstance(), lane);
-                break;
+            	Zombie conHeadZombie = new ConeHeadZombie(parent, lane);
+                return conHeadZombie;
         }
-        return z;
+        return null;
     }
 
     public int getHealth() {
