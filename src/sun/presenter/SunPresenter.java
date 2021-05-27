@@ -1,7 +1,5 @@
 package sun.presenter;
 
-import Game.view.GamePanel;
-import Game.view.GameWindow;
 import sun.model.Sun;
 import sun.view.SunView;
 
@@ -35,6 +33,6 @@ public class SunPresenter {
     }
 
     public void setSunViewLocation() {
-        sunView.setLocation(sun.getXPosition(), sun.getYPosition());
+        sunView.setLocation(sun.getXPosition(), sun.getyPosition());
     }
 }

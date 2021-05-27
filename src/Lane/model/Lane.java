@@ -1,6 +1,6 @@
 package Lane.model;
 
-import Pea.model.NormalPea;
+import Pea.model.Pea;
 import zombie.model.Zombie;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Lane {
     private static Lane lane = null;
     private ArrayList<ArrayList<Zombie>> laneZombies;
-    private ArrayList<ArrayList<NormalPea>> lanePeas;
+    private ArrayList<ArrayList<Pea>> lanePeas;
 
     private Lane() {
         initializeLanePeas();
@@ -36,11 +36,11 @@ public class Lane {
         this.laneZombies = laneZombies;
     }
 
-    public ArrayList<ArrayList<NormalPea>> getLanePeas() {
+    public ArrayList<ArrayList<Pea>> getLanePeas() {
         return lanePeas;
     }
 
-    public void setLanePeas(ArrayList<ArrayList<NormalPea>> lanePeas) {
+    public void setLanePeas(ArrayList<ArrayList<Pea>> lanePeas) {
         this.lanePeas = lanePeas;
     }
 

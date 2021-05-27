@@ -1,7 +1,5 @@
 package plant.model;
 
-import plant.strategy.PlantProduceSunStrategy;
-import plant.strategy.ProduceSunBySunFlower;
 import sun.model.Sun;
 import sun.presenter.SunPresenter;
 import sun.producer.SunFlowerSunProducer;
@@ -17,14 +15,14 @@ import java.util.Random;
  */
 public class Sunflower extends Plant {
 
+    private SunProducer sunProducer;
+    private Timer sunProducerTimer;
+
     public Sunflower(int x, int y) {
         super(x, y);
-        this.setPlantProduceSunStrategy(new ProduceSunBySunFlower());
-        produceSun();
+        sunProducer = new SunFlowerSunProducer(x,y);
+        sunProducerTimer = new Timer(15000,(ActionEvent e)->{sunProducer.createSunView();});
+        sunProducerTimer.start();
     }
 
-    @Override
-    public void produceSun() {
-        super.produceSun();
-    }
 }

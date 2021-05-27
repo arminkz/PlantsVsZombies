@@ -1,38 +1,31 @@
 package sun.model;
 
-import Game.view.GamePanel;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 /**
  * Created by Armin on 6/27/2016.
  */
 public class Sun {
-    private int Xposition;
-    private int YPosition;
-    private int endYposition;
+    private final int xPosition;
+    private int yPosition;
+    private final int endYPosition;
 
     private int destructTime = 200;
 
     public Sun(int startX, int startY, int endY) {
-        this.endYposition = endY;
-        Xposition = startX;
-        YPosition = startY;
+        this.endYPosition = endY;
+        xPosition = startX;
+        yPosition = startY;
     }
 
     public void move() {
-        if (YPosition < endYposition) {
-            YPosition += 4;
+        if (yPosition < endYPosition) {
+            yPosition += 4;
         }
     }
     public int getXPosition(){
-        return Xposition;
+        return xPosition;
     }
-    public int getYPosition(){
-        return YPosition;
+    public int getyPosition(){
+        return yPosition;
     }
 
 }
