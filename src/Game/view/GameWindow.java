@@ -18,7 +18,6 @@ public class GameWindow extends JFrame {
 
   private GamePanel gp;
   static public GameWindow gw;
-  private static SunProducer sunProducer;
   public static MenuFrame mw;
   PlantType activePlantingBrush = PlantType.None;
 
@@ -29,11 +28,10 @@ public class GameWindow extends JFrame {
     setResizable(false);
     setVisible(true);
     initPlantCard();
-    sunProducer = new RandomSunProducer(5000);
   }
 
 
-  // Attach Card into Panel Àç»ç¿ë¼ºÀ» ³ôÀÌ±â À§ÇØ ºÐ¸® Parameter : GamePanel , X-coordinate, Image_path
+  // Attach Card into Panel ï¿½ï¿½ï¿½ë¼ºï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ Parameter : GamePanel , X-coordinate, Image_path
   private void AttachCard(GamePanel gp, int xCoordinate, String imagePath, PlantType plantType) {
     // gp = gp.getInstance();
     // gp.setLocation(0, 0);
@@ -60,7 +58,6 @@ public class GameWindow extends JFrame {
   public static void gameStart() {
     mw.disposeMenuFrame();
     gw = new GameWindow();
-    sunProducer.start();
   }
 
   public static void main(String[] args) {

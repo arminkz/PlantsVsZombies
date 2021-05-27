@@ -16,10 +16,13 @@ import java.util.Random;
 public class Sunflower extends Plant {
 
     private SunProducer sunProducer;
+    private Timer sunProducerTimer;
+
     public Sunflower(int x, int y) {
         super(x, y);
-        sunProducer = new SunFlowerSunProducer(15000,x,y);
-        sunProducer.start();
+        sunProducer = new SunFlowerSunProducer(x,y);
+        sunProducerTimer = new Timer(15000,(ActionEvent e)->{sunProducer.createSunView();});
+        sunProducerTimer.start();
     }
 
 }
