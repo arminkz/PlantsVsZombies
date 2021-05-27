@@ -27,11 +27,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Peashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -437,39 +436,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reformatted code" />
     <option name="LAST_COMMIT_MESSAGE" value="Reformatted code" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="804" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1622023277915">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="804" y="224" key="#com.intellij.ide.util.MemberChooser/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622023277915" />
-    <state x="170" y="92" width="1658" height="896" key="DiffContextDialog" timestamp="1622022068157">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="170" y="92" width="1658" height="896" key="DiffContextDialog/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022068157" />
-    <state width="877" height="257" key="GridCell.Tab.0.bottom" timestamp="1622022966349">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state width="877" height="257" key="GridCell.Tab.0.bottom/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state width="877" height="257" key="GridCell.Tab.0.center" timestamp="1622022966349">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state width="877" height="257" key="GridCell.Tab.0.center/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state width="877" height="257" key="GridCell.Tab.0.left" timestamp="1622022966349">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state width="877" height="257" key="GridCell.Tab.0.left/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state width="877" height="257" key="GridCell.Tab.0.right" timestamp="1622022966349">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state width="877" height="257" key="GridCell.Tab.0.right/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state x="130" y="273" key="Vcs.Push.Dialog.v2" timestamp="1622023540675">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="130" y="273" key="Vcs.Push.Dialog.v2/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622023540675" />
-    <state x="992" y="0" width="935" height="1087" key="dock-window-1" timestamp="1622023066874">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="992" y="0" width="935" height="1087" key="dock-window-1/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622023066874" />
   </component>
 </project>

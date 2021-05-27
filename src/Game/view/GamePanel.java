@@ -77,6 +77,7 @@ public class GamePanel extends JLayeredPane {
     private void setSunProducerTimer() {
         sunProducer = new RandomSunProducer();
         sunProducerTimer = new Timer(SUN_PRODUCE_DELAY,(ActionEvent e)->{sunProducer.createSunView();});
+        sunProducerTimer.start();
     }
 
     public static GamePanel getInstance(){
