@@ -70,26 +70,4 @@ public class GameWindow extends JFrame {
 }
 
 
-class MenuFrame extends JFrame {
-  boolean isTrue = true;
-
-  public MenuFrame() {
-    Menu menu = new Menu();
-    menu.setLocation(0, 0);
-    setSize(1012, 785);
-    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    getLayeredPane().add(menu, new Integer(0));
-    menu.repaint();
-    setResizable(false);
-    setVisible(true);
-  }
-
-  public void disposeMenuFrame() {
-    if (isTrue) {
-      this.dispose();
-    }
-    this.isTrue = false;
-  }
-
-}
 
