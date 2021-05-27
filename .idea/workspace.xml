@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sun/model/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/model/Sun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sun/presenter/SunPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/presenter/SunPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sun/producer/RandomSunProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/producer/RandomSunProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sun/producer/SunFlowerSunProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sun/producer/SunFlowerSunProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zombie/model/ConeHeadZombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/ConeHeadZombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zombie/model/NormalZombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/NormalZombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zombie/model/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zombie/model/Zombie.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
