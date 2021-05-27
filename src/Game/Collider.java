@@ -13,6 +13,8 @@ import java.awt.event.MouseListener;
  */
 public class Collider extends JPanel implements MouseListener {
 
+    //rename actionListner variable
+    private ActionListener al;
     private ActionListener actionListener;
 
     public Collider() {
@@ -28,6 +30,17 @@ public class Collider extends JPanel implements MouseListener {
     public Plant getPlant() {
         return assignedPlant;
     }
+    /**
+     * 원래 코드
+     * public Plant assignedPlant;
+     *
+     * 바뀐 코드
+     * private Plant assignedPlant;
+     *
+     * private 으로 고치고 getter setter 만들어 줘야 한다.
+     * 문제점 : collider.assignedPlant를 쓰는 클래스(GamePanel.java, Zombie.java)에서 getter로 바꿔 줘야 한다.
+     */
+    //turn public into private and make getter and setter
 
     public void setPlant(Plant p) {
         assignedPlant = p;
