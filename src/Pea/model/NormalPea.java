@@ -15,6 +15,11 @@ public class NormalPea extends Pea {
         super(lane, startX);
     }
 
+    @Override
+    public int getPower() {
+        return 300;
+    }
+
     protected void setImage() {
         peaImage = new ImageIcon(this.getClass().getResource("../../images/pea.png")).getImage();
     }

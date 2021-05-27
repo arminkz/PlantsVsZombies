@@ -45,6 +45,7 @@ public class SunView extends JPanel {
             @Override
             public void mouseReleased(MouseEvent e) {
                 p.mouseReleased();
+                GamePanel.getInstance().setSunScore(GamePanel.getInstance().getSunScore() + 25);
             }
 
             @Override
@@ -61,6 +62,5 @@ public class SunView extends JPanel {
 
     public void remove(){
         GamePanel.getInstance().remove(this);
-        GamePanel.getInstance().setSunScore(GamePanel.getInstance().getSunScore() + 25);
     }
 }
