@@ -2,6 +2,7 @@ package Game.view;
 
 import Game.Collider;
 import Game.LevelData;
+import Lane.model.Lane;
 import Pea.model.FreezePea;
 import Pea.model.NormalPea;
 import Pea.model.Pea;
@@ -34,8 +35,6 @@ public class GamePanel extends JLayeredPane {
     private Image coneHeadZombieImage;
     private Collider[] colliders;
 
-    private ArrayList<ArrayList<Zombie>> laneZombies;
-    private ArrayList<ArrayList<NormalPea>> lanePeas;
 
     private Timer redrawTimer;
     private Timer advancerTimer;
@@ -45,6 +44,7 @@ public class GamePanel extends JLayeredPane {
     private GameWindow.PlantType activePlantingBrush = GameWindow.PlantType.None;
 
     private int sunScore;
+    private Lane lanes;
 
 
     private GamePanel() {
@@ -55,8 +55,7 @@ public class GamePanel extends JLayeredPane {
         initializeLayout(sun);
         loadImages();
 
-        initializeLaneZombies();
-        initializeLanePeas();
+        lanes = lanes.getInstance();
         initializeCollider();
         setSunScore(150);  //pool avalie
 
@@ -92,7 +91,7 @@ public class GamePanel extends JLayeredPane {
 
 	private void addZombie(int lane, Zombie zombie) {
 		if(zombie!=null) {
-			laneZombies.get(lane).add(zombie);
+			lanes.getLaneZombies().get(lane).add(zombie);
 		}
 	}
 
@@ -119,23 +118,7 @@ public class GamePanel extends JLayeredPane {
         }
     }
 
-    private void initializeLanePeas() {
-        lanePeas = new ArrayList<>();
-        lanePeas.add(new ArrayList<>()); //line 1
-        lanePeas.add(new ArrayList<>()); //line 2
-        lanePeas.add(new ArrayList<>()); //line 3
-        lanePeas.add(new ArrayList<>()); //line 4
-        lanePeas.add(new ArrayList<>()); //line 5
-    }
 
-    private void initializeLaneZombies() {
-        laneZombies = new ArrayList<>();
-        laneZombies.add(new ArrayList<>()); //line 1
-        laneZombies.add(new ArrayList<>()); //line 2
-        laneZombies.add(new ArrayList<>()); //line 3
-        laneZombies.add(new ArrayList<>()); //line 4
-        laneZombies.add(new ArrayList<>()); //line 5
-    }
 
     private void initializeLayout(JLabel sunScoreboard) {
         setSize(1000, 752);
@@ -172,7 +155,7 @@ public class GamePanel extends JLayeredPane {
 	}
 
 	private void zombieAdvance(int laneIndex) {
-		for (Zombie z : laneZombies.get(laneIndex)) {
+		for (Zombie z : lanes.getLaneZombies().get(laneIndex)) {
 		    z.advance();
 		    if (z.getPosX() < 0) {
 		    	gameOver();
@@ -185,11 +168,11 @@ public class GamePanel extends JLayeredPane {
 	}
 
     private void peaAdvance(int laneIndex) {
-        for (int j = 0; j < lanePeas.get(laneIndex).size(); j++) {
-            NormalPea pea = lanePeas.get(laneIndex).get(j);
+        for (int j = 0; j < lanes.getLanePeas().get(laneIndex).size(); j++) {
+            NormalPea pea = lanes.getLanePeas().get(laneIndex).get(j);
             Rectangle peaRectangle = new Rectangle(pea.getXPosition(), 130 + pea.getMyLane() * 120, 28, 28);
-            for (int zombieIndex = 0; zombieIndex < gamePanel.getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
-                Zombie zombie = gamePanel.getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
+            for (int zombieIndex = 0; zombieIndex < lanes.getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
+                Zombie zombie = lanes.getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
                 Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + pea.getMyLane() * 120, 400, 120);
                 if (peaRectangle.intersects(zombieRectangle)) {
                     zombie.setHealth(zombie.getHealth() - 300);
@@ -197,7 +180,7 @@ public class GamePanel extends JLayeredPane {
                         zombie.slow();
                     boolean exit = false;
                     
-                    gamePanel.getLaneZombies().get(pea.getMyLane()).remove(pea);
+                    lanes.getLaneZombies().get(pea.getMyLane()).remove(pea);
                     if (exit) break;
                 }
             }
@@ -210,7 +193,7 @@ public class GamePanel extends JLayeredPane {
 
 	private void killZombie(int i, Zombie z) {
 		System.out.println("ZOMBIE DIED");
-		laneZombies.get(i).remove(z);
+		lanes.getLaneZombies().get(i).remove(z);
 		setProgress(10);
 	}
 
@@ -244,12 +227,12 @@ public class GamePanel extends JLayeredPane {
         }
 
         for (int i = 0; i < 5; i++) {
-            for (Zombie zombie : laneZombies.get(i)) {
+            for (Zombie zombie : lanes.getLaneZombies().get(i)) {
             	g.drawImage(Zombie.getImage(), zombie.getPosX(), 109 + (i * 120), null);
             }
 
-            for (int j = 0; j < lanePeas.get(i).size(); j++) {
-                NormalPea pea = lanePeas.get(i).get(j);
+            for (int j = 0; j < lanes.getLanePeas().get(i).size(); j++) {
+                NormalPea pea = lanes.getLanePeas().get(i).get(j);
                 g.drawImage(Pea.getImage(), pea.getXPosition(), 130 + (i * 120), null);
             }
 
@@ -319,21 +302,6 @@ public class GamePanel extends JLayeredPane {
         this.activePlantingBrush = activePlantingBrush;
     }
 
-    public ArrayList<ArrayList<Zombie>> getLaneZombies() {
-        return laneZombies;
-    }
-
-    public void setLaneZombies(ArrayList<ArrayList<Zombie>> laneZombies) {
-        this.laneZombies = laneZombies;
-    }
-
-    public ArrayList<ArrayList<NormalPea>> getLanePeas() {
-        return lanePeas;
-    }
-
-    public void setLanePeas(ArrayList<ArrayList<NormalPea>> lanePeas) {
-        this.lanePeas = lanePeas;
-    }
 
     public Collider[] getColliders() {
         return colliders;

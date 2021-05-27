@@ -26,11 +26,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
+    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Refactor Plant, PeaShooter, FreezePeashooter class&#10;&#10;make lane class singletone and apply lane class for each classes&#10; - getGP() -&gt; getLane()&#10; - Use Lane.getInstance()&#10; - This refactoring increases accecibility&#10; - This refactoring prevent leaking unused memory">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Peashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545395229844</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Refactor Plant, PeaShooter, FreezePeashooter class&#10;&#10;make lane class singletone and apply lane class for each classes&#10; - getGP() -&gt; getLane()&#10; - Use Lane.getInstance()&#10; - This refactoring increases accecibility&#10; - This refactoring prevent leaking unused memory">
+      <created>1622023902335</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622023902335</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,7 +440,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reformatted code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reformatted code" />
+    <MESSAGE value="Refactor Plant, PeaShooter, FreezePeashooter class&#10;&#10;make lane class singletone and apply lane class for each classes&#10; - getGP() -&gt; getLane()&#10; - Use Lane.getInstance()&#10; - This refactoring increases accecibility&#10; - This refactoring prevent leaking unused memory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Plant, PeaShooter, FreezePeashooter class&#10;&#10;make lane class singletone and apply lane class for each classes&#10; - getGP() -&gt; getLane()&#10; - Use Lane.getInstance()&#10; - This refactoring increases accecibility&#10; - This refactoring prevent leaking unused memory" />
   </component>
   <component name="WindowStateProjectService">
     <state x="804" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1622023277915">
@@ -462,14 +468,22 @@
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state width="877" height="257" key="GridCell.Tab.0.right/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state x="130" y="273" key="Vcs.Push.Dialog.v2" timestamp="1622023540675">
+    <state x="130" y="273" key="Vcs.Push.Dialog.v2" timestamp="1622024087908">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="130" y="273" key="Vcs.Push.Dialog.v2/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622023540675" />
+    <state x="130" y="273" key="Vcs.Push.Dialog.v2/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622024087908" />
+    <state x="353" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1622092941167">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="353" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622092941167" />
     <state x="992" y="0" width="935" height="1087" key="dock-window-1" timestamp="1622023066874">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="992" y="0" width="935" height="1087" key="dock-window-1/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622023066874" />
+    <state x="763" y="418" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1622092934463">
+      <screen x="78" y="0" width="1842" height="1080" />
+    </state>
+    <state x="763" y="418" key="git4idea.remote.GitConfigureRemotesDialog/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622092934463" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
