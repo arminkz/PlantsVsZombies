@@ -1,6 +1,7 @@
 package plant.model;
 
 import Game.view.GamePanel;
+import Lane.model.Lane;
 
 /**
  * Created by Armin on 6/25/2016.
@@ -13,15 +14,25 @@ public abstract class Plant {
     private int y;
 
     private GamePanel gp;
+    private Lane lane;
 
 
     public Plant(int x, int y) {
         this.x = x;
         this.y = y;
         gp = gp.getInstance();
+        lane = lane.getInstance();
     }
 
     public void stop() {
+    }
+
+    public Lane getLane() {
+        return lane;
+    }
+
+    public void setLane(Lane lane) {
+        this.lane = lane;
     }
 
     public int getHealth() {
