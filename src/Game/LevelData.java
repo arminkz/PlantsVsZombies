@@ -21,13 +21,13 @@ public class LevelData {
             File f = new File("LEVEL_CONTENT.vbhv");
 
             if (!f.exists()) {
-                BufferedWriter bwr = new BufferedWriter(new FileWriter(f));
-                bwr.write("1");
-                bwr.close();
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(f));
+                bufferedWriter.write("1");
+                bufferedWriter.close();
                 LEVEL_NUMBER = "1";
             } else {
-                BufferedReader br = new BufferedReader(new FileReader(f));
-                LEVEL_NUMBER = br.readLine();
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(f));
+                LEVEL_NUMBER = bufferedReader.readLine();
             }
         } catch (Exception ex) {
 
@@ -38,9 +38,9 @@ public class LevelData {
     public static void write(String lvl) {
         File f = new File("LEVEL_CONTENT.vbhv");
         try {
-            BufferedWriter bwr = new BufferedWriter(new FileWriter(f));
-            bwr.write(lvl);
-            bwr.close();
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(f));
+            bufferedWriter.write(lvl);
+            bufferedWriter.close();
             LEVEL_NUMBER = lvl;
         } catch (IOException ex) {
             Logger.getLogger(LevelData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

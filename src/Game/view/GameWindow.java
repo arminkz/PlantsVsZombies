@@ -12,16 +12,19 @@ import java.awt.event.ActionEvent;
  */
 public class GameWindow extends JFrame {
 
+  
   enum PlantType {
     None, Sunflower, Peashooter, FreezePeashooter
   }
 
-  private GamePanel gp;
-  static public GameWindow gw;
+  
+  private GamePanel gamePanel;
+  static public GameWindow gameWindow;
   private static SunProducer sunProducer;
-  public static MenuFrame mw;
+  private static MenuFrame menuFrame;
   PlantType activePlantingBrush = PlantType.None;
 
+  
   public GameWindow() {
     setSize(1012, 785);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -33,64 +36,41 @@ public class GameWindow extends JFrame {
   }
 
 
+  
   // Attach Card into Panel 재사용성을 높이기 위해 분리 Parameter : GamePanel , X-coordinate, Image_path
-  private void AttachCard(GamePanel gp, int xCoordinate, String imagePath, PlantType plantType) {
-    // gp = gp.getInstance();
-    // gp.setLocation(0, 0);
-    // getLayeredPane().add(gp, new Integer(0));
+  private void AttachCard(GamePanel gamepanel, int xCoordinate, String imagePath, PlantType plantType) {
     PlantCard newCard =
         new PlantCard(new ImageIcon(this.getClass().getResource(imagePath)).getImage());
     newCard.setLocation(xCoordinate, 8);
     newCard.setAction((ActionEvent e) -> {
-      gp.setActivePlantingBrush(plantType);
+      gamepanel.setActivePlantingBrush(plantType);
     });
     getLayeredPane().add(newCard, new Integer(3));
   }
 
+  
   private void initPlantCard() {
-    gp = GamePanel.getInstance();
-    gp.setLocation(0, 0);
-    getLayeredPane().add(gp, new Integer(0));
-    AttachCard(gp, 110, "../../images/cards/card_sunflower.png", PlantType.Sunflower);
-    AttachCard(gp, 175, "../../images/cards/card_peashooter.png", PlantType.Peashooter);
-    AttachCard(gp, 240, "../../images/cards/card_freezepeashooter.png", PlantType.FreezePeashooter);
+    gamePanel = GamePanel.getInstance();
+    gamePanel.setLocation(0, 0);
+    getLayeredPane().add(gamePanel, new Integer(0));
+    AttachCard(gamePanel, 110, "../../images/cards/card_sunflower.png", PlantType.Sunflower);
+    AttachCard(gamePanel, 175, "../../images/cards/card_peashooter.png", PlantType.Peashooter);
+    AttachCard(gamePanel, 240, "../../images/cards/card_freezepeashooter.png", PlantType.FreezePeashooter);
   }
 
 
+  
   public static void gameStart() {
-    mw.disposeMenuFrame();
-    gw = new GameWindow();
+    menuFrame.disposeMenuFrame();
+    gameWindow = new GameWindow();
     sunProducer.start();
   }
 
+  
   public static void main(String[] args) {
-    mw = new MenuFrame();
+    menuFrame = new MenuFrame();
   }
 
-}
-
-
-class MenuFrame extends JFrame {
-  boolean isTrue = true;
-
-
-  public MenuFrame() {
-    Menu menu = new Menu();
-    menu.setLocation(0, 0);
-    setSize(1012, 785);
-    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    getLayeredPane().add(menu, new Integer(0));
-    menu.repaint();
-    setResizable(false);
-    setVisible(true);
-  }
-
-  public void disposeMenuFrame() {
-    if (isTrue) {
-      this.dispose();
-    }
-    this.isTrue = false;
-  }
-
+  
 }
 
