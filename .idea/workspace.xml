@@ -26,65 +26,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Refactor GamePanel class&#10;&#10;use lane class &#10; - Use lanes.getLanePeas(), lanes.getLaneZombies()&#10; - Make Lane lanes variable private field &#10; - This refactoring prevent leaking unused memory and increase readability">
-      <change afterPath="$PROJECT_DIR$/src/plant/strategy/PlantProduceSunStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plant/strategy/PlantShootingStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ProduceSunBySunFlower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ShootFreezePea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ShootNormalPea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Collider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/ConeHeadZombie.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/FreezePea.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/FreezePeashooter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/Collider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/Collider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/LevelData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/LevelData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow$PlantType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow$PlantType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/GamePanel$PlantActionListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/GamePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/GameWindow$PlantType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/GameWindow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/LevelData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Menu$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Menu.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/NormalZombie.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/FreezePea.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/FreezePea.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/Pea.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/Pea.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Peashooter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Plant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/PlantButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/PlantCard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Sun.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Sunflower.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Zombie.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/FreezePeashooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plant/model/FreezePeashooter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Peashooter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Peashooter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Plant.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Plant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Sunflower.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Sunflower.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plantCard/model/PlantCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/plantCard/model/PlantCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/RandomSunProducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/RandomSunProducer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunFlowerSunProducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunFlowerSunProducer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunProducer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunProducer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/ConeHeadZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/ConeHeadZombie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/NormalZombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/NormalZombie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/Zombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/Zombie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Peashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Sunflower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Sunflower.java" afterDir="false" />
-    </list>
+    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Refactor GamePanel class&#10;&#10;use lane class &#10; - Use lanes.getLanePeas(), lanes.getLaneZombies()&#10; - Make Lane lanes variable private field &#10; - This refactoring prevent leaking unused memory and increase readability" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -513,26 +455,26 @@
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
     <state x="804" y="224" key="#com.intellij.ide.util.MemberChooser/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622117533037" />
-    <state x="170" y="92" width="1658" height="896" key="DiffContextDialog" timestamp="1622022068157">
+    <state x="170" y="92" width="1658" height="896" key="DiffContextDialog" timestamp="1622119378874">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="170" y="92" width="1658" height="896" key="DiffContextDialog/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022068157" />
-    <state width="875" height="134" key="GridCell.Tab.0.bottom" timestamp="1622117544062">
+    <state x="170" y="92" width="1658" height="896" key="DiffContextDialog/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622119378874" />
+    <state width="875" height="293" key="GridCell.Tab.0.bottom" timestamp="1622119124600">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="875" height="134" key="GridCell.Tab.0.bottom/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622117544062" />
-    <state width="875" height="134" key="GridCell.Tab.0.center" timestamp="1622117544062">
+    <state width="875" height="293" key="GridCell.Tab.0.bottom/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622119124600" />
+    <state width="875" height="293" key="GridCell.Tab.0.center" timestamp="1622119124600">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="875" height="134" key="GridCell.Tab.0.center/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622117544062" />
-    <state width="875" height="134" key="GridCell.Tab.0.left" timestamp="1622117544062">
+    <state width="875" height="293" key="GridCell.Tab.0.center/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622119124600" />
+    <state width="875" height="293" key="GridCell.Tab.0.left" timestamp="1622119124598">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="875" height="134" key="GridCell.Tab.0.left/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622117544062" />
-    <state width="875" height="134" key="GridCell.Tab.0.right" timestamp="1622117544062">
+    <state width="875" height="293" key="GridCell.Tab.0.left/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622119124598" />
+    <state width="875" height="293" key="GridCell.Tab.0.right" timestamp="1622119124600">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="875" height="134" key="GridCell.Tab.0.right/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622117544062" />
+    <state width="875" height="293" key="GridCell.Tab.0.right/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622119124600" />
     <state x="130" y="273" key="Vcs.Push.Dialog.v2" timestamp="1622111114971">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
