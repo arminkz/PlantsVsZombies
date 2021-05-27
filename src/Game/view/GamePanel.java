@@ -38,7 +38,7 @@ public class GamePanel extends JLayeredPane {
     private Collider[] colliders;
 
     private ArrayList<ArrayList<Zombie>> laneZombies;
-    private ArrayList<ArrayList<NormalPea>> lanePeas;
+    private ArrayList<ArrayList<Pea>> lanePeas;
 
     private Timer redrawTimer;
     private Timer advancerTimer;
@@ -190,13 +190,13 @@ public class GamePanel extends JLayeredPane {
 
     private void peaAdvance(int laneIndex) {
         for (int j = 0; j < lanePeas.get(laneIndex).size(); j++) {
-            NormalPea pea = lanePeas.get(laneIndex).get(j);
+            Pea pea = lanePeas.get(laneIndex).get(j);
             Rectangle peaRectangle = new Rectangle(pea.getXPosition(), 130 + pea.getMyLane() * 120, 28, 28);
             for (int zombieIndex = 0; zombieIndex < gamePanel.getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
                 Zombie zombie = gamePanel.getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
                 Rectangle zombieRectangle = new Rectangle(zombie.getXPosition(), 109 + pea.getMyLane() * 120, 400, 120);
                 if (peaRectangle.intersects(zombieRectangle)) {
-                    zombie.setHealth(zombie.getHealth() - 300);
+                    zombie.setHealth(zombie.getHealth() - pea.getPower());
                     if (pea instanceof FreezePea)
                         zombie.slow();
                     boolean exit = false;
@@ -250,7 +250,7 @@ public class GamePanel extends JLayeredPane {
             }
 
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
-                NormalPea pea = lanePeas.get(i).get(j);
+                Pea pea = lanePeas.get(i).get(j);
                 g.drawImage(Pea.getImage(), pea.getXPosition(), 130 + (i * 120), null);
             }
         }
@@ -327,11 +327,11 @@ public class GamePanel extends JLayeredPane {
         this.laneZombies = laneZombies;
     }
 
-    public ArrayList<ArrayList<NormalPea>> getLanePeas() {
+    public ArrayList<ArrayList<Pea>> getLanePeas() {
         return lanePeas;
     }
 
-    public void setLanePeas(ArrayList<ArrayList<NormalPea>> lanePeas) {
+    public void setLanePeas(ArrayList<ArrayList<Pea>> lanePeas) {
         this.lanePeas = lanePeas;
     }
 
