@@ -18,8 +18,6 @@ public class GameWindow extends JFrame {
 
   private GamePanel gp;
   static public GameWindow gw;
-  private static SunProducer sunProducer;
-  private static Timer sunProducerTimer;
   public static MenuFrame mw;
   PlantType activePlantingBrush = PlantType.None;
 
@@ -60,7 +58,6 @@ public class GameWindow extends JFrame {
   public static void gameStart() {
     mw.disposeMenuFrame();
     gw = new GameWindow();
-    sunProducerTimer.start();
   }
 
   public static void main(String[] args) {

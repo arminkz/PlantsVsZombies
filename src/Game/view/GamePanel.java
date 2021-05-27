@@ -35,8 +35,6 @@ public class GamePanel extends JLayeredPane {
     private Image peashooterImage;
     private Image freezePeashooterImage;
 
-    private Image normalZombieImage;
-    private Image coneHeadZombieImage;
     private Collider[] colliders;
 
     private ArrayList<ArrayList<Zombie>> laneZombies;
@@ -56,11 +54,7 @@ public class GamePanel extends JLayeredPane {
 
 
     private GamePanel() {
-        JLabel sun = new JLabel("SUN");
-        sun.setLocation(37, 80);
-        sun.setSize(60, 20);
-
-        initializeLayout(sun);
+        initializeLayout();
         loadImages();
 
         initializeLaneZombies();
@@ -68,22 +62,21 @@ public class GamePanel extends JLayeredPane {
         initializeCollider();
         setSunScore(150);  //pool avalie
 
-
         setRedrawTimer();
         setAdvancerTimer();
         setZombieProducerTimer();
         setSunProducerTimer();
     }
 
+    public static GamePanel getInstance(){
+        if(gamePanel == null) {gamePanel=new GamePanel();}
+        return gamePanel;
+    }
+
     private void setSunProducerTimer() {
         sunProducer = new RandomSunProducer();
         sunProducerTimer = new Timer(SUN_PRODUCE_DELAY,(ActionEvent e)->{sunProducer.createSunView();});
         sunProducerTimer.start();
-    }
-
-    public static GamePanel getInstance(){
-        if(gamePanel == null) {gamePanel=new GamePanel();}
-        return gamePanel;
     }
 
     private void setZombieProducerTimer() {
@@ -99,12 +92,6 @@ public class GamePanel extends JLayeredPane {
         zombieProducerTimer.start();
     }
 
-	private void addZombie(int lane, Zombie zombie) {
-		if(zombie!=null) {
-			laneZombies.get(lane).add(zombie);
-		}
-	}
-
     private void setAdvancerTimer() {
         advancerTimer = new Timer(ADVANCE_DELAY, (ActionEvent e) -> advance());
         advancerTimer.start();
@@ -116,6 +103,13 @@ public class GamePanel extends JLayeredPane {
         });
         redrawTimer.start();
     }
+
+
+    private void addZombie(int lane, Zombie zombie) {
+		if(zombie!=null) {
+			laneZombies.get(lane).add(zombie);
+		}
+	}
 
     private void initializeCollider() {
         colliders = new Collider[45];
@@ -146,11 +140,15 @@ public class GamePanel extends JLayeredPane {
         laneZombies.add(new ArrayList<>()); //line 5
     }
 
-    private void initializeLayout(JLabel sunScoreboard) {
+    private void initializeLayout() {
+        JLabel sun = new JLabel("SUN");
+        sun.setLocation(37, 80);
+        sun.setSize(60, 20);
+
         setSize(1000, 752);
         setLayout(null);
-        this.sunScoreboard = sunScoreboard;
-        add(sunScoreboard, new Integer(2));
+        this.sunScoreboard = sun;
+        add(this.sunScoreboard, new Integer(2));
     }
 
     private void loadImages() {
@@ -164,11 +162,8 @@ public class GamePanel extends JLayeredPane {
     private void advance() {
         for (int laneIndex = 0; laneIndex < 5; laneIndex++) {
             zombieAdvance(laneIndex);
-            
             peaAdvance(laneIndex);
-            
             colliderAdvance();
-
         }
     }
 
