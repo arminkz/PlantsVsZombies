@@ -2,6 +2,8 @@ package plant.model;
 
 import Game.view.GamePanel;
 import Lane.model.Lane;
+import plant.strategy.PlantShootingStrategy;
+
 
 import java.awt.*;
 
@@ -17,6 +19,8 @@ public abstract class Plant {
 
     private Lane lane;
 
+    private PlantShootingStrategy plantShootingStrategy;
+
 
     public Plant(int x, int y) {
         this.x = x;
@@ -27,6 +31,16 @@ public abstract class Plant {
     public abstract int getPrice();
 
     public abstract void draw(Graphics g);
+
+    public void shoot() {
+        plantShootingStrategy.shoot(x, y, lane);
+    }
+
+
+
+    public void setPlantShootingStrategy(PlantShootingStrategy plantShootingStrategy) {
+        this.plantShootingStrategy = plantShootingStrategy;
+    }
 
     public void stop() {
     }

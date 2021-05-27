@@ -1,6 +1,8 @@
 package plant.model;
 
+import Lane.model.Lane;
 import Pea.model.NormalPea;
+import plant.strategy.ShootNormalPea;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +14,9 @@ import java.awt.event.ActionEvent;
 public class Peashooter extends Plant {
 
     private static final int Peashooter_Price = 100;
-    public Timer shootTimer;
     public Image peashooterImage;
-
+    public Timer shootTimer;
+    private Lane lanes;
 
     /**
      * gamepanel에서 lane을 불러오는 것이 아닌,
@@ -23,13 +25,9 @@ public class Peashooter extends Plant {
     public Peashooter(int x, int y) {
         super(x, y);
         peashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
-        shootTimer = new Timer(2000, (ActionEvent e) -> {
-            //System.out.println("SHOOT");
-            if (getLane().getLaneZombies().get(y).size() > 0) {
-                getLane().getLanePeas().get(y).add(new NormalPea(y, 103 + this.getX() * 100));
-            }
-        });
-        shootTimer.start();
+        lanes = lanes.getInstance();
+        this.setPlantShootingStrategy(new ShootNormalPea());
+        shoot();
     }
 
     @Override
@@ -47,4 +45,8 @@ public class Peashooter extends Plant {
         shootTimer.stop();
     }
 
+    @Override
+    public void shoot() {
+        super.shoot();
+    }
 }

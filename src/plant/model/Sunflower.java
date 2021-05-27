@@ -1,15 +1,12 @@
 package plant.model;
 
-import sun.model.Sun;
-import sun.presenter.SunPresenter;
+import plant.strategy.ProduceSunBySunFlower;
 import sun.producer.SunFlowerSunProducer;
 import sun.producer.SunProducer;
-import sun.view.SunView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Random;
 
 /**
  * Created by Armin on 6/28/2016.
@@ -38,5 +35,4 @@ public class Sunflower extends Plant {
     public void draw(Graphics g) {
         g.drawImage(sunflowerImage,60+getX()*100, 129 + getY()*120,null);
     }
-
 }
