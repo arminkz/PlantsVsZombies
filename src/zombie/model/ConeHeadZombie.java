@@ -9,12 +9,10 @@ import Game.view.GamePanel;
  */
 public class ConeHeadZombie extends Zombie {
 
-    public ConeHeadZombie(GamePanel parent, int lane) {
+    public ConeHeadZombie(int lane) {
         super(lane);
+        setImage(new ImageIcon(this.getClass().getResource("../../images/zombies/zombie2.png")).getImage());
         setHealth(1800);
     }
-    
-    protected void setImage() {
-    	zombieImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie2.png")).getImage();
-    }
+
 }

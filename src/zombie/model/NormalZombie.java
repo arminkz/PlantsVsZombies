@@ -9,11 +9,9 @@ import Game.view.GamePanel;
  */
 public class NormalZombie extends Zombie {
 
-    public NormalZombie(GamePanel parent, int lane) {
+    public NormalZombie(int lane) {
         super(lane);
+        setImage(new ImageIcon(this.getClass().getResource("../../images/zombies/zombie1.png")).getImage());
     }
-    
-    protected void setImage() {
-    	zombieImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie1.png")).getImage();
-    }
+
 }

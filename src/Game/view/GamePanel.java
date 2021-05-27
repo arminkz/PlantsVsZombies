@@ -11,9 +11,8 @@ import plant.model.Plant;
 import plant.model.Sunflower;
 import sun.producer.RandomSunProducer;
 import sun.producer.SunProducer;
-import zombie.model.ConeHeadZombie;
-import zombie.model.NormalZombie;
 import zombie.model.Zombie;
+import zombie.producer.ZombieProducer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +44,7 @@ public class GamePanel extends JLayeredPane {
 
     private Timer redrawTimer;
     private Timer advancerTimer;
-    private Timer zombieProducer;
+    private Timer zombieProducerTimer;
     private Timer sunProducerTimer;
     private JLabel sunScoreboard;
 
@@ -53,6 +52,7 @@ public class GamePanel extends JLayeredPane {
 
     private int sunScore;
     private SunProducer sunProducer;
+    private ZombieProducer zombieProducer;
 
 
     private GamePanel() {
@@ -87,22 +87,16 @@ public class GamePanel extends JLayeredPane {
     }
 
     private void setZombieProducerTimer() {
-        zombieProducer = new Timer(ZOMBIE_PRODUCE_DELAY, (ActionEvent e) -> {
+        zombieProducerTimer = new Timer(ZOMBIE_PRODUCE_DELAY, (ActionEvent e) -> {
             Random rnd = new Random();
-            LevelData lvl = new LevelData();
-            String[] Level = lvl.LEVEL_CONTENT[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
-            int[][] LevelValue = lvl.LEVEL_VALUE[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
+            zombieProducer = new ZombieProducer();
+
             int lane = rnd.nextInt(5);
-            int t = rnd.nextInt(100);
-            Zombie zombie = null;
-            for (int i = 0; i < LevelValue.length; i++) {
-                if (t >= LevelValue[i][0] && t <= LevelValue[i][1]) {
-                    zombie = Zombie.getZombie(Level[i], GamePanel.this, lane);
-                }
-            }
+
+            Zombie zombie = zombieProducer.createNewZombie(lane);
             addZombie(lane, zombie);
         });
-        zombieProducer.start();
+        zombieProducerTimer.start();
     }
 
 	private void addZombie(int lane, Zombie zombie) {
@@ -189,7 +183,7 @@ public class GamePanel extends JLayeredPane {
 	private void zombieAdvance(int laneIndex) {
 		for (Zombie z : laneZombies.get(laneIndex)) {
 		    z.advance();
-		    if (z.getPosX() < 0) {
+		    if (z.getXPosition() < 0) {
 		    	gameOver();
 		    }
 		    if (!z.getAlive()) {
@@ -205,7 +199,7 @@ public class GamePanel extends JLayeredPane {
             Rectangle peaRectangle = new Rectangle(pea.getXPosition(), 130 + pea.getMyLane() * 120, 28, 28);
             for (int zombieIndex = 0; zombieIndex < gamePanel.getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
                 Zombie zombie = gamePanel.getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
-                Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + pea.getMyLane() * 120, 400, 120);
+                Rectangle zombieRectangle = new Rectangle(zombie.getXPosition(), 109 + pea.getMyLane() * 120, 400, 120);
                 if (peaRectangle.intersects(zombieRectangle)) {
                     zombie.setHealth(zombie.getHealth() - 300);
                     if (pea instanceof FreezePea)
@@ -257,7 +251,7 @@ public class GamePanel extends JLayeredPane {
 
         for (int i = 0; i < 5; i++) {
             for (Zombie zombie : laneZombies.get(i)) {
-            	g.drawImage(Zombie.getImage(), zombie.getPosX(), 109 + (i * 120), null);
+            	zombie.draw(g);
             }
 
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
