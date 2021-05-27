@@ -24,6 +24,8 @@ public abstract class Plant {
         lane = lane.getInstance();
     }
 
+    public abstract int getPrice();
+
     public void stop() {
     }
 

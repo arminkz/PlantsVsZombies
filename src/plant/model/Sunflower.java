@@ -15,6 +15,7 @@ import java.util.Random;
  */
 public class Sunflower extends Plant {
 
+    public static final int Sunflower_Price = 50;
     private SunProducer sunProducer;
     private Timer sunProducerTimer;
 
@@ -23,6 +24,11 @@ public class Sunflower extends Plant {
         sunProducer = new SunFlowerSunProducer(x,y);
         sunProducerTimer = new Timer(15000,(ActionEvent e)->{sunProducer.createSunView();});
         sunProducerTimer.start();
+    }
+
+    @Override
+    public int getPrice() {
+        return Sunflower_Price;
     }
 
 }

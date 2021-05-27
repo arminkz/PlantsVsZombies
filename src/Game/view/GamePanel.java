@@ -5,6 +5,7 @@ import Game.LevelData;
 import Pea.model.FreezePea;
 import Pea.model.NormalPea;
 import Pea.model.Pea;
+import plant.creator.PlantFactory;
 import plant.model.FreezePeashooter;
 import plant.model.Peashooter;
 import plant.model.Plant;
@@ -267,25 +268,8 @@ public class GamePanel extends JLayeredPane {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (activePlantingBrush == GameWindow.PlantType.Sunflower) {
-                if (getSunScore() >= 50) {
-                    colliders[x + y * 9].setPlant(new Sunflower( x, y));
-                    setSunScore(getSunScore() - 50);
-                }
-            }
-            if (activePlantingBrush == GameWindow.PlantType.Peashooter) {
-                if (getSunScore() >= 100) {
-                    colliders[x + y * 9].setPlant(new Peashooter( x, y));
-                    setSunScore(getSunScore() - 100);
-                }
-            }
-
-            if (activePlantingBrush == GameWindow.PlantType.FreezePeashooter) {
-                if (getSunScore() >= 175) {
-                    colliders[x + y * 9].setPlant(new FreezePeashooter( x, y));
-                    setSunScore(getSunScore() - 175);
-                }
-            }
+            Plant plant = PlantFactory.getInstance().getPlant(activePlantingBrush.toString(),x,y);
+            setSunScore(sunScore - plant.getPrice());
             activePlantingBrush = GameWindow.PlantType.None;
         }
     }

@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
  */
 public class Peashooter extends Plant {
 
+    public static final int Peashooter_Price = 100;
     public Timer shootTimer;
 
 
@@ -26,6 +27,11 @@ public class Peashooter extends Plant {
             }
         });
         shootTimer.start();
+    }
+
+    @Override
+    public int getPrice() {
+        return Peashooter_Price;
     }
 
     @Override
