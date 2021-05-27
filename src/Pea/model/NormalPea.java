@@ -27,6 +27,4 @@ public class NormalPea extends Pea {
     public void advance() {
         setXPosition(getXPosition() + 15);
     }
-
-
 }

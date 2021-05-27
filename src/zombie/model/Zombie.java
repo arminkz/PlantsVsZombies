@@ -2,37 +2,31 @@ package zombie.model;
 
 import Game.Collider;
 import Game.view.GamePanel;
-import Game.view.GameWindow;
 
-import java.awt.Image;
-
-import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Armin on 6/25/2016.
  */
 public abstract class Zombie {
 
-	protected int health = 1000;
-    protected int speed = 1;
+	private int health = 1000;
+    private int speed = 1;
     protected int attackPower = 10;
-    
-    private GamePanel gamePanel; 
-    protected static Image zombieImage;
 
-    private int slowInt = 0;    
-    private int posX = 1000;
+    private static Image zombieImage;
+    private int slowInt = 0;
+    private int XPosition = 1000;
+    private int YPosition;
     private int myLane;
     private boolean alive = true;	// isMoving -> Alive
 
-    public Zombie(GamePanel parent, int lane) {
-        this.gamePanel = parent;
+    public Zombie(int lane) {
         myLane = lane;
-        
-        setImage();
+        setYPosition(lane * 120 + 109);
     }
 
-    protected abstract void setImage();
+    protected void setImage(Image image){ zombieImage = image; }
     
     public static Image getImage() {
         return zombieImage;
@@ -40,29 +34,27 @@ public abstract class Zombie {
     
     public void advance() {
 
-        boolean isCollided = false;
-        Collider collidedPlant = getCollidedPlant(isCollided);
-        
-        if (!isCollided) {
+        Collider collidedPlant = getCollidedPlant();
+
+        if (collidedPlant == null) {
             move();
         } 
         else {
             attackPlant(collidedPlant);
         }
         
-        if (health <= 0 || posX < 0) { alive = false; }
+        if (getHealth() <= 0 || XPosition < 0) { alive = false; }
     }
-   
-    private Collider getCollidedPlant(boolean isCollided) {
+
+    private Collider getCollidedPlant() {
     	Collider collidedPlant = null;
-    	
+
         for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-            boolean isPlantExist = gamePanel.getColliders()[i].getPlant() != null;
-			boolean isInsideCollider = gamePanel.getColliders()[i].isInsideCollider(posX);
-			
+            boolean isPlantExist = GamePanel.getInstance().getColliders()[i].getPlant() != null;
+			boolean isInsideCollider = GamePanel.getInstance().getColliders()[i].isInsideCollider(XPosition);
+
 			if (isPlantExist && isInsideCollider) {
-                isCollided = true;
-                collidedPlant = gamePanel.getColliders()[i];
+                collidedPlant = GamePanel.getInstance().getColliders()[i];
             }
         }
     	return collidedPlant;
@@ -75,11 +67,11 @@ public abstract class Zombie {
 	private void move() {
 		if (slowInt > 0) {
 		    if (slowInt % 2 == 0) {
-		        posX--;
+		        XPosition--;
 		    }
 		    slowInt--;
 		} else {
-		    posX -= 1;
+		    XPosition -= 1;
 		}
 	}
 	
@@ -87,14 +79,18 @@ public abstract class Zombie {
         slowInt = 1000;
     }
 
-    public static Zombie getZombie(String type, GamePanel parent, int lane) {
+    public void draw(Graphics g){
+        g.drawImage(zombieImage,getXPosition(),getYPosition(),null);
+    }
+
+    public static Zombie getZombie(String type,  int lane) {
         //Zombie z = new Zombie(parent, lane);
         switch (type) {
             case "zombie.model.NormalZombie":
-            	Zombie normalZombie = new NormalZombie(parent, lane);
+            	Zombie normalZombie = new NormalZombie(lane);
             	return normalZombie;
             case "zombie.model.ConeHeadZombie":
-            	Zombie conHeadZombie = new ConeHeadZombie(parent, lane);
+            	Zombie conHeadZombie = new ConeHeadZombie( lane);
                 return conHeadZombie;
         }
         return null;
@@ -116,20 +112,12 @@ public abstract class Zombie {
         this.speed = speed;
     }
 
-    public GamePanel getGp() {
-        return gamePanel;
+    public int getXPosition() {
+        return XPosition;
     }
 
-    public void setGp(GamePanel gp) {
-        this.gamePanel = gp;
-    }
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
+    public void setXPosition(int XPosition) {
+        this.XPosition = XPosition;
     }
 
     public int getMyLane() {
@@ -154,5 +142,13 @@ public abstract class Zombie {
 
     public void setSlowInt(int slowInt) {
         this.slowInt = slowInt;
+    }
+
+    public int getYPosition() {
+        return YPosition;
+    }
+
+    public void setYPosition(int YPosition) {
+        this.YPosition = YPosition;
     }
 }
