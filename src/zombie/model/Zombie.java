@@ -50,7 +50,8 @@ public abstract class Zombie {
             attackPlant(collidedPlant);
         }
         
-        if (health <= 0 || posX < 0) { alive = false; }
+        boolean isAlive = health <= 0 || posX < 0;
+		if (isAlive) { alive = false; }
     }
    
     private Collider getCollidedPlant(boolean isCollided) {
