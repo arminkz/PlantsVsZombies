@@ -8,6 +8,8 @@ import plant.model.FreezePeashooter;
 import plant.model.Peashooter;
 import plant.model.Plant;
 import plant.model.Sunflower;
+import sun.producer.RandomSunProducer;
+import sun.producer.SunProducer;
 import zombie.model.ConeHeadZombie;
 import zombie.model.NormalZombie;
 import zombie.model.Zombie;
@@ -22,6 +24,10 @@ import java.util.Random;
 
 public class GamePanel extends JLayeredPane {
 
+    public static final int SUN_PRODUCE_DELAY = 5000;
+    public static final int ZOMBIE_PRODUCE_DELAY = 7000;
+    public static final int ADVANCE_DELAY = 60;
+    public static final int REDRAW_DELAY = 25;
     private static GamePanel gamePanel = null;
 
     private Image bgImage;
@@ -39,11 +45,13 @@ public class GamePanel extends JLayeredPane {
     private Timer redrawTimer;
     private Timer advancerTimer;
     private Timer zombieProducer;
+    private Timer sunProducerTimer;
     private JLabel sunScoreboard;
 
     private GameWindow.PlantType activePlantingBrush = GameWindow.PlantType.None;
 
     private int sunScore;
+    private SunProducer sunProducer;
 
 
     private GamePanel() {
@@ -63,6 +71,12 @@ public class GamePanel extends JLayeredPane {
         setRedrawTimer();
         setAdvancerTimer();
         setZombieProducerTimer();
+        setSunProducerTimer();
+    }
+
+    private void setSunProducerTimer() {
+        sunProducer = new RandomSunProducer();
+        sunProducerTimer = new Timer(SUN_PRODUCE_DELAY,(ActionEvent e)->{sunProducer.createSunView();});
     }
 
     public static GamePanel getInstance(){
@@ -71,7 +85,7 @@ public class GamePanel extends JLayeredPane {
     }
 
     private void setZombieProducerTimer() {
-        zombieProducer = new Timer(7000, (ActionEvent e) -> {
+        zombieProducer = new Timer(ZOMBIE_PRODUCE_DELAY, (ActionEvent e) -> {
             Random rnd = new Random();
             LevelData lvl = new LevelData();
             String[] Level = lvl.LEVEL_CONTENT[Integer.parseInt(lvl.LEVEL_NUMBER) - 1];
@@ -81,7 +95,7 @@ public class GamePanel extends JLayeredPane {
             Zombie z = null;
             for (int i = 0; i < LevelValue.length; i++) {
                 if (t >= LevelValue[i][0] && t <= LevelValue[i][1]) {
-                    z = Zombie.getZombie(Level[i], GamePanel.this, l);
+                    z = Zombie.getZombie(Level[i], l);
                 }
             }
             laneZombies.get(l).add(z);
@@ -90,12 +104,12 @@ public class GamePanel extends JLayeredPane {
     }
 
     private void setAdvancerTimer() {
-        advancerTimer = new Timer(60, (ActionEvent e) -> advance());
+        advancerTimer = new Timer(ADVANCE_DELAY, (ActionEvent e) -> advance());
         advancerTimer.start();
     }
 
     private void setRedrawTimer() {
-        redrawTimer = new Timer(25, (ActionEvent e) -> {
+        redrawTimer = new Timer(REDRAW_DELAY, (ActionEvent e) -> {
             repaint();
         });
         redrawTimer.start();
@@ -188,9 +202,6 @@ public class GamePanel extends JLayeredPane {
                     if (exit) break;
                 }
             }
-            /*if(posX > 2000){
-                gp.lanePeas.get(myLane).remove(this);
-            }*/
             pea.advance();
         }
     }
@@ -243,7 +254,6 @@ public class GamePanel extends JLayeredPane {
                 NormalPea pea = lanePeas.get(i).get(j);
                 g.drawImage(pea.getImage(), pea.getXPosition(), 130 + (i * 120), null);
             }
-
         }
     }
 

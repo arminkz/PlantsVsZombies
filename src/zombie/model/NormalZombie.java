@@ -8,7 +8,7 @@ import Game.view.GamePanel;
 public class NormalZombie extends Zombie {
 
     public NormalZombie(GamePanel parent, int lane) {
-        super(parent, lane);
+        super(lane);
     }
 
 }

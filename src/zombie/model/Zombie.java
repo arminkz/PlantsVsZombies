@@ -16,14 +16,11 @@ public class Zombie {
     private int slowInt = 0;
     private int attackPower = 10;
 
-    private GamePanel gamePanel; 
-
     private int posX = 1000;
     private int myLane;
     private boolean alive = true;	// isMoving -> Alive
 
-    public Zombie(GamePanel parent, int lane) {
-        this.gamePanel = parent;
+    public Zombie(int lane) {
         myLane = lane;
     }
 
@@ -32,9 +29,9 @@ public class Zombie {
         boolean isCollided = false;
         Collider collidedPlant = null;
         for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-            if (gamePanel.getColliders()[i].getPlant() != null && gamePanel.getColliders()[i].isInsideCollider(posX)) {
+            if (GamePanel.getInstance().getColliders()[i].getPlant() != null && GamePanel.getInstance().getColliders()[i].isInsideCollider(posX)) {
                 isCollided = true;
-                collidedPlant = gamePanel.getColliders()[i];
+                collidedPlant = GamePanel.getInstance().getColliders()[i];
             }
         }
         
@@ -69,14 +66,14 @@ public class Zombie {
         slowInt = 1000;
     }
 
-    public static Zombie getZombie(String type, GamePanel parent, int lane) {
-        Zombie z = new Zombie(parent, lane);
+    public static Zombie getZombie(String type, int lane) {
+        Zombie z = new Zombie(lane);
         switch (type) {
             case "zombie.model.NormalZombie":
-                z = new NormalZombie(parent, lane);
+                z = new NormalZombie(GamePanel.getInstance(), lane);
                 break;
             case "zombie.model.ConeHeadZombie":
-                z = new ConeHeadZombie(parent, lane);
+                z = new ConeHeadZombie(GamePanel.getInstance(), lane);
                 break;
         }
         return z;
@@ -96,14 +93,6 @@ public class Zombie {
 
     public void setSpeed(int speed) {
         this.speed = speed;
-    }
-
-    public GamePanel getGp() {
-        return gamePanel;
-    }
-
-    public void setGp(GamePanel gp) {
-        this.gamePanel = gp;
     }
 
     public int getPosX() {

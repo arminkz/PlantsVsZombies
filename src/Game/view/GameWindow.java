@@ -30,8 +30,6 @@ public class GameWindow extends JFrame {
     setResizable(false);
     setVisible(true);
     initPlantCard();
-    sunProducer = new RandomSunProducer();
-    sunProducerTimer = new Timer(5000, (ActionEvent e)->{sunProducer.createSunView();});
   }
 
 
