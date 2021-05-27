@@ -1,23 +1,23 @@
-package plant.model;
+package plant.strategy;
 
-import plant.strategy.ProduceSunBySunFlower;
 import sun.producer.SunFlowerSunProducer;
 import sun.producer.SunProducer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-/**
- * Created by Armin on 6/28/2016.
- */
-public class Sunflower extends Plant {
+
+public class ProduceSunBySunFlower {
     private SunProducer sunProducer;
     private Timer sunProducerTimer;
 
-    public Sunflower(int x, int y) {
-        super(x, y);
+    private void ProduceSunBySunFlower(int x, int y) {
         sunProducer = new SunFlowerSunProducer(x,y);
         sunProducerTimer = new Timer(15000,(ActionEvent e)->{sunProducer.createSunView();});
         sunProducerTimer.start();
+    }
+
+    public void produceSun(int x, int y) {
+        ProduceSunBySunFlower(x,y);
     }
 }
