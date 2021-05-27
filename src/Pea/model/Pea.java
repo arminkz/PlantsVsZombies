@@ -6,7 +6,7 @@ import zombie.model.Zombie;
 
 import java.awt.*;
 
-public abstract class Pea {
+public abstract class Pea implements PeaStrategy {
     private int xPosition;
     private int myLane;
     protected static Image peaImage;
@@ -17,11 +17,15 @@ public abstract class Pea {
         setImage();
     }
 
+    public abstract int getPower();
+
     protected abstract void setImage();
 
     public static Image getImage() {
         return peaImage;
     }
+
+    public abstract void advance();
 
     public int getXPosition() {
         return xPosition;
