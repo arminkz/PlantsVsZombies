@@ -114,11 +114,11 @@ public class GamePanel extends JLayeredPane {
     private void initializeCollider() {
         colliders = new Collider[45];
         for (int i = 0; i < 45; i++) {
-            Collider a = new Collider();
-            a.setLocation(44 + (i % 9) * 100, 109 + (i / 9) * 120);
-            a.setAction(new PlantActionListener((i % 9), (i / 9)));
-            colliders[i] = a;
-            add(a, new Integer(0));
+            Collider collider = new Collider();
+            collider.setLocation(44 + (i % 9) * 100, 109 + (i / 9) * 120);
+            collider.setAction(new PlantActionListener((i % 9), (i / 9)));
+            colliders[i] = collider;
+            add(collider, new Integer(0));
         }
     }
 
