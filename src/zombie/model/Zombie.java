@@ -36,7 +36,9 @@ public abstract class Zombie {
 
         Collider collidedPlant = getCollidedPlant();
 
-        if (collidedPlant == null) {
+        boolean isCollided = collidedPlant != null;
+        
+		if (!isCollided) {
             move();
         } 
         else {
