@@ -5,6 +5,7 @@ import Pea.model.NormalPea;
 import plant.strategy.ShootNormalPea;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
@@ -12,7 +13,9 @@ import java.awt.event.ActionEvent;
  */
 public class Peashooter extends Plant {
 
-    private Timer shootTimer;
+    private static final int Peashooter_Price = 100;
+    public Image peashooterImage;
+    public Timer shootTimer;
     private Lane lanes;
 
     /**
@@ -21,9 +24,20 @@ public class Peashooter extends Plant {
      */
     public Peashooter(int x, int y) {
         super(x, y);
+        peashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
         lanes = lanes.getInstance();
         this.setPlantShootingStrategy(new ShootNormalPea());
         shoot();
+    }
+
+    @Override
+    public int getPrice() {
+        return Peashooter_Price;
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        g.drawImage(peashooterImage, 60 + getX() * 100,129 + 120 * getY(),null);
     }
 
     @Override

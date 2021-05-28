@@ -26,7 +26,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Git Ignore Update">
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/PlantProduceSunStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/PlantShootingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ProduceSunBySunFlower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ShootFreezePea.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ShootNormalPea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/Collider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/LevelData.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow$PlantType.class" beforeDir="false" />
@@ -38,10 +46,29 @@
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/FreezePea.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/NormalPea.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/Pea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/PeaStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_cherrybomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_freezepeashooter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_peashooter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_sunflower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_wallnut.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/freezepea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/mainBG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/menu.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/pea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/freezepeashooter.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/peashooter.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/sunflower.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/sun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/zombies/zombie1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/zombies/zombie2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/creator/PlantFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/creator/PlantFactory.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/FreezePeashooter.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Peashooter.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Plant.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Sunflower.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plantCard/model/PlantCard.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/RandomSunProducer.class" beforeDir="false" />
@@ -52,9 +79,11 @@
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/ConeHeadZombie.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/NormalZombie.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/Zombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/producer/ZombieProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/model/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Peashooter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plant/model/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Plant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plant/model/Sunflower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Sunflower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/strategy/ProduceSunBySunFlower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/strategy/ProduceSunBySunFlower.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +117,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545396204491" />
+    <property name="last_opened_file_path" value="$USER_HOME$/eclipse-workspace/PlantsVsZombies" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -153,6 +183,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="FlashRunConfigurationType">
       <option name="BCName" value="" />
       <option name="IOSSimulatorSdkPath" value="" />
@@ -207,6 +248,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="grailsApplicationRoot" value="" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -256,6 +308,27 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method v="2" />
+    </configuration>
     <configuration name="GameWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Game.view.GameWindow" />
       <module name="jPvZ" />
@@ -268,28 +341,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="grailsApplicationRoot" value="" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
@@ -349,27 +400,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
@@ -455,31 +485,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reformatted code" />
     <option name="LAST_COMMIT_MESSAGE" value="Reformatted code" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="804" y="245" key="#com.intellij.ide.util.MemberChooser" timestamp="1622122442136">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="804" y="245" key="#com.intellij.ide.util.MemberChooser/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122442136" />
-    <state x="729" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622121942115">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="729" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622121942115" />
-    <state width="875" height="293" key="GridCell.Tab.0.bottom" timestamp="1622122315963">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state width="875" height="293" key="GridCell.Tab.0.bottom/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122315963" />
-    <state width="875" height="293" key="GridCell.Tab.0.center" timestamp="1622122315963">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state width="875" height="293" key="GridCell.Tab.0.center/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122315963" />
-    <state width="875" height="293" key="GridCell.Tab.0.left" timestamp="1622122315963">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state width="875" height="293" key="GridCell.Tab.0.left/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122315963" />
-    <state width="875" height="293" key="GridCell.Tab.0.right" timestamp="1622122315963">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state width="875" height="293" key="GridCell.Tab.0.right/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122315963" />
   </component>
 </project>

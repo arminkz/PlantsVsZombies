@@ -1,5 +1,6 @@
 package sun.presenter;
 
+import Game.view.GamePanel;
 import sun.model.Sun;
 import sun.view.SunView;
 
@@ -7,9 +8,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class SunPresenter {
-    Timer moveTimer;
-    SunView sunView;
-    Sun sun;
+    private Timer moveTimer;
+    private SunView sunView;
+    private Sun sun;
 
     public SunPresenter(SunView sunView, Sun sun){
         this.sunView = sunView;
@@ -30,6 +31,9 @@ public class SunPresenter {
     public void move() {
         sun.move();
         setSunViewLocation();
+        if(sun.getDestructTime() <= 0){
+            sunView.remove();
+        }
     }
 
     public void setSunViewLocation() {
