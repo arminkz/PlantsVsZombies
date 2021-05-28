@@ -1,10 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:plantRefactoring" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
-      <change afterPath="$PROJECT_DIR$/src/Pea/model/PeaStrategy.java" afterDir="false" />
+    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Git Ignore Update">
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/PlantProduceSunStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/PlantShootingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ProduceSunBySunFlower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ShootFreezePea.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plant/strategy/ShootNormalPea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/view/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/view/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/Collider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/LevelData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow$PlantType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/MenuFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Lane/model/Lane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/FreezePea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/NormalPea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/Pea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/PeaStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_cherrybomb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_freezepeashooter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_peashooter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_sunflower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/cards/card_wallnut.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/freezepea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/mainBG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/menu.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/pea.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/freezepeashooter.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/peashooter.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/plants/sunflower.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/sun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/zombies/zombie1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/images/zombies/zombie2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/creator/PlantFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/creator/PlantFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/FreezePeashooter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Peashooter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Plant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Sunflower.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plantCard/model/PlantCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/RandomSunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunFlowerSunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/ConeHeadZombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/NormalZombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/Zombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/producer/ZombieProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/model/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Peashooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/model/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/model/Sunflower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Sunflower.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,75 +93,19 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="jPvZ" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/FreezePeaShooter.java" />
-        <option value="$PROJECT_DIR$/src/NormalZombie.java" />
-        <option value="$PROJECT_DIR$/src/Collider.java" />
-        <option value="$PROJECT_DIR$/src/GameWindow.java" />
-        <option value="$PROJECT_DIR$/src/LevelData.java" />
-        <option value="$PROJECT_DIR$/src/Menu.java" />
-        <option value="$PROJECT_DIR$/src/PlantCard.java" />
-        <option value="$PROJECT_DIR$/src/Sun.java" />
-        <option value="$PROJECT_DIR$/src/Plant.java" />
-        <option value="$PROJECT_DIR$/src/Sunflower.java" />
-        <option value="$PROJECT_DIR$/src/Zombie.java" />
-        <option value="$PROJECT_DIR$/src/GamePanel.java" />
-        <option value="$PROJECT_DIR$/src/FreezePeashooter.java" />
-        <option value="$PROJECT_DIR$/src/Peashooter.java" />
-        <option value="$PROJECT_DIR$/src/Pea.java" />
-        <option value="$PROJECT_DIR$/src/FreezePea.java" />
-        <option value="$PROJECT_DIR$/src/ConeHeadZombie.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
-    <option name="width" value="2560" />
-    <option name="height" value="1365" />
-  </component>
   <component name="ProjectId" id="1sn0BwWTtwzuLWIbiYXcFKSinEj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="PlantsVsZombies" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PlantsVsZombies" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PlantsVsZombies" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PlantsVsZombies" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -94,6 +117,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545396204491" />
+    <property name="last_opened_file_path" value="$USER_HOME$/eclipse-workspace/PlantsVsZombies" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -159,15 +183,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -329,6 +351,34 @@
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -385,6 +435,7 @@
       <workItem from="1621934604164" duration="111000" />
       <workItem from="1621934719641" duration="804000" />
       <workItem from="1622108743782" duration="279000" />
+      <workItem from="1622122331617" duration="1213000" />
     </task>
     <task id="LOCAL-00001" summary="Reformatted code">
       <created>1545395229844</created>
@@ -396,45 +447,6 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39088000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2560" height="1365" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Image Layers" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18705322" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Palette&#9;" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3299293" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32600158" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39852008" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3283582" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="PsiViewer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Designer" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
@@ -443,7 +455,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="plantRefactoring" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

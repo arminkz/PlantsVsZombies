@@ -2,6 +2,10 @@ package plant.model;
 
 import Game.view.GamePanel;
 import Lane.model.Lane;
+import plant.strategy.PlantShootingStrategy;
+
+
+import java.awt.*;
 
 /**
  * Created by Armin on 6/25/2016.
@@ -13,15 +17,29 @@ public abstract class Plant {
     private int x;
     private int y;
 
-    private GamePanel gp;
     private Lane lane;
+
+    private PlantShootingStrategy plantShootingStrategy;
 
 
     public Plant(int x, int y) {
         this.x = x;
         this.y = y;
-        gp = gp.getInstance();
         lane = lane.getInstance();
+    }
+
+    public abstract int getPrice();
+
+    public abstract void draw(Graphics g);
+
+    public void shoot() {
+        plantShootingStrategy.shoot(x, y, lane);
+    }
+
+
+
+    public void setPlantShootingStrategy(PlantShootingStrategy plantShootingStrategy) {
+        this.plantShootingStrategy = plantShootingStrategy;
     }
 
     public void stop() {
@@ -57,13 +75,5 @@ public abstract class Plant {
 
     public void setY(int y) {
         this.y = y;
-    }
-
-    public GamePanel getGp() {
-        return gp;
-    }
-
-    public void setGp(GamePanel gp) {
-        this.gp = gp;
     }
 }

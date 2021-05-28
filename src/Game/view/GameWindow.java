@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
  */
 public class GameWindow extends JFrame {
 
-  enum PlantType {
+  public enum PlantType {
     None, Sunflower, Peashooter, FreezePeashooter
   }
 
