@@ -64,9 +64,7 @@ public abstract class Zombie {
     	return collidedPlant;
     }
 
-	private void attackPlant(Collider collidedPlant) {
-		collidedPlant.getPlant().setHealth(collidedPlant.getPlant().getHealth() - attackPower);
-	}
+	protected abstract void attackPlant(Collider collidedPlant);
 
 	private void move() {
 		if (slowInt > 0) {
