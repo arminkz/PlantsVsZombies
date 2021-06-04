@@ -159,7 +159,7 @@ public class GamePanel extends JLayeredPane {
         sunflowerImage = new ImageIcon(this.getClass().getResource("../../images/plants/sunflower.gif")).getImage();
     }
 
-    private void advance() {
+    public void advance() {
         for (int laneIndex = 0; laneIndex < 5; laneIndex++) {
             zombieAdvance(laneIndex);
             peaAdvance(laneIndex);
