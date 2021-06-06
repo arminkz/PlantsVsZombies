@@ -7,7 +7,7 @@ import Game.view.GamePanel;
 /**
  * Created by Armin on 6/25/2016.
  */
-public class NormalZombie extends Zombie {
+public class NormalZombie extends MeleeZombie {
 
     public NormalZombie(int lane) {
         super(lane);
