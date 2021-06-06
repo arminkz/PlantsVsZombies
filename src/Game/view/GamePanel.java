@@ -153,7 +153,7 @@ public class GamePanel extends JLayeredPane {
         bgImage = new ImageIcon(this.getClass().getResource("../../images/mainBG.png")).getImage();
     }
 
-    private void advance() {
+    public void advance() {
         for (int laneIndex = 0; laneIndex < 5; laneIndex++) {
             zombieAdvance(laneIndex);
             peaAdvance(laneIndex);
