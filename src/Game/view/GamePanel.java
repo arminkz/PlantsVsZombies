@@ -5,6 +5,7 @@ import Game.LevelData;
 import Pea.model.FreezePea;
 import Pea.model.NormalPea;
 import Pea.model.Pea;
+import plant.creator.PlantFactory;
 import plant.model.FreezePeashooter;
 import plant.model.Peashooter;
 import plant.model.Plant;
@@ -148,7 +149,7 @@ public class GamePanel extends JLayeredPane {
         backgroundImage = new ImageIcon(this.getClass().getResource("../../images/mainBG.png")).getImage();
     }
 
-    private void advance() {
+    public void advance() {
         for (int laneIndex = 0; laneIndex < 5; laneIndex++) {
             zombieAdvance(laneIndex);
             peaAdvance(laneIndex);
@@ -215,13 +216,12 @@ public class GamePanel extends JLayeredPane {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(backgroundImage, 0, 0, null);
-
         //Draw Plants
         for (int i = 0; i < 45; i++) {
-            Collider c = colliders[i];
-            if (c.getPlant() != null) {
-                Plant p = c.getPlant();
-                g.drawImage(p.getImage(), 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
+            Collider collider = colliders[i];
+            Plant plant = collider.getPlant();
+            if (plant != null) {
+               plant.draw(g);
             }
         }
 
@@ -248,24 +248,10 @@ public class GamePanel extends JLayeredPane {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (activePlantingBrush == GameWindow.PlantType.Sunflower) {
-                if (getSunScore() >= 50) {
-                    colliders[x + y * 9].setPlant(new Sunflower( x, y));
-                    setSunScore(getSunScore() - 50);
-                }
-            }
-            if (activePlantingBrush == GameWindow.PlantType.Peashooter) {
-                if (getSunScore() >= 100) {
-                    colliders[x + y * 9].setPlant(new Peashooter( x, y));
-                    setSunScore(getSunScore() - 100);
-                }
-            }
-
-            if (activePlantingBrush == GameWindow.PlantType.FreezePeashooter) {
-                if (getSunScore() >= 175) {
-                    colliders[x + y * 9].setPlant(new FreezePeashooter( x, y));
-                    setSunScore(getSunScore() - 175);
-                }
+            Plant plant = PlantFactory.getInstance().getPlant(activePlantingBrush,x,y);
+            if(plant.getPrice() <= getSunScore()) {
+                colliders[x + y * 9].setPlant(plant);
+                setSunScore(sunScore - plant.getPrice());
             }
             activePlantingBrush = GameWindow.PlantType.None;
         }

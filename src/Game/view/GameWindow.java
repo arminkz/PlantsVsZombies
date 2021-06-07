@@ -11,11 +11,10 @@ import java.awt.event.ActionEvent;
  * Created by Armin on 6/25/2016.
  */
 public class GameWindow extends JFrame {
-
-  
-  enum PlantType {
+  public enum PlantType {
     None, Sunflower, Peashooter, FreezePeashooter
   }
+  
   private GamePanel gamePanel;
   static public GameWindow gameWindow;
   private static SunProducer sunProducer;

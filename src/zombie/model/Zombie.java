@@ -36,14 +36,18 @@ public abstract class Zombie {
 
         Collider collidedPlant = getCollidedPlant();
 
-        if (collidedPlant == null) {
+        boolean isCollided = collidedPlant != null;
+        
+		if (!isCollided) {
             move();
         } 
         else {
             attackPlant(collidedPlant);
         }
         
-        if (getHealth() <= 0 || XPosition < 0) { alive = false; }
+        boolean isAlive = health <= 0 || XPosition < 0;
+		if (isAlive) { alive = false; }
+
     }
 
     private Collider getCollidedPlant() {
@@ -60,9 +64,7 @@ public abstract class Zombie {
     	return collidedPlant;
     }
 
-	private void attackPlant(Collider collidedPlant) {
-		collidedPlant.getPlant().setHealth(collidedPlant.getPlant().getHealth() - attackPower);
-	}
+	protected abstract void attackPlant(Collider collidedPlant);
 
 	private void move() {
 		if (slowInt > 0) {
