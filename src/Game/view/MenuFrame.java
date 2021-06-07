@@ -5,8 +5,6 @@ import javax.swing.WindowConstants;
 
 class MenuFrame extends JFrame {
   boolean isMenuFrame = true;
-
-
   public MenuFrame() {
     Menu menu = new Menu();
     menu.setLocation(0, 0);
