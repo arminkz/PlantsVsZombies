@@ -1,7 +1,10 @@
 package plant.model;
 
+import java.awt.Image;
 import Game.view.GamePanel;
 import Lane.model.Lane;
+import plant.strategy.PlantShootingStrategy;
+
 
 /**
  * Created by Armin on 6/25/2016.
@@ -15,6 +18,8 @@ public abstract class Plant {
 
     private GamePanel gp;
     private Lane lane;
+    private PlantShootingStrategy plantShootingStrategy;
+    protected Image plantImage;
 
 
     public Plant(int x, int y) {
@@ -22,7 +27,24 @@ public abstract class Plant {
         this.y = y;
         gp = gp.getInstance();
         lane = lane.getInstance();
+        setImage();
     }
+
+    protected abstract void setImage();
+    
+    public void shoot() {
+        plantShootingStrategy.shoot(x, y, lane);
+    }
+
+    public Image getImage() {
+      return plantImage;
+    }
+
+
+    public void setPlantShootingStrategy(PlantShootingStrategy plantShootingStrategy) {
+        this.plantShootingStrategy = plantShootingStrategy;
+    }
+
 
     public void stop() {
     }
@@ -66,4 +88,5 @@ public abstract class Plant {
     public void setGp(GamePanel gp) {
         this.gp = gp;
     }
+
 }

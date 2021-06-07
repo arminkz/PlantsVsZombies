@@ -1,8 +1,11 @@
 package plant.model;
 
+import Lane.model.Lane;
 import Pea.model.NormalPea;
+import plant.strategy.ShootNormalPea;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
@@ -10,27 +13,34 @@ import java.awt.event.ActionEvent;
  */
 public class Peashooter extends Plant {
 
-    public Timer shootTimer;
+    private Timer shootTimer;
+    private Lane lanes;
+    
 
-
+    @Override
+    protected void setImage() {
+      plantImage = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
+    }
+    
     /**
-     * gamepanel에서 lane을 불러오는 것이 아닌,
-     * lane class에서 싱글톤으로 getInstance를 한다.
+     * gamepanel�뿉�꽌 lane�쓣 遺덈윭�삤�뒗 寃껋씠 �븘�땶,
+     * lane class�뿉�꽌 �떛湲��넠�쑝濡� getInstance瑜� �븳�떎.
      */
     public Peashooter(int x, int y) {
         super(x, y);
-        shootTimer = new Timer(2000, (ActionEvent e) -> {
-            //System.out.println("SHOOT");
-            if (getLane().getLaneZombies().get(y).size() > 0) {
-                getLane().getLanePeas().get(y).add(new NormalPea(y, 103 + this.getX() * 100));
-            }
-        });
-        shootTimer.start();
+        lanes = lanes.getInstance();
+        this.setPlantShootingStrategy(new ShootNormalPea());
+        shoot();
     }
+    
 
     @Override
     public void stop() {
         shootTimer.stop();
     }
 
+    @Override
+    public void shoot() {
+        super.shoot();
+    }
 }

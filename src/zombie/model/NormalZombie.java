@@ -1,5 +1,7 @@
 package zombie.model;
 
+import javax.swing.ImageIcon;
+
 import Game.view.GamePanel;
 
 /**
@@ -7,8 +9,9 @@ import Game.view.GamePanel;
  */
 public class NormalZombie extends Zombie {
 
-    public NormalZombie(GamePanel parent, int lane) {
-        super(parent, lane);
+    public NormalZombie(int lane) {
+        super(lane);
+        setImage(new ImageIcon(this.getClass().getResource("../../images/zombies/zombie1.png")).getImage());
     }
 
 }

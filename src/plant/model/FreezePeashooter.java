@@ -1,32 +1,41 @@
 package plant.model;
 
+import Lane.model.Lane;
 import Pea.model.FreezePea;
+import plant.strategy.ShootFreezePea;
+import plant.strategy.ShootNormalPea;
 
 import javax.swing.*;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 
 /**
  * Created by Armin on 6/25/2016.
  */
 public class FreezePeashooter extends Plant {
-
     private Timer shootTimer;
+    private Lane lanes;
 
+    @Override
+    public void setImage() {
+      plantImage = new ImageIcon(this.getClass().getResource("../../images/plants/freezepeashooter.gif")).getImage();
+    }
 
     public FreezePeashooter(int x, int y) {
         super(x, y);
-        shootTimer = new Timer(2000, (ActionEvent e) -> {
-            //System.out.println("SHOOT");
-            if (getLane().getLaneZombies().get(y).size() > 0) {
-                getLane().getLanePeas().get(y).add(new FreezePea(y, 103 + this.getX() * 100));
-            }
-        });
-        shootTimer.start();
+        lanes = lanes.getInstance();
+        this.setPlantShootingStrategy(new ShootFreezePea());
+        shoot();
     }
 
     @Override
     public void stop() {
         shootTimer.stop();
+    }
+
+    @Override
+    public void shoot() {
+        super.shoot();
     }
 
 }

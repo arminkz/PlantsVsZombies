@@ -19,18 +19,42 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:plantRefactoring" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
+    <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Git Ignore Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/FreezePeashooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plant/model/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Peashooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel$PlantActionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GamePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow$PlantType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/GameWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Game/view/MenuFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Lane/model/Lane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/FreezePea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/NormalPea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/Pea/model/Pea.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/FreezePeashooter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Peashooter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Plant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/plant/model/Sunflower.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/model/Sun.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/presenter/SunPresenter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/RandomSunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunFlowerSunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/producer/SunProducer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/sun/view/SunView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/ConeHeadZombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/NormalZombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/jPvZ/zombie/model/Zombie.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plant/model/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/model/Sunflower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/model/Sunflower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plant/strategy/ProduceSunBySunFlower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plant/strategy/ProduceSunBySunFlower.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,18 +67,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="gamepanelRefactoring" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1sn0BwWTtwzuLWIbiYXcFKSinEj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -73,9 +92,9 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="PsiViewer.ProjectComponent">
     <option name="HIGHLIGHT" value="false" />
@@ -250,15 +269,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -387,6 +404,8 @@
       <workItem from="1621599731932" duration="3345000" />
       <workItem from="1621934604164" duration="111000" />
       <workItem from="1621934719641" duration="804000" />
+      <workItem from="1622108743782" duration="279000" />
+      <workItem from="1622122331617" duration="1213000" />
     </task>
     <task id="LOCAL-00001" summary="Reformatted code">
       <created>1545395229844</created>
@@ -412,7 +431,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="plantRefactoring" />
                       </list>
                     </value>
                   </entry>
@@ -438,41 +457,29 @@
     <option name="LAST_COMMIT_MESSAGE" value="Reformatted code" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="804" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1622023277915">
+    <state x="804" y="245" key="#com.intellij.ide.util.MemberChooser" timestamp="1622122442136">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="804" y="224" key="#com.intellij.ide.util.MemberChooser/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622023277915" />
-    <state x="170" y="92" width="1658" height="896" key="DiffContextDialog" timestamp="1622022068157">
+    <state x="804" y="245" key="#com.intellij.ide.util.MemberChooser/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122442136" />
+    <state x="729" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622121942115">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state x="170" y="92" width="1658" height="896" key="DiffContextDialog/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022068157" />
-    <state width="877" height="257" key="GridCell.Tab.0.bottom" timestamp="1622022966349">
+    <state x="729" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622121942115" />
+    <state width="875" height="293" key="GridCell.Tab.0.bottom" timestamp="1622122315963">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="877" height="257" key="GridCell.Tab.0.bottom/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state width="877" height="257" key="GridCell.Tab.0.center" timestamp="1622022966349">
+    <state width="875" height="293" key="GridCell.Tab.0.bottom/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122315963" />
+    <state width="875" height="293" key="GridCell.Tab.0.center" timestamp="1622122315963">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="877" height="257" key="GridCell.Tab.0.center/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state width="877" height="257" key="GridCell.Tab.0.left" timestamp="1622022966349">
+    <state width="875" height="293" key="GridCell.Tab.0.center/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122315963" />
+    <state width="875" height="293" key="GridCell.Tab.0.left" timestamp="1622122315963">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="877" height="257" key="GridCell.Tab.0.left/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state width="877" height="257" key="GridCell.Tab.0.right" timestamp="1622022966349">
+    <state width="875" height="293" key="GridCell.Tab.0.left/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122315963" />
+    <state width="875" height="293" key="GridCell.Tab.0.right" timestamp="1622122315963">
       <screen x="78" y="0" width="1842" height="1080" />
     </state>
-    <state width="877" height="257" key="GridCell.Tab.0.right/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622022966349" />
-    <state x="130" y="273" key="Vcs.Push.Dialog.v2" timestamp="1622023540675">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="130" y="273" key="Vcs.Push.Dialog.v2/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622023540675" />
-    <state x="992" y="0" width="935" height="1087" key="dock-window-1" timestamp="1622023066874">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="992" y="0" width="935" height="1087" key="dock-window-1/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622023066874" />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+    <state width="875" height="293" key="GridCell.Tab.0.right/-1858.0.1474.864/78.0.1842.1080@78.0.1842.1080" timestamp="1622122315963" />
   </component>
 </project>

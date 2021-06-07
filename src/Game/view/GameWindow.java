@@ -16,8 +16,6 @@ public class GameWindow extends JFrame {
   enum PlantType {
     None, Sunflower, Peashooter, FreezePeashooter
   }
-
-  
   private GamePanel gamePanel;
   static public GameWindow gameWindow;
   private static SunProducer sunProducer;
@@ -32,13 +30,11 @@ public class GameWindow extends JFrame {
     setResizable(false);
     setVisible(true);
     initPlantCard();
-    sunProducer = new RandomSunProducer(5000);
   }
 
 
-  
-  // Attach Card into Panel 재사용성을 높이기 위해 분리 Parameter : GamePanel , X-coordinate, Image_path
   private void AttachCard(GamePanel gamepanel, int xCoordinate, String imagePath, PlantType plantType) {
+
     PlantCard newCard =
         new PlantCard(new ImageIcon(this.getClass().getResource(imagePath)).getImage());
     newCard.setLocation(xCoordinate, 8);
@@ -63,8 +59,8 @@ public class GameWindow extends JFrame {
   public static void gameStart() {
     menuFrame.disposeMenuFrame();
     gameWindow = new GameWindow();
-    sunProducer.start();
-  }
+    
+}
 
   
   public static void main(String[] args) {

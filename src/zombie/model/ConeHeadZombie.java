@@ -1,5 +1,7 @@
 package zombie.model;
 
+import javax.swing.ImageIcon;
+
 import Game.view.GamePanel;
 
 /**
@@ -7,8 +9,10 @@ import Game.view.GamePanel;
  */
 public class ConeHeadZombie extends Zombie {
 
-    public ConeHeadZombie(GamePanel parent, int lane) {
-        super(parent, lane);
+    public ConeHeadZombie(int lane) {
+        super(lane);
+        setImage(new ImageIcon(this.getClass().getResource("../../images/zombies/zombie2.png")).getImage());
         setHealth(1800);
     }
+
 }
