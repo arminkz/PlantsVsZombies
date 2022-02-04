@@ -10,7 +10,8 @@ public class GameWindow extends JFrame {
         None,
         Sunflower,
         Peashooter,
-        FreezePeashooter
+        FreezePeashooter,
+        Wallnut
     }
 
     //PlantType activePlantingBrush = PlantType.None;
@@ -48,7 +49,13 @@ public class GameWindow extends JFrame {
             gp.setActivePlantingBrush(PlantType.FreezePeashooter);
         });
         getLayeredPane().add(freezepeashooter, new Integer(3));
-
+        
+        PlantCard wallnut = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_wallnut.png")).getImage());
+        wallnut.setLocation(305, 8);
+        wallnut.setAction((ActionEvent e) -> {
+            gp.setActivePlantingBrush(PlantType.Wallnut);
+        });
+        getLayeredPane().add(wallnut, new Integer(3));
 
         getLayeredPane().add(sun, new Integer(2));
         setResizable(false);
