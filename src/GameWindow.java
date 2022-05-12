@@ -24,31 +24,30 @@ public class GameWindow extends JFrame {
         sun.setLocation(37, 80);
         sun.setSize(60, 20);
 
-        GamePanel gp = new GamePanel(sun);
-        gp.setLocation(0, 0);
-        getLayeredPane().add(gp, new Integer(0));
+        GamePanel gamePanel = new GamePanel(sun);
+        gamePanel.setLocation(0, 0);
+        getLayeredPane().add(gamePanel, new Integer(0));
 
         PlantCard sunflower = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_sunflower.png")).getImage());
         sunflower.setLocation(110, 8);
         sunflower.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Sunflower);
+            gamePanel.setActivePlantingBrush(PlantType.Sunflower);
         });
         getLayeredPane().add(sunflower, new Integer(3));
 
         PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_peashooter.png")).getImage());
         peashooter.setLocation(175, 8);
         peashooter.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Peashooter);
+            gamePanel.setActivePlantingBrush(PlantType.Peashooter);
         });
         getLayeredPane().add(peashooter, new Integer(3));
 
-        PlantCard freezepeashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_freezepeashooter.png")).getImage());
-        freezepeashooter.setLocation(240, 8);
-        freezepeashooter.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.FreezePeashooter);
+        PlantCard freezePeaShooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_freezepeashooter.png")).getImage());
+        freezePeaShooter.setLocation(240, 8);
+        freezePeaShooter.setAction((ActionEvent e) -> {
+            gamePanel.setActivePlantingBrush(PlantType.FreezePeashooter);
         });
-        getLayeredPane().add(freezepeashooter, new Integer(3));
-
+        getLayeredPane().add(freezePeaShooter, new Integer(3));
 
         getLayeredPane().add(sun, new Integer(2));
         setResizable(false);
@@ -66,15 +65,15 @@ public class GameWindow extends JFrame {
         setVisible(true);
     }
 
-    static GameWindow gw;
+    static GameWindow gameWindow;
 
     public static void begin() {
-        gw.dispose();
-        gw = new GameWindow();
+        gameWindow.dispose();
+        gameWindow = new GameWindow();
     }
 
     public static void main(String[] args) {
-        gw = new GameWindow(true);
+        gameWindow = new GameWindow(true);
     }
 
 }

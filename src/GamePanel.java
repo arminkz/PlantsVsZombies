@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
-    private Image bgImage;
+    private Image backgroundImage;
     private Image peashooterImage;
     private Image freezePeashooterImage;
     private Image sunflowerImage;
@@ -55,7 +55,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         this.sunScoreboard = sunScoreboard;
         setSunScore(150);  //pool avalie
 
-        bgImage = new ImageIcon(this.getClass().getResource("images/mainBG.png")).getImage();
+        backgroundImage = new ImageIcon(this.getClass().getResource("images/mainBG.png")).getImage();
 
         peashooterImage = new ImageIcon(this.getClass().getResource("images/plants/peashooter.gif")).getImage();
         freezePeashooterImage = new ImageIcon(this.getClass().getResource("images/plants/freezepeashooter.gif")).getImage();
@@ -153,7 +153,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(bgImage, 0, 0, null);
+        g.drawImage(backgroundImage, 0, 0, null);
 
         //Draw Plants
         for (int i = 0; i < 45; i++) {
@@ -256,9 +256,9 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         if (progress >= 150) {
             if ("1".equals(LevelData.LEVEL_NUMBER)) {
                 JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
-                GameWindow.gw.dispose();
+                GameWindow.gameWindow.dispose();
                 LevelData.write("2");
-                GameWindow.gw = new GameWindow();
+                GameWindow.gameWindow = new GameWindow();
             } else {
                 JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
                 LevelData.write("1");
