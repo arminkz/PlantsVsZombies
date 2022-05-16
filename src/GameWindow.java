@@ -13,8 +13,6 @@ public class GameWindow extends JFrame {
         FreezePeashooter
     }
 
-    //PlantType activePlantingBrush = PlantType.None;
-
     public GameWindow() {
         setSize(1012, 785);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

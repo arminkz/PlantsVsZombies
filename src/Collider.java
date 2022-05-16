@@ -12,10 +12,8 @@ public class Collider extends JPanel implements MouseListener {
     private ActionListener actionListener;
 
     public Collider() {
-        //setBorder(new LineBorder(Color.RED));
         setOpaque(false);
         addMouseListener(this);
-        //setBackground(Color.green);
         setSize(100, 120);
     }
 
