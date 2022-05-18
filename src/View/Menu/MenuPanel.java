@@ -1,3 +1,7 @@
+package View.Menu;
+
+import View.Game.GameFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,7 +24,7 @@ public class MenuPanel extends JPanel {
     public MenuPanel() {
         initComponents();
         setSize(1012, 785);
-        bgImage = new ImageIcon(this.getClass().getResource("images/menu.jpg")).getImage();
+        bgImage = new ImageIcon(this.getClass().getResource("../../images/menu.jpg")).getImage();
 
     }
 

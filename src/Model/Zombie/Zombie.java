@@ -1,3 +1,9 @@
+package Model.Zombie;
+
+import View.Collider;
+import View.Game.GameFrame;
+import View.Game.GamePanel;
+
 import javax.swing.*;
 
 /**

@@ -1,3 +1,8 @@
+package View.Game;
+
+import View.Element.PlantCard;
+import View.Menu.MenuFrame;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
@@ -33,21 +38,21 @@ public class GameFrame extends JFrame {
         gamePanel.setLocation(0, 0);
         getLayeredPane().add(gamePanel, new Integer(0));
 
-        PlantCard sunflower = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_sunflower.png")).getImage());
+        PlantCard sunflower = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_sunflower.png")).getImage());
         sunflower.setLocation(SUNFLOWER_CARD_POS_X, PLANT_POS_Y);
         sunflower.setAction((ActionEvent e) -> {
             gamePanel.setActivePlantingBrush(PlantType.Sunflower);
         });
         getLayeredPane().add(sunflower, new Integer(3));
 
-        PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_peashooter.png")).getImage());
+        PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_peashooter.png")).getImage());
         peashooter.setLocation(PEASHOOTER_CARD_POS_X, PLANT_POS_Y);
         peashooter.setAction((ActionEvent e) -> {
             gamePanel.setActivePlantingBrush(PlantType.Peashooter);
         });
         getLayeredPane().add(peashooter, new Integer(3));
 
-        PlantCard freezePeaShooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_freezepeashooter.png")).getImage());
+        PlantCard freezePeaShooter = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_freezepeashooter.png")).getImage());
         freezePeaShooter.setLocation(FREEZEPEASHOOTER_CARD_POS_X, PLANT_POS_Y);
         freezePeaShooter.setAction((ActionEvent e) -> {
             gamePanel.setActivePlantingBrush(PlantType.FreezePeashooter);
@@ -59,7 +64,7 @@ public class GameFrame extends JFrame {
         setVisible(true);
     }
 
-    static GameFrame gameFrame;
+    public static GameFrame gameFrame;
 
     public static void begin() {
         menuFrame.dispose();

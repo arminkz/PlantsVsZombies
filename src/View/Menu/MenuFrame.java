@@ -1,3 +1,5 @@
+package View.Menu;
+
 import javax.swing.*;
 
 public class MenuFrame extends JFrame {
