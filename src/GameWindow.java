@@ -5,6 +5,16 @@ import java.awt.event.ActionEvent;
  * Created by Armin on 6/25/2016.
  */
 public class GameWindow extends JFrame {
+    public static final int WINDOW_WIDTH = 1012;
+    public static final int WINDOW_HEIGHT = 785;
+    public static final int SUNFLOWER_CARD_POS_X = 110;
+    public static final int PEASHOOTER_CARD_POS_X = 175;
+    public static final int FREEZEPEASHOOTER_CARD_POS_X = 240;
+    public static final int PLANT_POS_Y = 8;
+    public static final int SUN_POS_X = 37;
+    public static final int SUN_POS_Y = 80;
+    public static final int SUN_WIDTH = 60;
+    public static final int SUN_HEIGHT = 20;
 
     enum PlantType {
         None,
@@ -13,42 +23,39 @@ public class GameWindow extends JFrame {
         FreezePeashooter
     }
 
-    //PlantType activePlantingBrush = PlantType.None;
-
     public GameWindow() {
-        setSize(1012, 785);
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
 
         JLabel sun = new JLabel("SUN");
-        sun.setLocation(37, 80);
-        sun.setSize(60, 20);
+        sun.setLocation(SUN_POS_X, SUN_POS_Y);
+        sun.setSize(SUN_WIDTH, SUN_HEIGHT);
 
-        GamePanel gp = new GamePanel(sun);
-        gp.setLocation(0, 0);
-        getLayeredPane().add(gp, new Integer(0));
+        GamePanel gamePanel = new GamePanel(sun);
+        gamePanel.setLocation(0, 0);
+        getLayeredPane().add(gamePanel, new Integer(0));
 
         PlantCard sunflower = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_sunflower.png")).getImage());
-        sunflower.setLocation(110, 8);
+        sunflower.setLocation(SUNFLOWER_CARD_POS_X, PLANT_POS_Y);
         sunflower.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Sunflower);
+            gamePanel.setActivePlantingBrush(PlantType.Sunflower);
         });
         getLayeredPane().add(sunflower, new Integer(3));
 
         PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_peashooter.png")).getImage());
-        peashooter.setLocation(175, 8);
+        peashooter.setLocation(PEASHOOTER_CARD_POS_X, PLANT_POS_Y);
         peashooter.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.Peashooter);
+            gamePanel.setActivePlantingBrush(PlantType.Peashooter);
         });
         getLayeredPane().add(peashooter, new Integer(3));
 
-        PlantCard freezepeashooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_freezepeashooter.png")).getImage());
-        freezepeashooter.setLocation(240, 8);
-        freezepeashooter.setAction((ActionEvent e) -> {
-            gp.setActivePlantingBrush(PlantType.FreezePeashooter);
+        PlantCard freezePeaShooter = new PlantCard(new ImageIcon(this.getClass().getResource("images/cards/card_freezepeashooter.png")).getImage());
+        freezePeaShooter.setLocation(FREEZEPEASHOOTER_CARD_POS_X, PLANT_POS_Y);
+        freezePeaShooter.setAction((ActionEvent e) -> {
+            gamePanel.setActivePlantingBrush(PlantType.FreezePeashooter);
         });
-        getLayeredPane().add(freezepeashooter, new Integer(3));
-
+        getLayeredPane().add(freezePeaShooter, new Integer(3));
 
         getLayeredPane().add(sun, new Integer(2));
         setResizable(false);
@@ -58,7 +65,7 @@ public class GameWindow extends JFrame {
     public GameWindow(boolean b) {
         Menu menu = new Menu();
         menu.setLocation(0, 0);
-        setSize(1012, 785);
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getLayeredPane().add(menu, new Integer(0));
         menu.repaint();
@@ -66,15 +73,15 @@ public class GameWindow extends JFrame {
         setVisible(true);
     }
 
-    static GameWindow gw;
+    static GameWindow gameWindow;
 
     public static void begin() {
-        gw.dispose();
-        gw = new GameWindow();
+        gameWindow.dispose();
+        gameWindow = new GameWindow();
     }
 
     public static void main(String[] args) {
-        gw = new GameWindow(true);
+        gameWindow = new GameWindow(true);
     }
 
 }
