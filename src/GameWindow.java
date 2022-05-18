@@ -16,12 +16,9 @@ public class GameWindow extends JFrame {
     public static final int SUN_WIDTH = 60;
     public static final int SUN_HEIGHT = 20;
 
-    enum PlantType {
-        None,
-        Sunflower,
-        Peashooter,
-        FreezePeashooter
-    }
+    private static MenuFrame menuFrame;
+
+    enum PlantType { None, Sunflower, Peashooter, FreezePeashooter }
 
     public GameWindow() {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -62,26 +59,18 @@ public class GameWindow extends JFrame {
         setVisible(true);
     }
 
-    public GameWindow(boolean b) {
-        Menu menu = new Menu();
-        menu.setLocation(0, 0);
-        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        getLayeredPane().add(menu, new Integer(0));
-        menu.repaint();
-        setResizable(false);
-        setVisible(true);
-    }
-
     static GameWindow gameWindow;
 
     public static void begin() {
-        gameWindow.dispose();
+        menuFrame.dispose();
         gameWindow = new GameWindow();
     }
 
-    public static void main(String[] args) {
-        gameWindow = new GameWindow(true);
+    public static void setMenuFrame(MenuFrame _menuFrame) {
+        menuFrame = _menuFrame;
     }
 
+    public static void main(String[] args) {
+        setMenuFrame(new MenuFrame());
+    }
 }
