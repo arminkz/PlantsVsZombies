@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 /**
  * Created by Armin on 6/25/2016.
  */
-public class GameWindow extends JFrame {
+public class GameFrame extends JFrame {
     public static final int WINDOW_WIDTH = 1012;
     public static final int WINDOW_HEIGHT = 785;
     public static final int SUNFLOWER_CARD_POS_X = 110;
@@ -20,7 +20,7 @@ public class GameWindow extends JFrame {
 
     enum PlantType { None, Sunflower, Peashooter, FreezePeashooter }
 
-    public GameWindow() {
+    public GameFrame() {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
@@ -59,11 +59,11 @@ public class GameWindow extends JFrame {
         setVisible(true);
     }
 
-    static GameWindow gameWindow;
+    static GameFrame gameFrame;
 
     public static void begin() {
         menuFrame.dispose();
-        gameWindow = new GameWindow();
+        gameFrame = new GameFrame();
     }
 
     public static void setMenuFrame(MenuFrame _menuFrame) {

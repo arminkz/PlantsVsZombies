@@ -45,7 +45,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     public static final int PEASHOOTER_COST = 100;
     public static final int FREEZEPEASHOOTER_COST = 175;
 
-    private GameWindow.PlantType activePlantingBrush = GameWindow.PlantType.None;
+    private GameFrame.PlantType activePlantingBrush = GameFrame.PlantType.None;
 
     private int mouseX, mouseY;
 
@@ -210,27 +210,27 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (activePlantingBrush == GameWindow.PlantType.Sunflower) {
+            if (activePlantingBrush == GameFrame.PlantType.Sunflower) {
                 if (getSunScore() >= SUNFLOWER_COST) {
                     colliders[x + y * 9].setPlant(new Sunflower(GamePanel.this, x, y));
                     setSunScore(getSunScore() - SUNFLOWER_COST);
                 }
             }
 
-            if (activePlantingBrush == GameWindow.PlantType.Peashooter) {
+            if (activePlantingBrush == GameFrame.PlantType.Peashooter) {
                 if (getSunScore() >= PEASHOOTER_COST) {
                     colliders[x + y * 9].setPlant(new Peashooter(GamePanel.this, x, y));
                     setSunScore(getSunScore() - PEASHOOTER_COST);
                 }
             }
 
-            if (activePlantingBrush == GameWindow.PlantType.FreezePeashooter) {
+            if (activePlantingBrush == GameFrame.PlantType.FreezePeashooter) {
                 if (getSunScore() >= FREEZEPEASHOOTER_COST) {
                     colliders[x + y * 9].setPlant(new FreezePeashooter(GamePanel.this, x, y));
                     setSunScore(getSunScore() - FREEZEPEASHOOTER_COST);
                 }
             }
-            activePlantingBrush = GameWindow.PlantType.None;
+            activePlantingBrush = GameFrame.PlantType.None;
         }
     }
 
@@ -253,9 +253,9 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         if (progress >= 150) {
             if ("1".equals(LevelData.LEVEL_NUMBER)) {
                 JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
-                GameWindow.gameWindow.dispose();
+                GameFrame.gameFrame.dispose();
                 LevelData.write("2");
-                GameWindow.gameWindow = new GameWindow();
+                GameFrame.gameFrame = new GameFrame();
             } else {
                 JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
                 LevelData.write("1");
@@ -265,11 +265,11 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         }
     }
 
-    public GameWindow.PlantType getActivePlantingBrush() {
+    public GameFrame.PlantType getActivePlantingBrush() {
         return activePlantingBrush;
     }
 
-    public void setActivePlantingBrush(GameWindow.PlantType activePlantingBrush) {
+    public void setActivePlantingBrush(GameFrame.PlantType activePlantingBrush) {
         this.activePlantingBrush = activePlantingBrush;
     }
 

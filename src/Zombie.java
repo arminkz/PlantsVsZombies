@@ -47,8 +47,8 @@ public class Zombie {
             if (posX < 0) {
                 isMoving = false;
                 JOptionPane.showMessageDialog(gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
-                GameWindow.gameWindow.dispose();
-                GameWindow.gameWindow = new GameWindow();
+                GameFrame.gameFrame.dispose();
+                GameFrame.gameFrame = new GameFrame();
             }
         }
     }
