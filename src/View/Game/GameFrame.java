@@ -31,37 +31,54 @@ public class GameFrame extends JFrame {
         setLayout(null);
 
         JLabel sun = new JLabel("SUN");
-        sun.setLocation(SUN_POS_X, SUN_POS_Y);
-        sun.setSize(SUN_WIDTH, SUN_HEIGHT);
-
         GamePanel gamePanel = new GamePanel(sun);
+
+        placeGamePanel(gamePanel);
+        placeSunPoint(sun);
+        placeSunflowerCard(gamePanel);
+        placePeashooterCard(gamePanel);
+        placeFreezePeashooterCard(gamePanel);
+
+        setResizable(false);
+        setVisible(true);
+    }
+
+    public void placeGamePanel(GamePanel gamePanel) {
         gamePanel.setLocation(0, 0);
         getLayeredPane().add(gamePanel, new Integer(0));
+    }
 
+    public void placeSunPoint(JLabel sun) {
+        sun.setLocation(SUN_POS_X, SUN_POS_Y);
+        sun.setSize(SUN_WIDTH, SUN_HEIGHT);
+        getLayeredPane().add(sun, new Integer(2));
+    }
+
+    public void placeSunflowerCard(GamePanel gamePanel) {
         PlantCard sunflower = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_sunflower.png")).getImage());
         sunflower.setLocation(SUNFLOWER_CARD_POS_X, PLANT_POS_Y);
         sunflower.setAction((ActionEvent e) -> {
             gamePanel.setActivePlantingBrush(PlantType.Sunflower);
         });
         getLayeredPane().add(sunflower, new Integer(3));
+    }
 
+    public void placePeashooterCard(GamePanel gamePanel) {
         PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_peashooter.png")).getImage());
         peashooter.setLocation(PEASHOOTER_CARD_POS_X, PLANT_POS_Y);
         peashooter.setAction((ActionEvent e) -> {
             gamePanel.setActivePlantingBrush(PlantType.Peashooter);
         });
         getLayeredPane().add(peashooter, new Integer(3));
+    }
 
+    public void placeFreezePeashooterCard(GamePanel gamePanel) {
         PlantCard freezePeaShooter = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_freezepeashooter.png")).getImage());
         freezePeaShooter.setLocation(FREEZEPEASHOOTER_CARD_POS_X, PLANT_POS_Y);
         freezePeaShooter.setAction((ActionEvent e) -> {
             gamePanel.setActivePlantingBrush(PlantType.FreezePeashooter);
         });
         getLayeredPane().add(freezePeaShooter, new Integer(3));
-
-        getLayeredPane().add(sun, new Integer(2));
-        setResizable(false);
-        setVisible(true);
     }
 
     public static GameFrame gameFrame;
