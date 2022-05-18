@@ -8,13 +8,13 @@ public abstract class Plant {
     private int x;
     private int y;
 
-    private GamePanel gp;
+    private GamePanel gamePanel;
 
 
     public Plant(GamePanel parent, int x, int y) {
         this.x = x;
         this.y = y;
-        gp = parent;
+        gamePanel = parent;
     }
 
     public void stop() {
@@ -44,11 +44,11 @@ public abstract class Plant {
         this.y = y;
     }
 
-    public GamePanel getGp() {
-        return gp;
+    public GamePanel getGamePanel() {
+        return gamePanel;
     }
 
-    public void setGp(GamePanel gp) {
-        this.gp = gp;
+    public void setGamePanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
     }
 }
