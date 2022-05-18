@@ -1,3 +1,8 @@
+package Model.Pea;
+
+import Model.Zombie.Zombie;
+import View.Game.GamePanel;
+
 import java.awt.*;
 
 /**

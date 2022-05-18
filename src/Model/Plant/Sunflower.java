@@ -1,3 +1,8 @@
+package Model.Plant;
+
+import View.Element.Sun;
+import View.Game.GamePanel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 

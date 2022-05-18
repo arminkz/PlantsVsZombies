@@ -1,3 +1,7 @@
+package Model.Zombie;
+
+import View.Game.GamePanel;
+
 /**
  * Created by Armin on 6/29/2016.
  */
