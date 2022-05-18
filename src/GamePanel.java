@@ -33,6 +33,18 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     private Timer zombieProducer;
     private JLabel sunScoreboard;
 
+    public static final int WINDOW_WIDTH = 1012;
+    public static final int WINDOW_HEIGHT = 785;
+    public static final int INIT_SCORE = 150;
+    public static final int NUMBER_OF_ROW_BLOCK = 9;
+    public static final int NUMBER_OF_COLUMN_BLOCK = 9;
+    public static final int NUMBER_OF_BLOCK = NUMBER_OF_ROW_BLOCK * NUMBER_OF_COLUMN_BLOCK;
+    public static final int REDRAW_DELAY = 25;
+    public static final int ADVANCER_DELAY = 60;
+    public static final int SUNFLOWER_COST = 50;
+    public static final int PEASHOOTER_COST = 100;
+    public static final int FREEZEPEASHOOTER_COST = 175;
+
     private GameWindow.PlantType activePlantingBrush = GameWindow.PlantType.None;
 
     private int mouseX, mouseY;
@@ -49,11 +61,11 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     }
 
     public GamePanel(JLabel sunScoreboard) {
-        setSize(1000, 752);
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLayout(null);
         addMouseMotionListener(this);
         this.sunScoreboard = sunScoreboard;
-        setSunScore(150);  //pool avalie
+        setSunScore(INIT_SCORE);  //pool avalie
 
         backgroundImage = new ImageIcon(this.getClass().getResource("images/mainBG.png")).getImage();
         peashooterImage = new ImageIcon(this.getClass().getResource("images/plants/peashooter.gif")).getImage();
@@ -78,24 +90,24 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         lanePeas.add(new ArrayList<>()); //line 4
         lanePeas.add(new ArrayList<>()); //line 5
 
-        colliders = new Collider[45];
+        colliders = new Collider[NUMBER_OF_BLOCK];
 
-        for (int i = 0; i < 45; i++) {
+        for (int i = 0; i < NUMBER_OF_BLOCK; i++) {
             Collider collider = new Collider();
-            collider.setLocation(44 + (i % 9) * 100, 109 + (i / 9) * 120);
-            collider.setAction(new PlantActionListener((i % 9), (i / 9)));
+            collider.setLocation(44 + (i % NUMBER_OF_ROW_BLOCK) * 100, 109 + (i / NUMBER_OF_ROW_BLOCK) * 120);
+            collider.setAction(new PlantActionListener((i % NUMBER_OF_ROW_BLOCK), (i / NUMBER_OF_ROW_BLOCK)));
             colliders[i] = collider;
             add(collider, new Integer(0));
         }
 
         activeSuns = new ArrayList<>();
 
-        redrawTimer = new Timer(25, (ActionEvent e) -> {
+        redrawTimer = new Timer(REDRAW_DELAY, (ActionEvent e) -> {
             repaint();
         });
         redrawTimer.start();
 
-        advancerTimer = new Timer(60, (ActionEvent e) -> advance());
+        advancerTimer = new Timer(ADVANCER_DELAY, (ActionEvent e) -> advance());
         advancerTimer.start();
 
         sunProducer = new Timer(5000, (ActionEvent e) -> {
@@ -150,7 +162,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         graphics.drawImage(backgroundImage, 0, 0, null);
 
         //Draw Plants
-        for (int i = 0; i < 45; i++) {
+        for (int i = 0; i < NUMBER_OF_BLOCK; i++) {
             Collider collider = colliders[i];
             if (collider.assignedPlant != null) {
                 Plant p = collider.assignedPlant;
@@ -199,22 +211,23 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (activePlantingBrush == GameWindow.PlantType.Sunflower) {
-                if (getSunScore() >= 50) {
+                if (getSunScore() >= SUNFLOWER_COST) {
                     colliders[x + y * 9].setPlant(new Sunflower(GamePanel.this, x, y));
-                    setSunScore(getSunScore() - 50);
+                    setSunScore(getSunScore() - SUNFLOWER_COST);
                 }
             }
+
             if (activePlantingBrush == GameWindow.PlantType.Peashooter) {
-                if (getSunScore() >= 100) {
+                if (getSunScore() >= PEASHOOTER_COST) {
                     colliders[x + y * 9].setPlant(new Peashooter(GamePanel.this, x, y));
-                    setSunScore(getSunScore() - 100);
+                    setSunScore(getSunScore() - PEASHOOTER_COST);
                 }
             }
 
             if (activePlantingBrush == GameWindow.PlantType.FreezePeashooter) {
-                if (getSunScore() >= 175) {
+                if (getSunScore() >= FREEZEPEASHOOTER_COST) {
                     colliders[x + y * 9].setPlant(new FreezePeashooter(GamePanel.this, x, y));
-                    setSunScore(getSunScore() - 175);
+                    setSunScore(getSunScore() - FREEZEPEASHOOTER_COST);
                 }
             }
             activePlantingBrush = GameWindow.PlantType.None;
