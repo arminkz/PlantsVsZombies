@@ -34,9 +34,9 @@ public class Sun extends JPanel implements MouseListener {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(sunImage, 0, 0, null);
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        graphics.drawImage(sunImage, 0, 0, null);
     }
 
     public void advance() {
