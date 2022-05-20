@@ -10,24 +10,27 @@ import java.awt.event.MouseListener;
 /**
  * Created by Armin on 6/27/2016.
  */
+
 public class Sun extends JPanel implements MouseListener {
 
-    private GamePanel gamePanel;
+    public static final int START_Y = 0;
+	public static final int START_X = 0;
+	private GamePanel gamePanel;
     private Image sunImage;
 
     private int positionX;
     private int positionY;
     private int endPositionY;
 
-    private int destruct = 200;
+    private int destructTime = 200;
 
     public Sun(GamePanel parent, int startX, int startY, int endY) {
         this.gamePanel = parent;
         this.endPositionY = endY;
-        setSize(80, 80);
-        setOpaque(false);
         positionX = startX;
         positionY = startY;
+        setSize(80, 80);
+        setOpaque(false);  
         setLocation(positionX, positionY);
         sunImage = new ImageIcon(this.getClass().getResource("../../images/sun.png")).getImage();
         addMouseListener(this);
@@ -36,15 +39,15 @@ public class Sun extends JPanel implements MouseListener {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        graphics.drawImage(sunImage, 0, 0, null);
+        graphics.drawImage(sunImage, START_X, START_Y, null);
     }
 
     public void advance() {
         if (positionY < endPositionY) {
             positionY += 4;
         } else {
-            destruct--;
-            if (destruct < 0) {
+            destructTime--;
+            if (destructTime < 0) {
                 gamePanel.remove(this);
                 gamePanel.getActiveSuns().remove(this);
             }
