@@ -19,7 +19,7 @@ public class Sun extends JPanel implements MouseListener {
     private int positionY;
     private int endPositionY;
 
-    private int destruct = 200;
+    private int destructTime = 200;
 
     public Sun(GamePanel parent, int startX, int startY, int endY) {
         this.gamePanel = parent;
@@ -43,8 +43,8 @@ public class Sun extends JPanel implements MouseListener {
         if (positionY < endPositionY) {
             positionY += 4;
         } else {
-            destruct--;
-            if (destruct < 0) {
+            destructTime--;
+            if (destructTime < 0) {
                 gamePanel.remove(this);
                 gamePanel.getActiveSuns().remove(this);
             }
