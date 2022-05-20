@@ -106,16 +106,16 @@ public class Zombie {
         return gamepanel;
     }
 
-    public void setGp(GamePanel gp) {
-        this.gamepanel = gp;
+    public void setGp(GamePanel gamepanel) {
+        this.gamepanel = gamepanel;
     }
 
     public int getPosX() {
         return positionX;
     }
 
-    public void setPosX(int posX) {
-        this.positionX = posX;
+    public void setPosX(int positionX) {
+        this.positionX = positionX;
     }
 
     public int getMyLane() {
