@@ -14,7 +14,7 @@ import java.awt.event.MouseListener;
 public class Sun extends JPanel implements MouseListener {
 
     public static final int START_Y = 0;
-	public static final int START_X = 0; 
+	public static final int START_X = 0;
 	private GamePanel gamePanel;
     private Image sunImage;
 
