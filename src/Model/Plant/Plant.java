@@ -14,6 +14,8 @@ public abstract class Plant {
 
     private GamePanel gamePanel;
 
+    public static final int STARTING_POSITION_OF_PEA = 103;
+    public static final int SHOOT_DELAY = 2000;
 
     public Plant(GamePanel parent, int x, int y) {
         this.x = x;

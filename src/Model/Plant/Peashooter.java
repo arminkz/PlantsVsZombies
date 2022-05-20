@@ -1,11 +1,12 @@
 package Model.Plant;
 
 import Model.Pea.Pea;
-import Model.Plant.Plant;
+import Model.Zombie.Zombie;
 import View.Game.GamePanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 /**
  * Created by Armin on 6/25/2016.
@@ -14,13 +15,15 @@ public class Peashooter extends Plant {
 
     public Timer shootTimer;
 
-
     public Peashooter(GamePanel parent, int x, int y) {
         super(parent, x, y);
-        shootTimer = new Timer(2000, (ActionEvent e) -> {
+        shootTimer = new Timer(SHOOT_DELAY, (ActionEvent e) -> {
             //System.out.println("SHOOT");
-            if (getGamePanel().getLaneZombies().get(y).size() > 0) {
-                getGamePanel().getLanePeas().get(y).add(new Pea(getGamePanel(), y, 103 + this.getX() * 100));
+            ArrayList<Zombie> laneZombie = getGamePanel().getLaneZombies().get(y);
+            ArrayList<Pea> lanePea = getGamePanel().getLanePeas().get(y);
+
+            if (laneZombie.size() > 0) {
+                lanePea.add(new Pea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * 100));
             }
         });
         shootTimer.start();
