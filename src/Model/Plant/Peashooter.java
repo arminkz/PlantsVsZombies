@@ -13,21 +13,12 @@ import java.util.ArrayList;
  */
 public class Peashooter extends Plant {
 
-    public Timer shootTimer;
-
     public Peashooter(GamePanel parent, int x, int y) {
         super(parent, x, y);
-        shootTimer = new Timer(SHOOT_DELAY, (ActionEvent e) -> {
-            //System.out.println("SHOOT");
-            ArrayList<Zombie> laneZombie = getGamePanel().getLaneZombies().get(y);
-            ArrayList<Pea> lanePea = getGamePanel().getLanePeas().get(y);
-
-            if (laneZombie.size() > 0) {
-                lanePea.add(new Pea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * 100));
-            }
-        });
+        createShootTimer(y);
         shootTimer.start();
     }
+
 
     @Override
     public void stop() {
