@@ -234,9 +234,9 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
                 Pea pea = lanePeas.get(i).get(j);
                 if (pea instanceof FreezePea) {
-                    graphics.drawImage(freezePeaImage, pea.getPosX(), 130 + (i * 120), null);
+                    graphics.drawImage(freezePeaImage, pea.getPositionX(), 130 + (i * 120), null);
                 } else {
-                    graphics.drawImage(peaImage, pea.getPosX(), 130 + (i * 120), null);
+                    graphics.drawImage(peaImage, pea.getPositionX(), 130 + (i * 120), null);
                 }
             }
 
