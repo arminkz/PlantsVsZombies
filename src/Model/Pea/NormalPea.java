@@ -16,21 +16,13 @@ public class NormalPea extends Pea {
         for (int i = 0; i < gamePanel.getLaneZombies().get(myLane).size(); i++) {
             Zombie zombie = gamePanel.getLaneZombies().get(myLane).get(i);
             Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + myLane * 120, 400, 120);
-            if (peaRectangle.intersects(zombieRectangle)) {
-                zombie.setHealth(zombie.getHealth() - 300);
-                boolean exit = false;
-                if (zombie.getHealth() < 0) {
-                    System.out.println("ZOMBIE DIED");
-
-                    gamePanel.getLaneZombies().get(myLane).remove(i);
-                    GamePanel.setProgress(10);
-                    exit = true;
-                }
-                gamePanel.getLaneZombies().get(myLane).remove(this);
-                if (exit) break;
-            }
+            if (!peaRectangle.intersects(zombieRectangle)) continue;
+            zombie.setHealth(zombie.getHealth() - 300);
+            if (zombie.getHealth() > 0) continue;
+            System.out.println("ZOMBIE DIED");
+            gamePanel.getLaneZombies().get(myLane).remove(i);
+            GamePanel.setProgress(10);
         }
-
         positionX += 15;
     }
 }

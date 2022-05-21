@@ -26,21 +26,14 @@ public class FreezePea extends Pea {
         for (int i = 0; i < gamePanel.getLaneZombies().get(getMyLane()).size(); i++) {
             Zombie zombie = gamePanel.getLaneZombies().get(getMyLane()).get(i);
             Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + getMyLane() * 120, 400, 120);
-            if (peaRectangle.intersects(zombieRectangle)) {
-                zombie.setHealth(zombie.getHealth() - 300);
-                zombie.slow();
-                boolean exit = false;
-                if (zombie.getHealth() < 0) {
-                    System.out.println("ZOMBIE DIE");
-                    gamePanel.getLaneZombies().get(myLane).remove(i);
-                    GamePanel.setProgress(10);
-                    exit = true;
-                }
-                gamePanel.getLanePeas().get(myLane).remove(this);
-                if (exit) break;
-            }
+            if (!peaRectangle.intersects(zombieRectangle)) continue;
+            zombie.setHealth(zombie.getHealth() - 300);
+            zombie.slow();
+            if (zombie.getHealth() > 0) continue;
+            System.out.println("ZOMBIE DIE");
+            gamePanel.getLaneZombies().get(myLane).remove(i);
+            GamePanel.setProgress(10);
         }
-
         positionX += 15;
     }
 
