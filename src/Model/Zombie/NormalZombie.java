@@ -1,6 +1,7 @@
 package Model.Zombie;
 
 import View.Game.GamePanel;
+import View.Zombie.NormalZombieView;
 
 /**
  * Created by Armin on 6/25/2016.
@@ -8,7 +9,7 @@ import View.Game.GamePanel;
 public class NormalZombie extends Zombie {
 
     public NormalZombie(GamePanel parent, int lane) {
-        super(parent, lane);
+        super(parent, lane, new NormalZombieView());
     }
 
 }

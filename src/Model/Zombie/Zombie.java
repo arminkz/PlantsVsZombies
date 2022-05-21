@@ -3,6 +3,8 @@ package Model.Zombie;
 import View.Collider;
 import View.Game.GameFrame;
 import View.Game.GamePanel;
+import View.View;
+import View.Zombie.NormalZombieView;
 
 import javax.swing.*;
 
@@ -14,22 +16,24 @@ public class Zombie {
     private int health = 1000;
     private int speed = 1;
 
+    private View view;
     private GamePanel gamepanel;
 
     private int positionX = 1000;
-    private int myLane;
+    private int lane;
     private boolean isMoving = true;
 
-    public Zombie(GamePanel parent, int lane) {
+    public Zombie(GamePanel parent, int lane, View view) {
         this.gamepanel = parent;
-        myLane = lane;
+        this.view = view;
+        this.lane = lane;
     }
 
     public void advance() {
         if (isMoving) {
             boolean isCollides = false;
             Collider collidedPlants = null;
-            for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
+            for (int i = lane * 9; i < (lane + 1) * 9; i++) {
                 if (gamepanel.getColliders()[i].assignedPlant != null && gamepanel.getColliders()[i].isInsideCollider(positionX)) {
                     isCollides = true;
                     collidedPlants = gamepanel.getColliders()[i];
@@ -74,16 +78,18 @@ public class Zombie {
     }
 
     public static Zombie getZombie(String type, GamePanel parent, int lane) {
-        Zombie zombie = new Zombie(parent, lane);
         switch (type) {
             case "NormalZombie":
-                zombie = new NormalZombie(parent, lane);
-                break;
+                return new NormalZombie(parent, lane);
             case "ConeHeadZombie":
-                zombie = new ConeHeadZombie(parent, lane);
-                break;
+                return new ConeHeadZombie(parent, lane);
+            default:
+                return null;
         }
-        return zombie;
+    }
+
+    public View getView() {
+        return view;
     }
 
     public int getHealth() {
@@ -118,12 +124,12 @@ public class Zombie {
         this.positionX = positionX;
     }
 
-    public int getMyLane() {
-        return myLane;
+    public int getLane() {
+        return lane;
     }
 
-    public void setMyLane(int myLane) {
-        this.myLane = myLane;
+    public void setLane(int lane) {
+        this.lane = lane;
     }
 
     public boolean isMoving() {

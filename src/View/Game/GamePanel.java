@@ -1,14 +1,10 @@
 package View.Game;
 
 import Model.Level.LevelData;
-import Model.Pea.FreezePea;
 import Model.Pea.Pea;
 import Model.Plant.FreezePeashooter;
 import Model.Plant.Peashooter;
-import Model.Plant.Plant;
 import Model.Plant.Sunflower;
-import Model.Zombie.ConeHeadZombie;
-import Model.Zombie.NormalZombie;
 import Model.Zombie.Zombie;
 import View.Collider;
 import View.Element.Sun;
@@ -27,14 +23,7 @@ import java.util.Random;
  */
 public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
-    private Image backgroundImage;
-    private Image peashooterImage;
-    private Image freezePeashooterImage;
-    private Image sunflowerImage;
-    private Image peaImage;
-    private Image freezePeaImage;
-    private Image normalZombieImage;
-    private Image coneHeadZombieImage;
+    private Image backgroundImage = new ImageIcon(this.getClass().getResource("../../images/mainBG.png")).getImage();
 
     private Collider[] colliders;
 
@@ -72,9 +61,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         setLayout(null);
         addMouseMotionListener(this);
         this.sunScoreboard = sunScoreboard;
-        setSunScore(INIT_SCORE);  //pool avalie
-
-        setImages();
+        setSunScore(INIT_SCORE);
 
         laneZombies = makeLaneZombies();
         lanePeas = makeLanePea();
@@ -111,17 +98,6 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         lanePea.add(new ArrayList<>()); //line 4
         lanePea.add(new ArrayList<>()); //line 5
         return lanePea;
-    }
-
-    public void setImages() {
-        backgroundImage = new ImageIcon(this.getClass().getResource("../../images/mainBG.png")).getImage();
-        peashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
-        freezePeashooterImage = new ImageIcon(this.getClass().getResource("../../images/plants/freezepeashooter.gif")).getImage();
-        sunflowerImage = new ImageIcon(this.getClass().getResource("../../images/plants/sunflower.gif")).getImage();
-        peaImage = new ImageIcon(this.getClass().getResource("../../images/pea.png")).getImage();
-        freezePeaImage = new ImageIcon(this.getClass().getResource("../../images/freezepea.png")).getImage();
-        normalZombieImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie1.png")).getImage();
-        coneHeadZombieImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie2.png")).getImage();
     }
 
     public Collider[] makeColliders() {
@@ -184,7 +160,6 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             for (Zombie z : laneZombies.get(i)) {
                 z.advance();
             }
-
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
                 Pea p = lanePeas.get(i).get(j);
                 p.advance();
@@ -202,41 +177,19 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
         //Draw Plants
         for (int i = 0; i < NUMBER_OF_BLOCK; i++) {
-            Collider collider = colliders[i];
-            if (collider.assignedPlant == null) continue;
-            Plant p = collider.assignedPlant;
-            if (p instanceof Peashooter) {
-                graphics.drawImage(peashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-            }
-            if (p instanceof FreezePeashooter) {
-                graphics.drawImage(freezePeashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-            }
-            if (p instanceof Sunflower) {
-                graphics.drawImage(sunflowerImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-            }
+            if (colliders[i].assignedPlant == null) continue;
+            colliders[i].assignedPlant
+                    .getPlantView()
+                    .draw(60 + (i % 9) * 100, 129 + (i / 9) * 120, graphics);
         }
-
         for (int i = 0; i < 5; i++) {
             for (Zombie zombie : laneZombies.get(i)) {
-                if (zombie instanceof NormalZombie) {
-                    graphics.drawImage(normalZombieImage, zombie.getPosX(), 109 + (i * 120), null);
-                    continue;
-                }
-                if (zombie instanceof ConeHeadZombie) {
-                    graphics.drawImage(coneHeadZombieImage, zombie.getPosX(), 109 + (i * 120), null);
-                    continue;
-                }
+                zombie.getView().draw(zombie.getPosX(), 109 + (i * 120), graphics);
             }
-
             for (int j = 0; j < lanePeas.get(i).size(); j++) {
                 Pea pea = lanePeas.get(i).get(j);
-                if (pea instanceof FreezePea) {
-                    graphics.drawImage(freezePeaImage, pea.getPositionX(), 130 + (i * 120), null);
-                } else {
-                    graphics.drawImage(peaImage, pea.getPositionX(), 130 + (i * 120), null);
-                }
+                pea.getView().draw(pea.getPositionX(), 130 + (i * 120), graphics);
             }
-
         }
     }
 
