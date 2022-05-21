@@ -2,6 +2,8 @@ package Model.Pea;
 
 import Model.Zombie.Zombie;
 import View.Game.GamePanel;
+import View.Pea.FreezePeaView;
+import View.View;
 
 import java.awt.*;
 
@@ -9,9 +11,13 @@ import java.awt.*;
  * Created by Armin on 6/28/2016.
  */
 public class FreezePea extends Pea {
+    private int positionX;
+    protected GamePanel gamePanel;
+    private int myLane;
+    private View view;
 
     public FreezePea(GamePanel parent, int lane, int startPositionX) {
-        super(parent, lane, startPositionX);
+        super(parent, lane, startPositionX, new FreezePeaView());
     }
 
     @Override
@@ -26,18 +32,29 @@ public class FreezePea extends Pea {
                 boolean exit = false;
                 if (zombie.getHealth() < 0) {
                     System.out.println("ZOMBIE DIE");
+                    gamePanel.getLaneZombies().get(myLane).remove(i);
                     GamePanel.setProgress(10);
-                    gamePanel.getLaneZombies().get(getMyLane()).remove(i);
                     exit = true;
                 }
-                gamePanel.getLanePeas().get(getMyLane()).remove(this);
+                gamePanel.getLanePeas().get(myLane).remove(this);
                 if (exit) break;
             }
         }
-        /*if(posX > 2000){
-            gp.lanePeas.get(myLane).remove(this);
-        }*/
-        setPositionX(getPositionX() - 15);
+
+        positionX += 15;
     }
 
+    public View getView() { return view; }
+
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public int getMyLane() {
+        return myLane;
+    }
+
+    public void setPositionX(int positionX) {
+        this.positionX = positionX;
+    }
 }
