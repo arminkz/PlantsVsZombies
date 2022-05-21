@@ -19,7 +19,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -173,9 +172,8 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             int t = rnd.nextInt(100);
             Zombie zombie = null;
             for (int i = 0; i < LevelValue.length; i++) {
-                if (t >= LevelValue[i][0] && t <= LevelValue[i][1]) {
-                    zombie = Zombie.getZombie(Level[i], GamePanel.this, l);
-                }
+                if (t < LevelValue[i][0] || t > LevelValue[i][1]) continue;
+                zombie = Zombie.getZombie(Level[i], GamePanel.this, l);
             }
             laneZombies.get(l).add(zombie);
         };
@@ -191,13 +189,10 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
                 Pea p = lanePeas.get(i).get(j);
                 p.advance();
             }
-
         }
-
         for (int i = 0; i < activeSuns.size(); i++) {
             activeSuns.get(i).advance();
         }
-
     }
 
     @Override
@@ -208,17 +203,16 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         //Draw Plants
         for (int i = 0; i < NUMBER_OF_BLOCK; i++) {
             Collider collider = colliders[i];
-            if (collider.assignedPlant != null) {
-                Plant p = collider.assignedPlant;
-                if (p instanceof Peashooter) {
-                    graphics.drawImage(peashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
-                if (p instanceof FreezePeashooter) {
-                    graphics.drawImage(freezePeashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
-                if (p instanceof Sunflower) {
-                    graphics.drawImage(sunflowerImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
-                }
+            if (collider.assignedPlant == null) continue;
+            Plant p = collider.assignedPlant;
+            if (p instanceof Peashooter) {
+                graphics.drawImage(peashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
+            }
+            if (p instanceof FreezePeashooter) {
+                graphics.drawImage(freezePeashooterImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
+            }
+            if (p instanceof Sunflower) {
+                graphics.drawImage(sunflowerImage, 60 + (i % 9) * 100, 129 + (i / 9) * 120, null);
             }
         }
 
@@ -226,8 +220,11 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             for (Zombie zombie : laneZombies.get(i)) {
                 if (zombie instanceof NormalZombie) {
                     graphics.drawImage(normalZombieImage, zombie.getPosX(), 109 + (i * 120), null);
-                } else if (zombie instanceof ConeHeadZombie) {
+                    continue;
+                }
+                if (zombie instanceof ConeHeadZombie) {
                     graphics.drawImage(coneHeadZombieImage, zombie.getPosX(), 109 + (i * 120), null);
+                    continue;
                 }
             }
 
@@ -294,19 +291,18 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     public static void setProgress(int num) {
         progress = progress + num;
         System.out.println(progress);
-        if (progress >= 150) {
-            if ("1".equals(LevelData.LEVEL_NUMBER)) {
-                JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
-                GameFrame.gameFrame.dispose();
-                LevelData.write("2");
-                GameFrame.gameFrame = new GameFrame();
-            } else {
-                JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
-                LevelData.write("1");
-                System.exit(0);
-            }
-            progress = 0;
+        if(progress < 150) return;
+        if ("1".equals(LevelData.LEVEL_NUMBER)) {
+            JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "Starting next LEVEL_CONTENT");
+            GameFrame.gameFrame.dispose();
+            LevelData.write("2");
+            GameFrame.gameFrame = new GameFrame();
+        } else {
+            JOptionPane.showMessageDialog(null, "LEVEL_CONTENT Completed !!!" + '\n' + "More Levels will come soon !!!" + '\n' + "Resetting data");
+            LevelData.write("1");
+            System.exit(0);
         }
+        progress = 0;
     }
 
     public GameFrame.PlantType getActivePlantingBrush() {
