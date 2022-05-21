@@ -205,7 +205,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             boolean isSunflower = activePlantingBrush == GameFrame.PlantType.Sunflower;
-            boolean isPeashooter = activePlantingBrush == GameFrame.PlantType.FreezePeashooter;
+            boolean isPeashooter = activePlantingBrush == GameFrame.PlantType.Peashooter;
             boolean isFreezePeashooter = activePlantingBrush == GameFrame.PlantType.FreezePeashooter;
 
             boolean isLargeSunflowerCost = getSunScore() >= SUNFLOWER_COST;
