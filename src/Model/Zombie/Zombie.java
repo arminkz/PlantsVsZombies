@@ -29,27 +29,26 @@ public class Zombie {
     }
 
     public void advance() {
-        if (isMoving) {
-            boolean isCollides = false;
-            Collider collidedPlants = null;
-            for (int i = lane * 9; i < (lane + 1) * 9; i++) {
-                if (gamepanel.getColliders()[i].assignedPlant != null && gamepanel.getColliders()[i].isInsideCollider(positionX)) {
-                    isCollides = true;
-                    collidedPlants = gamepanel.getColliders()[i];
-                }
-            }
-            if (!isCollides) {
-                moving();
-            } else {
-                getAttack(collidedPlants);
-            }
-            if (positionX < 0) {
-                isMoving = false;
-                JOptionPane.showMessageDialog(gamepanel, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
-                GameFrame.gameFrame.dispose();
-                GameFrame.gameFrame = new GameFrame();
-            }
+        if (!isMoving) return;
+        boolean isCollides = false;
+        Collider collidedPlants = null;
+        for (int i = lane * 9; i < (lane + 1) * 9; i++) {
+            if (gamepanel.getColliders()[i].assignedPlant == null || !gamepanel.getColliders()[i].isInsideCollider(positionX)) continue;
+            isCollides = true;
+            collidedPlants = gamepanel.getColliders()[i];
         }
+        if (!isCollides && positionX >= 0) {
+            moving();
+            return;
+        }
+        if (isCollides && positionX >= 0) {
+            getAttack(collidedPlants);
+            return;
+        }
+        isMoving = false;
+        JOptionPane.showMessageDialog(gamepanel, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+        GameFrame.gameFrame.dispose();
+        GameFrame.gameFrame = new GameFrame();
     }
 
 	private void getAttack(Collider collidedPlants) {
@@ -60,14 +59,14 @@ public class Zombie {
 	}
 
 	private void moving() {
-		if (slowInt > 0) {
-		    if (slowInt % 2 == 0) {
-		        positionX--;
-		    }
-		    slowInt--;
-		} else {
-		    positionX -= 1;
-		}
+        if(slowInt <= 0) {
+            positionX -= 1;
+            return;
+        }
+        if(slowInt % 2 == 0) {
+            positionX--;
+        }
+        slowInt--;
 	}
 
     int slowInt = 0;
