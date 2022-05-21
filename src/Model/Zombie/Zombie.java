@@ -4,7 +4,6 @@ import View.Collider;
 import View.Game.GameFrame;
 import View.Game.GamePanel;
 import View.View;
-import View.Zombie.NormalZombieView;
 
 import javax.swing.*;
 
