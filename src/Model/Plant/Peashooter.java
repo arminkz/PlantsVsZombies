@@ -1,13 +1,8 @@
 package Model.Plant;
 
-import Model.Pea.Pea;
-import Model.Zombie.Zombie;
 import View.Game.GamePanel;
 import View.Plant.PeashooterView;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 
 /**
  * Created by Armin on 6/25/2016.
