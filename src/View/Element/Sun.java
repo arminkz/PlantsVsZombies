@@ -1,8 +1,9 @@
 package View.Element;
 
+import javax.swing.*;
+
 import View.Game.GamePanel;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -10,29 +11,28 @@ import java.awt.event.MouseListener;
 /**
  * Created by Armin on 6/27/2016.
  */
-
 public class Sun extends JPanel implements MouseListener {
 
-    public static final int START_Y = 0;
-	public static final int START_X = 0;
+    private static final int START_Y = 0;
+	private static final int START_X = 0;
 	private GamePanel gamePanel;
     private Image sunImage;
 
     private int positionX;
     private int positionY;
-    private int endPositionY;
+    private int endPositonY;
 
     private int destructTime = 200;
 
     public Sun(GamePanel parent, int startX, int startY, int endY) {
         this.gamePanel = parent;
-        this.endPositionY = endY;
+        this.endPositonY = endY;
+        setSize(80, 80);
+        setOpaque(false);
         positionX = startX;
         positionY = startY;
-        setSize(80, 80);
-        setOpaque(false);  
         setLocation(positionX, positionY);
-        sunImage = new ImageIcon(this.getClass().getResource("../../images/sun.png")).getImage();
+        sunImage = new ImageIcon(this.getClass().getResource("images/sun.png")).getImage();
         addMouseListener(this);
     }
 
@@ -43,7 +43,11 @@ public class Sun extends JPanel implements MouseListener {
     }
 
     public void advance() {
-        if (positionY < endPositionY) {
+        position();
+    }
+    
+	private void position() {
+		if (positionY < endPositonY) {
             positionY += 4;
         } else {
             destructTime--;
@@ -53,7 +57,7 @@ public class Sun extends JPanel implements MouseListener {
             }
         }
         setLocation(positionX, positionY);
-    }
+	}
 
     @Override
     public void mouseClicked(MouseEvent e) {
