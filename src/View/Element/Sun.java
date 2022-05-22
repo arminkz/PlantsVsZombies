@@ -34,7 +34,7 @@ public class Sun extends JPanel implements MouseListener {
         setLocation(positionX, positionY);
         sunImage = new ImageIcon(this.getClass().getResource("images/sun.png")).getImage();
         addMouseListener(this);
-    } 
+    }
 
     @Override
     protected void paintComponent(Graphics graphics) {
