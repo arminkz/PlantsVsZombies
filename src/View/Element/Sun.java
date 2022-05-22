@@ -1,8 +1,9 @@
 package View.Element;
 
+import javax.swing.*;
+
 import View.Game.GamePanel;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -12,45 +13,51 @@ import java.awt.event.MouseListener;
  */
 public class Sun extends JPanel implements MouseListener {
 
-    private GamePanel gamePanel;
+    private static final int START_Y = 0;
+	private static final int START_X = 0;
+	private GamePanel gamePanel;
     private Image sunImage;
 
     private int positionX;
     private int positionY;
-    private int endPositionY;
+    private int endPositonY;
 
-    private int destruct = 200;
+    private int destructTime = 200;
 
     public Sun(GamePanel parent, int startX, int startY, int endY) {
         this.gamePanel = parent;
-        this.endPositionY = endY;
+        this.endPositonY = endY;
         setSize(80, 80);
         setOpaque(false);
         positionX = startX;
         positionY = startY;
         setLocation(positionX, positionY);
-        sunImage = new ImageIcon(this.getClass().getResource("../../images/sun.png")).getImage();
+        sunImage = new ImageIcon(this.getClass().getResource("images/sun.png")).getImage();
         addMouseListener(this);
     }
 
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        graphics.drawImage(sunImage, 0, 0, null);
+        graphics.drawImage(sunImage, START_X, START_Y, null);
     }
 
     public void advance() {
-        if (positionY < endPositionY) {
+        position();
+    }
+    
+	private void position() {
+		if (positionY < endPositonY) {
             positionY += 4;
         } else {
-            destruct--;
-            if (destruct < 0) {
+            destructTime--;
+            if (destructTime < 0) {
                 gamePanel.remove(this);
                 gamePanel.getActiveSuns().remove(this);
             }
         }
         setLocation(positionX, positionY);
-    }
+	}
 
     @Override
     public void mouseClicked(MouseEvent e) {

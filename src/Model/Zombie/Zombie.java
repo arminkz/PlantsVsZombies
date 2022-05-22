@@ -3,6 +3,7 @@ package Model.Zombie;
 import View.Collider;
 import View.Game.GameFrame;
 import View.Game.GamePanel;
+import View.View;
 
 import javax.swing.*;
 
@@ -14,50 +15,63 @@ public class Zombie {
     private int health = 1000;
     private int speed = 1;
 
-    private GamePanel gp;
+    private View view;
+    private GamePanel gamepanel;
 
-    private int posX = 1000;
-    private int myLane;
+    private int positionX = 1000;
+    private int lane;
     private boolean isMoving = true;
 
-    public Zombie(GamePanel parent, int lane) {
-        this.gp = parent;
-        myLane = lane;
+    public Zombie(GamePanel parent, int lane, View view) {
+        this.gamepanel = parent;
+        this.view = view;
+        this.lane = lane;
     }
 
     public void advance() {
-        if (isMoving) {
-            boolean isCollides = false;
-            Collider collided = null;
-            for (int i = myLane * 9; i < (myLane + 1) * 9; i++) {
-                if (gp.getColliders()[i].assignedPlant != null && gp.getColliders()[i].isInsideCollider(posX)) {
-                    isCollides = true;
-                    collided = gp.getColliders()[i];
-                }
-            }
-            if (!isCollides) {
-                if (slowInt > 0) {
-                    if (slowInt % 2 == 0) {
-                        posX--;
-                    }
-                    slowInt--;
-                } else {
-                    posX -= 1;
-                }
-            } else {
-                collided.assignedPlant.setHealth(collided.assignedPlant.getHealth() - 10);
-                if (collided.assignedPlant.getHealth() < 0) {
-                    collided.removePlant();
-                }
-            }
-            if (posX < 0) {
-                isMoving = false;
-                JOptionPane.showMessageDialog(gp, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
-                GameFrame.gameFrame.dispose();
-                GameFrame.gameFrame = new GameFrame();
-            }
+        if (!isMoving) return;
+        boolean isCollides = false;
+        Collider collidedPlants = null;
+        for (int i = lane * 9; i < (lane + 1) * 9; i++) {
+            if (gamepanel.getColliders()[i].assignedPlant == null || !gamepanel.getColliders()[i].isInsideCollider(positionX)) continue;
+            isCollides = true;
+            collidedPlants = gamepanel.getColliders()[i];
         }
+        if (!isCollides && positionX >= 0) {
+            moving();
+            return;
+        }
+        if (isCollides && positionX >= 0) {
+            attackPlants(collidedPlants);
+            return;
+        }
+        isMoving = false;
+        gameOver();
     }
+
+	private void gameOver() {
+		JOptionPane.showMessageDialog(gamepanel, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+        GameFrame.gameFrame.dispose();
+        GameFrame.gameFrame = new GameFrame();
+	}
+
+	private void attackPlants(Collider collidedPlants) {
+		collidedPlants.assignedPlant.setHealth(collidedPlants.assignedPlant.getHealth() - 10);
+		if (collidedPlants.assignedPlant.getHealth() < 0) {
+		    collidedPlants.removePlant();
+		}
+	}
+
+	private void moving() {
+        if(slowInt <= 0) {
+            positionX -= 1;
+            return;
+        }
+        if(slowInt % 2 == 0) {
+            positionX--;
+        }
+        slowInt--;
+	}
 
     int slowInt = 0;
 
@@ -66,16 +80,18 @@ public class Zombie {
     }
 
     public static Zombie getZombie(String type, GamePanel parent, int lane) {
-        Zombie z = new Zombie(parent, lane);
         switch (type) {
             case "NormalZombie":
-                z = new NormalZombie(parent, lane);
-                break;
+                return new NormalZombie(parent, lane);
             case "ConeHeadZombie":
-                z = new ConeHeadZombie(parent, lane);
-                break;
+                return new ConeHeadZombie(parent, lane);
+            default:
+                return null;
         }
-        return z;
+    }
+
+    public View getView() {
+        return view;
     }
 
     public int getHealth() {
@@ -95,27 +111,27 @@ public class Zombie {
     }
 
     public GamePanel getGp() {
-        return gp;
+        return gamepanel;
     }
 
-    public void setGp(GamePanel gp) {
-        this.gp = gp;
+    public void setGp(GamePanel gamepanel) {
+        this.gamepanel = gamepanel;
     }
 
     public int getPosX() {
-        return posX;
+        return positionX;
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
+    public void setPosX(int positionX) {
+        this.positionX = positionX;
     }
 
-    public int getMyLane() {
-        return myLane;
+    public int getLane() {
+        return lane;
     }
 
-    public void setMyLane(int myLane) {
-        this.myLane = myLane;
+    public void setLane(int lane) {
+        this.lane = lane;
     }
 
     public boolean isMoving() {

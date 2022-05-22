@@ -1,6 +1,7 @@
 package Model.Plant;
 
 import View.Game.GamePanel;
+import View.View;
 
 
 /**
@@ -13,16 +14,27 @@ public abstract class Plant {
     private int x;
     private int y;
 
+    private View view;
     private GamePanel gamePanel;
 
-    public Plant(GamePanel parent, int x, int y) {
+    public Plant(GamePanel gamePanel, int x, int y, View view) {
         this.x = x;
         this.y = y;
-        gamePanel = parent;
+        this.view = view;
+        this.gamePanel = gamePanel;
     }
 
-    public void stop() {
+    public Plant(GamePanel gamePanel, int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.gamePanel = gamePanel;
     }
+
+    public View getPlantView() {
+        return view;
+    }
+
+    public void stop() {}
 
     public int getHealth() {
         return health;

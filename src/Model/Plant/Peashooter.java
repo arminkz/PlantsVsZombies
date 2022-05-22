@@ -3,7 +3,7 @@ package Model.Plant;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-import Model.Pea.Pea;
+import Model.Pea.NormalPea;
 import View.Game.GamePanel;
 
 
@@ -31,7 +31,7 @@ public class Peashooter extends Plant {
             final boolean isExistZombie = getGamePanel().getLaneZombies().get(y).size() > 0;
             
             if (isExistZombie) {
-                getGamePanel().getLanePeas().get(y).add(new Pea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME));
+                getGamePanel().getLanePeas().get(y).add(new NormalPea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME));
             }
         });
     }
