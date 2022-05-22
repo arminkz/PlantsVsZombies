@@ -1,8 +1,10 @@
 package Model.Plant;
 
+import Model.Pea.NormalPea;
 import Model.Pea.Pea;
 import Model.Zombie.Zombie;
 import View.Game.GamePanel;
+import View.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,20 +20,25 @@ public abstract class Plant {
     private int x;
     private int y;
 
+    private View view;
     private GamePanel gamePanel;
     public Timer shootTimer;
 
     public static final int STARTING_POSITION_OF_PEA = 103;
     public static final int SHOOT_DELAY = 2000;
 
-    public Plant(GamePanel parent, int x, int y) {
+    public Plant(GamePanel gamePanel, int x, int y, View view) {
         this.x = x;
         this.y = y;
-        gamePanel = parent;
+        this.view = view;
+        this.gamePanel = gamePanel;
     }
 
-    public void stop() {
+    public View getPlantView() {
+        return view;
     }
+
+    public void stop() {}
 
     public int getHealth() {
         return health;
@@ -72,7 +79,7 @@ public abstract class Plant {
             ArrayList<Pea> lanePea = getGamePanel().getLanePeas().get(y);
 
             if (laneZombie.size() > 0) {
-                lanePea.add(new Pea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * 100));
+                lanePea.add(new NormalPea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * 100));
             }
         });
     }
