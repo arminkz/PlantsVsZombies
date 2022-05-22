@@ -42,16 +42,20 @@ public class Zombie {
             return;
         }
         if (isCollides && positionX >= 0) {
-            getAttack(collidedPlants);
+            attackPlants(collidedPlants);
             return;
         }
         isMoving = false;
-        JOptionPane.showMessageDialog(gamepanel, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
-        GameFrame.gameFrame.dispose();
-        GameFrame.gameFrame = new GameFrame();
+        gameOver();
     }
 
-	private void getAttack(Collider collidedPlants) {
+	private void gameOver() {
+		JOptionPane.showMessageDialog(gamepanel, "ZOMBIES ATE YOUR BRAIN !" + '\n' + "Starting the level again");
+        GameFrame.gameFrame.dispose();
+        GameFrame.gameFrame = new GameFrame();
+	}
+
+	private void attackPlants(Collider collidedPlants) {
 		collidedPlants.assignedPlant.setHealth(collidedPlants.assignedPlant.getHealth() - 10);
 		if (collidedPlants.assignedPlant.getHealth() < 0) {
 		    collidedPlants.removePlant();
