@@ -20,7 +20,6 @@ public class FreezePea extends Pea {
         super(parent, lane, startPositionX, new FreezePeaView());
     }
     
-    
     @Override
     public void advance() {
         Rectangle peaRectangle = new Rectangle(getPositionX(), 130 + getMyLane() * 120, 28, 28);
@@ -37,21 +36,6 @@ public class FreezePea extends Pea {
         }
         positionX += 15;
     }
-
-    public View getView() { return view; }
-
-    public int getPositionX() {
-        return positionX;
-    }
-
-    public int getMyLane() {
-        return myLane;
-    }
-
-    public void setPositionX(int positionX) {
-        this.positionX = positionX;
-    }
-
 
 	@Override
 	public int getPower() {
