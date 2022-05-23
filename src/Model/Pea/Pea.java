@@ -6,7 +6,7 @@ import View.View;
 /**
  * Created by Armin on 6/25/2016.
  */
-public abstract class Pea {
+public abstract class Pea implements PeaStrategy{
     protected int positionX;
     protected GamePanel gamePanel;
     protected int myLane;
@@ -18,6 +18,8 @@ public abstract class Pea {
         this.positionX = startPositionX;
         this.view = view;
     }
+
+    public abstract int getPower();
 
     public abstract void advance();
 

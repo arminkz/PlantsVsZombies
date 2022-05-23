@@ -19,7 +19,8 @@ public class FreezePea extends Pea {
     public FreezePea(GamePanel parent, int lane, int startPositionX) {
         super(parent, lane, startPositionX, new FreezePeaView());
     }
-
+    
+    
     @Override
     public void advance() {
         Rectangle peaRectangle = new Rectangle(getPositionX(), 130 + getMyLane() * 120, 28, 28);
@@ -50,4 +51,12 @@ public class FreezePea extends Pea {
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
+
+
+	@Override
+	public int getPower() {
+		return 300;
+	}
+
+
 }
