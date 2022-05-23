@@ -16,10 +16,6 @@ public class GameFrame extends JFrame {
     public static final int PEASHOOTER_CARD_POS_X = 175;
     public static final int FREEZEPEASHOOTER_CARD_POS_X = 240;
     public static final int PLANT_POS_Y = 8;
-    public static final int SUN_POS_X = 37;
-    public static final int SUN_POS_Y = 80;
-    public static final int SUN_WIDTH = 60;
-    public static final int SUN_HEIGHT = 20;
 
     private static MenuFrame menuFrame;
 
@@ -30,11 +26,9 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
 
-        JLabel sun = new JLabel("SUN");
-        GamePanel gamePanel = new GamePanel(sun);
+        GamePanel gamePanel = new GamePanel();
 
         placeGamePanel(gamePanel);
-        placeSunPoint(sun);
         placeSunflowerCard(gamePanel);
         placePeashooterCard(gamePanel);
         placeFreezePeashooterCard(gamePanel);
@@ -46,12 +40,6 @@ public class GameFrame extends JFrame {
     public void placeGamePanel(GamePanel gamePanel) {
         gamePanel.setLocation(0, 0);
         getLayeredPane().add(gamePanel, new Integer(0));
-    }
-
-    public void placeSunPoint(JLabel sun) {
-        sun.setLocation(SUN_POS_X, SUN_POS_Y);
-        sun.setSize(SUN_WIDTH, SUN_HEIGHT);
-        getLayeredPane().add(sun, new Integer(2));
     }
 
     public void placeSunflowerCard(GamePanel gamePanel) {

@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Lane/Lane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Lane/Lane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Plant/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Plant/FreezePeashooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Plant/Peashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Plant/Peashooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Element/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Element/Sun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Game/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Game/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Game/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Game/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,10 +295,9 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <configuration name="GameWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GameWindow" />
+    <configuration name="GameFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="View.Game.GameFrame" />
       <module name="jPvZ" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -365,7 +369,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GameWindow" />
+        <item itemvalue="Application.GameFrame" />
       </list>
     </recent_temporary>
   </component>

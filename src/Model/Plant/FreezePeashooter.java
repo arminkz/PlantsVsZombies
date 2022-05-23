@@ -21,10 +21,10 @@ public class FreezePeashooter extends Peashooter {
     private void createFreezePea(int y) {
         shootTimer = new Timer(SHOOT_DELAY, (ActionEvent e) -> {
             //System.out.println("SHOOT");
-            final boolean isExistZombie = getGamePanel().getLaneZombies().get(y).size() > 0;
+            final boolean isExistZombie = getGamePanel().getLane().getLaneZombies().get(y).size() > 0;
             
             if ( isExistZombie ) {
-                getGamePanel().getLanePeas().get(y).add(new FreezePea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME));
+                getGamePanel().getLane().getLanePeas().get(y).add(new FreezePea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME));
             }
         });
     }
