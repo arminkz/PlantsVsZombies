@@ -1,5 +1,6 @@
 package View.Game;
 
+import Model.Lane.Lane;
 import Model.Level.LevelData;
 import Model.Pea.Pea;
 import Model.Plant.FreezePeashooter;
@@ -55,7 +56,9 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
     private int mouseX, mouseY;
     private int sunScore;
+    private Lane lanes;
 
+    
     public GamePanel(JLabel sunScoreboard) {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setLayout(null);
