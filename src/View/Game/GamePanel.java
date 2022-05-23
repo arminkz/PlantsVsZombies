@@ -2,6 +2,7 @@ package View.Game;
 
 import Model.Lane.Lane;
 import Model.Level.LevelData;
+import Model.Pea.FreezePea;
 import Model.Pea.Pea;
 import Model.Plant.FreezePeashooter;
 import Model.Plant.Peashooter;
@@ -56,8 +57,6 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
     private int mouseX, mouseY;
     private int sunScore;
-    private Lane lanes;
-
     
     public GamePanel(JLabel sunScoreboard) {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -163,16 +162,35 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             for (Zombie zombie : laneZombies.get(i)) {
                 zombie.advance();
             }
-            for (int j = 0; j < lanePeas.get(i).size(); j++) {
-                Pea pea = lanePeas.get(i).get(j);
-                pea.advance();
-            }
+            
+            peaAdvance(i);
         }
         for (int i = 0; i < activeSuns.size(); i++) {
             activeSuns.get(i).advance();
         }
     }
 
+    private void peaAdvance(int laneIndex) {
+        for (int j = 0; j < lanePeas.get(laneIndex).size(); j++) {
+            Pea pea = lanePeas.get(laneIndex).get(j);
+            Rectangle peaRectangle = new Rectangle(pea.getPositionX(), 130 + pea.getMyLane() * 120, 28, 28);
+            for (int zombieIndex = 0; zombieIndex < getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
+                Zombie zombie = getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
+                Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + pea.getMyLane() * 120, 400, 120);
+                if (peaRectangle.intersects(zombieRectangle)) {
+                    zombie.setHealth(zombie.getHealth() - pea.getPower());
+                    if (pea instanceof FreezePea)
+                        zombie.slow();
+                    boolean exit = false;
+                    
+                    getLaneZombies().get(pea.getMyLane()).remove(pea);
+                    if (exit) break;
+                }
+            }
+            pea.advance();
+        }
+    }
+    
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
