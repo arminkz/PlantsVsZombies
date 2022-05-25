@@ -6,26 +6,33 @@ import View.Game.GamePanel;
 import View.View;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Armin on 6/25/2016.
  */
-public class Zombie {
+public abstract class Zombie {
 
     private int health = 1000;
     private int speed = 1;
 
-    private View view;
     private GamePanel gamepanel;
+    protected Image image;
 
     private int positionX = 1000;
     private int lane;
     private boolean isMoving = true;
 
-    public Zombie(GamePanel parent, int lane, View view) {
+    public Zombie(GamePanel parent, int lane) {
         this.gamepanel = parent;
-        this.view = view;
         this.lane = lane;
+        setImage();
+    }
+
+    protected abstract void setImage();
+
+    public void draw(int x, int y, Graphics graphics) {
+        graphics.drawImage(image, x, y, null);
     }
 
     public void advance() {
@@ -88,10 +95,6 @@ public class Zombie {
             default:
                 return null;
         }
-    }
-
-    public View getView() {
-        return view;
     }
 
     public int getHealth() {

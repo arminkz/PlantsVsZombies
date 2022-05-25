@@ -1,5 +1,6 @@
 package View.Game;
 
+import Model.Plant.NormalPeashooter;
 import View.Game.GameFrame.PlantType;
 
 import Model.Lane.Lane;
@@ -7,7 +8,6 @@ import Model.Level.LevelData;
 import Model.Pea.FreezePea;
 import Model.Pea.Pea;
 import Model.Plant.FreezePeashooter;
-import Model.Plant.Peashooter;
 import Model.Plant.Sunflower;
 import Model.Zombie.Zombie;
 import View.Collider;
@@ -55,9 +55,6 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     private Timer sunProducer;
     private Timer zombieProducer;
 
-
-    private Lane lane;
-
     private JLabel sunScoreboard;
 
     private PlantType activePlantingBrush = PlantType.None;
@@ -69,7 +66,6 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         initializeLayout();
         setSunScore(INIT_SCORE);
 
-        lane = lane.getInstance();
         colliders = makeColliders();
         activeSuns = new ArrayList<>();
 
@@ -147,16 +143,13 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
                 if (t < LevelValue[i][0] || t > LevelValue[i][1]) continue;
                 zombie = Zombie.getZombie(Level[i], GamePanel.this, l);
             }
-            lane.getLaneZombies().get(l).add(zombie);
+            Lane.getInstance().getLaneZombies().get(l).add(zombie);
         };
     }
 
     private void advance() {
         for (int i = 0; i < 5; i++) {
-            for (Zombie zombie : lane.getLaneZombies().get(i)) {
-                zombie.advance();
-            }
-            
+            zombieAdvance(i);
             peaAdvance(i);
         }
         for (int i = 0; i < activeSuns.size(); i++) {
@@ -165,11 +158,11 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     }
 
     private void peaAdvance(int laneIndex) {
-        for (int j = 0; j < lane.getLanePeas().get(laneIndex).size(); j++) {
-            Pea pea = lane.getLanePeas().get(laneIndex).get(j);
+        for (int j = 0; j < Lane.getInstance().getLanePeas().get(laneIndex).size(); j++) {
+            Pea pea = Lane.getInstance().getLanePeas().get(laneIndex).get(j);
             Rectangle peaRectangle = new Rectangle(pea.getPositionX(), 130 + pea.getMyLane() * 120, 28, 28);
-            for (int zombieIndex = 0; zombieIndex < lane.getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
-                Zombie zombie = lane.getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
+            for (int zombieIndex = 0; zombieIndex < Lane.getInstance().getLaneZombies().get(pea.getMyLane()).size(); zombieIndex++) {
+                Zombie zombie = Lane.getInstance().getLaneZombies().get(pea.getMyLane()).get(zombieIndex);
                 Rectangle zombieRectangle = new Rectangle(zombie.getPosX(), 109 + pea.getMyLane() * 120, 400, 120);
                 if (peaRectangle.intersects(zombieRectangle)) {
                     zombie.setHealth(zombie.getHealth() - pea.getPower());
@@ -177,12 +170,28 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
                         zombie.slow();
                     boolean exit = false;
 
-                    lane.getLaneZombies().get(pea.getMyLane()).remove(pea);
+                    Lane.getInstance().getLaneZombies().get(pea.getMyLane()).remove(pea);
                     if (exit) break;
                 }
             }
             pea.advance();
         }
+    }
+
+    private void zombieAdvance(int laneIndex) {
+        for (Zombie z : Lane.getInstance().getLaneZombies().get(laneIndex)) {
+            z.advance();
+            if (z.getHealth() < 0) {
+                killZombie(laneIndex, z);
+                break;
+            }
+        }
+    }
+
+    private void killZombie(int i, Zombie z) {
+        System.out.println("ZOMBIE DIED");
+        Lane.getInstance().getLaneZombies().get(i).remove(z);
+        setProgress(10);
     }
     
     @Override
@@ -194,16 +203,15 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         for (int i = 0; i < NUMBER_OF_BLOCK; i++) {
             if (colliders[i].assignedPlant == null) continue;
             colliders[i].assignedPlant
-                    .getPlantView()
                     .draw(60 + (i % 9) * 100, 129 + (i / 9) * 120, graphics);
         }
         for (int i = 0; i < 5; i++) {
-            for (Zombie zombie : lane.getLaneZombies().get(i)) {
-                zombie.getView().draw(zombie.getPosX(), 109 + (i * 120), graphics);
+            for (Zombie zombie : Lane.getInstance().getLaneZombies().get(i)) {
+                zombie.draw(zombie.getPosX(), 109 + (i * 120), graphics);
             }
-            for (int j = 0; j < lane.getLanePeas().get(i).size(); j++) {
-                Pea pea = lane.getLanePeas().get(i).get(j);
-                pea.getView().draw(pea.getPositionX(), 130 + (i * 120), graphics);
+            for (int j = 0; j < Lane.getInstance().getLanePeas().get(i).size(); j++) {
+                Pea pea = Lane.getInstance().getLanePeas().get(i).get(j);
+                pea.draw(pea.getPositionX(), 130 + (i * 120), graphics);
             }
         }
     }
@@ -233,7 +241,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
                 return;
             }
             if(isPeashooter && isLargePeashooterCost) {
-                colliders[x + y * 9].setPlant(new Peashooter(GamePanel.this, x, y));
+                colliders[x + y * 9].setPlant(new NormalPeashooter(GamePanel.this, x, y));
                 setSunScore(getSunScore() - PEASHOOTER_COST);
                 return;
             }
@@ -292,10 +300,6 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     public void setActiveSuns(ArrayList<Sun> activeSuns) {
         this.activeSuns = activeSuns;
     }
-
-    public Lane getLane() { return lane; }
-
-    public void setLane(Lane lane) { this.lane = lane; }
 
     public Collider[] getColliders() {
         return colliders;
