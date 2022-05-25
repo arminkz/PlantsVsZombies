@@ -26,7 +26,7 @@ public class FreezePeashooter extends Peashooter {
 
     @Override
     protected Pea getPea() {
-        return new FreezePea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME);
+        return new FreezePea(GamePanel.getInstance(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME);
     }
 
     @Override

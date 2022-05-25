@@ -10,12 +10,10 @@ import java.awt.*;
  */
 public abstract class Pea implements PeaStrategy{
     protected int positionX;
-    protected GamePanel gamePanel;
     protected int myLane;
     protected Image image;
 
     public Pea(GamePanel parent, int lane, int startPositionX) {
-        this.gamePanel = parent;
         this.myLane = lane;
         this.positionX = startPositionX;
         setImage();
@@ -26,23 +24,18 @@ public abstract class Pea implements PeaStrategy{
     }
 
     protected abstract void setImage();
-
     public abstract int getPower();
-
     public abstract void advance();
 
     public int getPositionX() {
         return positionX;
     }
-
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
-
     public int getMyLane() {
         return myLane;
     }
-
     public void setMyLane(int myLane) {
         this.myLane = myLane;
     }

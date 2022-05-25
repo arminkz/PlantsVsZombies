@@ -26,7 +26,7 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
 
-        GamePanel gamePanel = new GamePanel();
+        GamePanel gamePanel = GamePanel.getInstance();
 
         placeGamePanel(gamePanel);
         placeSunflowerCard(gamePanel);

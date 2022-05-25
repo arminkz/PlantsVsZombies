@@ -44,6 +44,8 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     public static final int SUN_WIDTH = 60;
     public static final int SUN_HEIGHT = 20;
 
+    private static GamePanel gamePanel = null;
+
     private Image backgroundImage = new ImageIcon(this.getClass().getResource("../../images/mainBG.png")).getImage();
 
     private Collider[] colliders;
@@ -70,6 +72,13 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         activeSuns = new ArrayList<>();
 
         setTimer();
+    }
+
+    public static GamePanel getInstance() {
+        if(gamePanel == null) {
+            gamePanel = new GamePanel();
+        }
+        return gamePanel;
     }
 
     private void initializeLayout() {

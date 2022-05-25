@@ -13,6 +13,6 @@ public class NormalPeashooter extends Peashooter{
 
     @Override
     protected Pea getPea() {
-        return new NormalPea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME);
+        return new NormalPea(GamePanel.getInstance(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME);
     }
 }
