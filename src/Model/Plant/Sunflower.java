@@ -1,30 +1,39 @@
 package Model.Plant;
 
-import View.Element.Sun;
-import View.Game.GamePanel;
+import Model.Plant.Action.BasicPlantAction;
+import Model.Plant.Action.PlantAction;
+import Model.Plant.Action.SunProduceDecorator;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
  * Created by Armin on 6/28/2016.
  */
 public class Sunflower extends Plant {
+    private boolean isStartTimer = false;
 
-    private Timer sunProduceTimer;
-
-    public Sunflower(GamePanel parent, int x, int y) {
-        super(parent, x, y);
-        sunProduceTimer = new Timer(15000, (ActionEvent e) -> {
-            Sun sta = new Sun(GamePanel.getInstance(), 60 + x * 100, 110 + y * 120, 130 + y * 120);
-            GamePanel.getInstance().getActiveSuns().add(sta);
-            GamePanel.getInstance().add(sta, new Integer(1));
-        });
-        sunProduceTimer.start();
+    public Sunflower(int x, int y) {
+        super(x, y);
     }
 
     @Override
-    protected void setImage() {
-        this.image = new ImageIcon(this.getClass().getResource("../../images/plants/sunflower.gif")).getImage();
+    public void draw(int idx, Graphics graphics) {
+        PlantAction plantAction = new SunProduceDecorator(
+                new BasicPlantAction()
+        );
+        if(!isStartTimer) {
+            timer = new Timer(0, (ActionEvent e) -> {});
+            isStartTimer = true;
+        } else {
+            timer = null;
+        }
+        plantAction.action(getImage(), idx, graphics, timer);
+    }
+
+    @Override
+    protected Image getImage() {
+        return new ImageIcon(this.getClass().getResource("../../images/plants/sunflower.gif")).getImage();
     }
 }

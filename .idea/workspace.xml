@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dc5d397-09b3-4108-83f3-9a4e2501e054" name="Default" comment="Reformatted code">
+      <change afterPath="$PROJECT_DIR$/src/Model/Plant/Action/BasicPlantAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Plant/Action/FreezeShootDecorator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Plant/Action/NormalShootDecorator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Plant/Action/PlantAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Plant/Action/PlantActionDecorator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/Plant/Action/SunProduceDecorator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Zombie/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Zombie/Zombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Game/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Game/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Plant/FreezePeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Plant/FreezePeashooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Plant/NormalPeashooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Plant/NormalPeashooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Plant/Peashooter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Plant/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Plant/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Plant/Sunflower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Plant/Sunflower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Game/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Game/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

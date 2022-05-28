@@ -1,18 +1,37 @@
 package Model.Plant;
 
-import Model.Pea.NormalPea;
-import Model.Pea.Pea;
+import Model.Plant.Action.BasicPlantAction;
+import Model.Plant.Action.NormalShootDecorator;
+import Model.Plant.Action.PlantAction;
 import View.Game.GamePanel;
 
-public class NormalPeashooter extends Peashooter{
-    public NormalPeashooter(GamePanel parent, int x, int y) {
-        super(parent, x, y);
-        createPea(y);
-        shootTimer.start();
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+
+public class NormalPeashooter extends Plant{
+    private boolean isStartTimer = false;
+
+    public NormalPeashooter(int x, int y) {
+        super(x, y);
     }
 
     @Override
-    protected Pea getPea() {
-        return new NormalPea(GamePanel.getInstance(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME);
+    public void draw(int idx, Graphics graphics) {
+        PlantAction plantAction = new NormalShootDecorator(
+                new BasicPlantAction()
+        );
+        if(!isStartTimer) {
+            timer = new Timer(0, (ActionEvent e) -> {});
+            isStartTimer = true;
+        } else {
+            timer = null;
+        }
+        plantAction.action(getImage(), idx, graphics, timer);
+    }
+
+    @Override
+    protected Image getImage() {
+        return new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
     }
 }

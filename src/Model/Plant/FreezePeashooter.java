@@ -1,37 +1,38 @@
 package Model.Plant;
 
-import Model.Lane.Lane;
-import Model.Pea.Pea;
+import Model.Plant.Action.BasicPlantAction;
+import Model.Plant.Action.FreezeShootDecorator;
+import Model.Plant.Action.PlantAction;
 import View.Game.GamePanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-
-import Model.Pea.FreezePea;
 
 /**
  * Created by Armin on 6/25/2016.
  */
-public class FreezePeashooter extends Peashooter {
-    public FreezePeashooter(GamePanel parent, int x, int y) {
-        super(parent, x, y);
-        createPea(y);
-        shootTimer.start();
+public class FreezePeashooter extends Plant {
+    private boolean isStartTimer = false;
+
+    public FreezePeashooter(int x, int y) { super(x, y); }
+
+    @Override
+    public void draw(int idx, Graphics graphics) {
+        PlantAction plantAction = new FreezeShootDecorator(
+                new BasicPlantAction()
+        );
+        if(!isStartTimer) {
+            timer = new Timer(0, (ActionEvent e) -> {});
+            isStartTimer = true;
+        } else {
+            timer = null;
+        }
+        plantAction.action(getImage(), idx, graphics, timer);
     }
 
     @Override
-    protected void setImage() {
-        this.image = new ImageIcon(this.getClass().getResource("../../images/plants/freezepeashooter.gif")).getImage();
+    protected Image getImage() {
+        return new ImageIcon(this.getClass().getResource("../../images/plants/freezepeashooter.gif")).getImage();
     }
-
-    @Override
-    protected Pea getPea() {
-        return new FreezePea(GamePanel.getInstance(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME);
-    }
-
-    @Override
-    public void stop() {
-        shootTimer.stop();
-    }
-
 }

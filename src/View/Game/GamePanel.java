@@ -30,7 +30,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     public static final int WINDOW_HEIGHT = 785;
     public static final int INIT_SCORE = 150;
     public static final int NUMBER_OF_ROW_BLOCK = 9;
-    public static final int NUMBER_OF_COLUMN_BLOCK = 9;
+    public static final int NUMBER_OF_COLUMN_BLOCK = 5;
     public static final int NUMBER_OF_BLOCK = NUMBER_OF_ROW_BLOCK * NUMBER_OF_COLUMN_BLOCK;
     public static final int REDRAW_DELAY = 25;
     public static final int ADVANCER_DELAY = 60;
@@ -211,8 +211,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         //Draw Plants
         for (int i = 0; i < NUMBER_OF_BLOCK; i++) {
             if (colliders[i].assignedPlant == null) continue;
-            colliders[i].assignedPlant
-                    .draw(60 + (i % 9) * 100, 129 + (i / 9) * 120, graphics);
+            colliders[i].assignedPlant.draw(i, graphics);
         }
         for (int i = 0; i < 5; i++) {
             for (Zombie zombie : Lane.getInstance().getLaneZombies().get(i)) {
@@ -245,17 +244,17 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
             boolean isLargeFreezePeashooterCost = getSunScore() >= FREEZEPEASHOOTER_COST;
 
             if(isSunflower && isLargeSunflowerCost) {
-                colliders[x + y * 9].setPlant(new Sunflower(GamePanel.this, x, y));
+                colliders[x + y * 9].setPlant(new Sunflower(x, y));
                 setSunScore(getSunScore() - SUNFLOWER_COST);
                 return;
             }
             if(isPeashooter && isLargePeashooterCost) {
-                colliders[x + y * 9].setPlant(new NormalPeashooter(GamePanel.this, x, y));
+                colliders[x + y * 9].setPlant(new NormalPeashooter(x, y));
                 setSunScore(getSunScore() - PEASHOOTER_COST);
                 return;
             }
             if(isFreezePeashooter && isLargeFreezePeashooterCost) {
-                colliders[x + y * 9].setPlant(new FreezePeashooter(GamePanel.this, x, y));
+                colliders[x + y * 9].setPlant(new FreezePeashooter(x, y));
                 setSunScore(getSunScore() - FREEZEPEASHOOTER_COST);
                 return;
             }
