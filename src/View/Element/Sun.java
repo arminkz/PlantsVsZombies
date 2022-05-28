@@ -32,7 +32,7 @@ public class Sun extends JPanel implements MouseListener {
         positionX = startX;
         positionY = startY;
         setLocation(positionX, positionY);
-        sunImage = new ImageIcon(this.getClass().getResource("images/sun.png")).getImage();
+        sunImage = new ImageIcon(this.getClass().getResource("../../images/sun.png")).getImage();
         addMouseListener(this);
     }
 

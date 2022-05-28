@@ -3,14 +3,16 @@ package Model.Plant;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+import Model.Lane.Lane;
 import Model.Pea.NormalPea;
+import Model.Pea.Pea;
 import View.Game.GamePanel;
 
 
 /**
  * Created by Armin on 6/25/2016.
  */
-public class Peashooter extends Plant {
+public abstract class Peashooter extends Plant {
 
     public static final int MOVE_PER_FRAME = 100;
     public static final int STARTING_POSITION_OF_PEA = 103;
@@ -18,23 +20,28 @@ public class Peashooter extends Plant {
 
     public Timer shootTimer;
 
-
     public Peashooter(GamePanel parent, int x, int y) {
         super(parent, x, y);
         createPea(y);
         shootTimer.start();
     }
 
-    private void createPea(int y) {
+    @Override
+    protected void setImage() {
+        this.image = new ImageIcon(this.getClass().getResource("../../images/plants/peashooter.gif")).getImage();
+    }
+
+    protected void createPea(int y) {
         shootTimer = new Timer(SHOOT_DELAY, (ActionEvent e) -> {
-            //System.out.println("SHOOT");
-            final boolean isExistZombie = getGamePanel().getLaneZombies().get(y).size() > 0;
+            final boolean isExistZombie = Lane.getInstance().getLaneZombies().get(y).size() > 0;
             
             if (isExistZombie) {
-                getGamePanel().getLanePeas().get(y).add(new NormalPea(getGamePanel(), y, STARTING_POSITION_OF_PEA + this.getX() * MOVE_PER_FRAME));
+                Lane.getInstance().getLanePeas().get(y).add(getPea());
             }
         });
     }
+
+    protected abstract Pea getPea();
 
     @Override
     public void stop() {
