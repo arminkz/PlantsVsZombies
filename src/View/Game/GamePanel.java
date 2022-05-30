@@ -1,6 +1,8 @@
 package View.Game;
 
 import Model.Plant.NormalPeashooter;
+import Model.Plant.Plant;
+import Model.Plant.PlantFactory;
 import View.Game.GameFrame.PlantType;
 
 import Model.Lane.Lane;
@@ -36,9 +38,6 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     public static final int ADVANCER_DELAY = 60;
     public static final int PRODUCE_SUN_DELAY = 5000;
     public static final int PRODUCE_ZOMBIE_DELAY = 7000;
-    public static final int SUNFLOWER_COST = 50;
-    public static final int PEASHOOTER_COST = 100;
-    public static final int FREEZEPEASHOOTER_COST = 175;
     public static final int SUN_POS_X = 37;
     public static final int SUN_POS_Y = 80;
     public static final int SUN_WIDTH = 60;
@@ -235,28 +234,12 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boolean isSunflower = activePlantingBrush == GameFrame.PlantType.Sunflower;
-            boolean isPeashooter = activePlantingBrush == GameFrame.PlantType.Peashooter;
-            boolean isFreezePeashooter = activePlantingBrush == GameFrame.PlantType.FreezePeashooter;
-
-            boolean isLargeSunflowerCost = getSunScore() >= SUNFLOWER_COST;
-            boolean isLargePeashooterCost = getSunScore() >= PEASHOOTER_COST;
-            boolean isLargeFreezePeashooterCost = getSunScore() >= FREEZEPEASHOOTER_COST;
-
-            if(isSunflower && isLargeSunflowerCost) {
-                colliders[x + y * 9].setPlant(new Sunflower(x, y));
-                setSunScore(getSunScore() - SUNFLOWER_COST);
-                return;
-            }
-            if(isPeashooter && isLargePeashooterCost) {
-                colliders[x + y * 9].setPlant(new NormalPeashooter(x, y));
-                setSunScore(getSunScore() - PEASHOOTER_COST);
-                return;
-            }
-            if(isFreezePeashooter && isLargeFreezePeashooterCost) {
-                colliders[x + y * 9].setPlant(new FreezePeashooter(x, y));
-                setSunScore(getSunScore() - FREEZEPEASHOOTER_COST);
-                return;
+           
+            PlantFactory.getInstance();
+            Plant plant = PlantFactory.getPlant(activePlantingBrush.toString(), x, y);
+            if(getSunScore() >= plant.getCost()) {
+                colliders[x + y * 9].setPlant(plant);
+                setSunScore(getSunScore() - plant.getCost());
             }
 
             activePlantingBrush = GameFrame.PlantType.None;

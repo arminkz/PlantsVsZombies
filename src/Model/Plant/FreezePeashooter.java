@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
  */
 public class FreezePeashooter extends Plant {
     private boolean isStartTimer = false;
+    public static final int FREEZE_PEASHOOTER_COST = 175;
 
     public FreezePeashooter(int x, int y) { super(x, y); }
 
@@ -34,5 +35,10 @@ public class FreezePeashooter extends Plant {
     @Override
     protected Image getImage() {
         return new ImageIcon(this.getClass().getResource("../../images/plants/freezepeashooter.gif")).getImage();
+    }
+
+    @Override
+    public int getCost() {
+        return FREEZE_PEASHOOTER_COST;
     }
 }
