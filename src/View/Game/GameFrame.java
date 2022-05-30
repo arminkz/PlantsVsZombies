@@ -13,13 +13,13 @@ public class GameFrame extends JFrame {
     public static final int WINDOW_WIDTH = 1012;
     public static final int WINDOW_HEIGHT = 785;
     public static final int SUNFLOWER_CARD_POS_X = 110;
-    public static final int PEASHOOTER_CARD_POS_X = 175;
+    public static final int NORMALPEASHOOTER_CARD_POS_X = 175;
     public static final int FREEZEPEASHOOTER_CARD_POS_X = 240;
     public static final int PLANT_POS_Y = 8;
 
     private static MenuFrame menuFrame;
 
-    enum PlantType { None, Sunflower, Peashooter, FreezePeashooter }
+    enum PlantType { None, Sunflower, NormalPeashooter, FreezePeashooter }
 
     public GameFrame() {
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -53,9 +53,9 @@ public class GameFrame extends JFrame {
 
     public void placePeashooterCard(GamePanel gamePanel) {
         PlantCard peashooter = new PlantCard(new ImageIcon(this.getClass().getResource("../../images/cards/card_peashooter.png")).getImage());
-        peashooter.setLocation(PEASHOOTER_CARD_POS_X, PLANT_POS_Y);
+        peashooter.setLocation(NORMALPEASHOOTER_CARD_POS_X, PLANT_POS_Y);
         peashooter.setAction((ActionEvent e) -> {
-            gamePanel.setActivePlantingBrush(PlantType.Peashooter);
+            gamePanel.setActivePlantingBrush(PlantType.NormalPeashooter);
         });
         getLayeredPane().add(peashooter, new Integer(3));
     }
