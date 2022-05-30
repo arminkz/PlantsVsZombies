@@ -1,7 +1,7 @@
 package Model.Plant.Action;
 
 import Model.Lane.Lane;
-import Model.Pea.NormalPea;
+import Model.Pea.FreezePea;
 import View.Game.GamePanel;
 
 import javax.swing.*;
@@ -26,7 +26,7 @@ public class FreezeShootDecorator extends PlantActionDecorator{
         shootTimer = new Timer(2000, (ActionEvent e) -> {
             final boolean isExistZombie = Lane.getInstance().getLaneZombies().get(y).size() > 0;
             if (!isExistZombie) return;
-            Lane.getInstance().getLanePeas().get(y).add(new NormalPea(GamePanel.getInstance(), y, 103 + x * 100));
+            Lane.getInstance().getLanePeas().get(y).add(new FreezePea(GamePanel.getInstance(), y, 103 + x * 100));
         });
         shootTimer.start();
     }
