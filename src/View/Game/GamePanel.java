@@ -36,9 +36,6 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
     public static final int ADVANCER_DELAY = 60;
     public static final int PRODUCE_SUN_DELAY = 5000;
     public static final int PRODUCE_ZOMBIE_DELAY = 7000;
-    public static final int SUNFLOWER_COST = 50;
-    public static final int PEASHOOTER_COST = 100;
-    public static final int FREEZEPEASHOOTER_COST = 175;
     public static final int SUN_POS_X = 37;
     public static final int SUN_POS_Y = 80;
     public static final int SUN_WIDTH = 60;

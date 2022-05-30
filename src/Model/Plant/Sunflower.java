@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
  */
 public class Sunflower extends Plant {
     private boolean isStartTimer = false;
+    public static final int SUNFLOWER_COST = 50;
 
     public Sunflower(int x, int y) {
         super(x, y);
@@ -35,5 +36,10 @@ public class Sunflower extends Plant {
     @Override
     protected Image getImage() {
         return new ImageIcon(this.getClass().getResource("../../images/plants/sunflower.gif")).getImage();
+    }
+
+    @Override
+    public int getCost() {
+        return SUNFLOWER_COST;
     }
 }
