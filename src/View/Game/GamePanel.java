@@ -235,6 +235,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
            
+            PlantFactory.getInstance();
             Plant plant = PlantFactory.getPlant(activePlantingBrush.toString(), x, y);
             if(getSunScore() >= plant.getCost()) {
                 colliders[x + y * 9].setPlant(plant);
