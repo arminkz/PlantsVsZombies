@@ -1,6 +1,8 @@
 package View.Game;
 
 import Model.Plant.NormalPeashooter;
+import Model.Plant.Plant;
+import Model.Plant.PlantFactory;
 import View.Game.GameFrame.PlantType;
 
 import Model.Lane.Lane;
@@ -232,31 +234,12 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            boolean isSunflower = activePlantingBrush == GameFrame.PlantType.Sunflower;
-            boolean isPeashooter = activePlantingBrush == GameFrame.PlantType.NormalPeashooter;
-            boolean isFreezePeashooter = activePlantingBrush == GameFrame.PlantType.FreezePeashooter;
-
-            boolean isLargeSunflowerCost = getSunScore() >= SUNFLOWER_COST;
-            boolean isLargePeashooterCost = getSunScore() >= PEASHOOTER_COST;
-            boolean isLargeFreezePeashooterCost = getSunScore() >= FREEZEPEASHOOTER_COST;
-
-            if(isSunflower && isLargeSunflowerCost) {
-                colliders[x + y * 9].setPlant(new Sunflower(x, y));
-                setSunScore(getSunScore() - SUNFLOWER_COST);
-                return;
+           
+            Plant plant = PlantFactory.getPlant(activePlantingBrush.toString(), x, y);
+            if(getSunScore() >= plant.getCost()) {
+                colliders[x + y * 9].setPlant(plant);
+                setSunScore(getSunScore() - plant.getCost());
             }
-            if(isPeashooter && isLargePeashooterCost) {
-                colliders[x + y * 9].setPlant(new NormalPeashooter(x, y));
-                setSunScore(getSunScore() - PEASHOOTER_COST);
-                return;
-            }
-            if(isFreezePeashooter && isLargeFreezePeashooterCost) {
-                colliders[x + y * 9].setPlant(new FreezePeashooter(x, y));
-                setSunScore(getSunScore() - FREEZEPEASHOOTER_COST);
-                return;
-            }
-
-            
 
             activePlantingBrush = GameFrame.PlantType.None;
         }
