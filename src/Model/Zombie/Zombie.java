@@ -17,7 +17,7 @@ public abstract class Zombie {
     private int health = 1000;
     private int speed = 1;
 
-    protected Image image;
+    protected Image zImage;
 
     private int positionX = 1000;
     private int lane;
@@ -28,11 +28,7 @@ public abstract class Zombie {
         setImage();
     }
 
-    protected abstract void setImage();
-
-    public void draw(int x, int y, Graphics graphics) {
-        graphics.drawImage(image, x, y, null);
-    }
+    protected abstract void setImage();    
 
     public void advance() {
         GamePanel gamePanel = GamePanel.getInstance();
@@ -52,6 +48,7 @@ public abstract class Zombie {
             attackPlants(collidedPlants);
             return;
         }
+		
         isMoving = false;
         gameOver();
     }
@@ -62,12 +59,13 @@ public abstract class Zombie {
         GameFrame.gameFrame = new GameFrame();
 	}
 
-	private void attackPlants(Collider collidedPlants) {
-        Plant plant = collidedPlants.assignedPlant;
-        plant.setHealth(plant.getHealth() - 200);
-		if (plant.getHealth() >= 0) return;
-		collidedPlants.removePlant();
-	}
+	protected abstract void attackPlants(Collider collidedPlants);
+//	private void attackPlants(Collider collidedPlants) {
+//        Plant plant = collidedPlants.assignedPlant;
+//        plant.setHealth(plant.getHealth() - 200);
+//		if (plant.getHealth() >= 0) return;
+//		collidedPlants.removePlant();
+//	}
 
 	private void moving() {
         if(slowInt <= 0) {
@@ -84,6 +82,10 @@ public abstract class Zombie {
 
     public void slow() {
         slowInt = 1000;
+    }
+    
+    public void draw(int x, int y, Graphics graphics) {
+        graphics.drawImage(zImage, x, y, null);
     }
 
     public static Zombie getZombie(String type, GamePanel parent, int lane) {

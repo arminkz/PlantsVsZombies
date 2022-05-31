@@ -30,7 +30,6 @@ public abstract class Plant {
     protected abstract Image getImage();
 
     public void stop() {
-        timer.stop();
     }
     public int getHealth() {
         return health;
