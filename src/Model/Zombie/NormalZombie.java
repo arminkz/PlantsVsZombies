@@ -11,11 +11,7 @@ public class NormalZombie extends ZombieBase {
 
     public NormalZombie(GamePanel parent, int lane) {
         super(parent, lane);
+        setImage("../../images/zombies/zombie1.png");
     }
-
-	@Override
-	protected void setImage() {
-		this.zImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie1.png")).getImage();
-	}
 
 }

@@ -12,10 +12,7 @@ public class ConeHeadZombie extends ZombieBase {
     public ConeHeadZombie(GamePanel parent, int lane) {
         super(parent, lane);
         setHealth(1800);
+        setImage("../../images/zombies/zombie2.png");
     }
 
-	@Override
-	protected void setImage() {
-		this.zImage = new ImageIcon(this.getClass().getResource("../../images/zombies/zombie2.png")).getImage();
-	}
 }

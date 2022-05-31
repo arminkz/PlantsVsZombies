@@ -25,10 +25,10 @@ public abstract class Zombie {
 
     public Zombie(GamePanel parent, int lane) {
         this.lane = lane;
-        setImage();
+
     }
 
-    protected abstract void setImage();    
+    protected abstract void setImage(String imgPath);    
 
     public void advance() {
         GamePanel gamePanel = GamePanel.getInstance();
@@ -60,12 +60,6 @@ public abstract class Zombie {
 	}
 
 	protected abstract void attackPlants(Collider collidedPlants);
-//	private void attackPlants(Collider collidedPlants) {
-//        Plant plant = collidedPlants.assignedPlant;
-//        plant.setHealth(plant.getHealth() - 200);
-//		if (plant.getHealth() >= 0) return;
-//		collidedPlants.removePlant();
-//	}
 
 	private void moving() {
         if(slowInt <= 0) {
