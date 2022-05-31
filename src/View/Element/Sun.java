@@ -3,6 +3,7 @@ package View.Element;
 import javax.swing.*;
 
 import View.Game.GamePanel;
+import View.Element.SunState;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -16,24 +17,18 @@ public class Sun extends JPanel implements MouseListener {
     private static final int START_Y = 0;
 	private static final int START_X = 0;
 	private GamePanel gamePanel;
+    private SunState sunState;
     private Image sunImage;
-
-    private int positionX;
-    private int positionY;
-    private int endPositonY;
-
-    private int destructTime = 200;
 
     public Sun(GamePanel parent, int startX, int startY, int endY) {
         this.gamePanel = parent;
-        this.endPositonY = endY;
         setSize(80, 80);
         setOpaque(false);
-        positionX = startX;
-        positionY = startY;
-        setLocation(positionX, positionY);
-        sunImage = new ImageIcon(this.getClass().getResource("../../images/sun.png")).getImage();
         addMouseListener(this);
+
+        sunState = new SunState(startX, startY, endY);
+        sunImage = new ImageIcon(this.getClass().getResource("../../images/sun.png")).getImage();
+        setLocation(this.sunState.getPositionX(), this.sunState.getPositionY());
     }
 
     @Override
@@ -43,21 +38,18 @@ public class Sun extends JPanel implements MouseListener {
     }
 
     public void advance() {
-        position();
+        updateLocation();
     }
     
-	private void position() {
-		if (positionY < endPositonY) {
-            positionY += 4;
-        } else {
-            destructTime--;
-            if (destructTime < 0) {
-                gamePanel.remove(this);
-                gamePanel.getActiveSuns().remove(this);
-            }
-        }
-        setLocation(positionX, positionY);
-	}
+    public void updateLocation() {
+    	this.sunState.updateState();
+    	
+    	if (this.sunState.getDestructionTime() < 0) {
+    		gamePanel.remove(this);
+            gamePanel.getActiveSuns().remove(this);
+    	}
+    	setLocation(this.sunState.getPositionX(), this.sunState.getPositionY());
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
