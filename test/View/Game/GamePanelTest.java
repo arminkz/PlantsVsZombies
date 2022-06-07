@@ -70,4 +70,17 @@ class GamePanelTest {
         gamePanel.setSunScore(200);
         assertEquals(200, gamePanel.getSunScore());
     }
+
+    /**
+     * Purpose: Check colliders length after make colliders
+     * Input: getColliders()
+     * Expected:
+     * return SUCCESS
+     * length = 45
+     */
+    @Test
+    @Order(4)
+    void makeColliders() {
+        assertEquals(45, gamePanel.getColliders().length);
+    }
 }
