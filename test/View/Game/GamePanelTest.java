@@ -101,4 +101,34 @@ class GamePanelTest {
 
         assertEquals(1, gamePanel.getActiveSuns().size());
     }
+
+    /**
+     * Purpose: Check Zombies after produce Zombie
+     * Input: handleProduceZombie()
+     * Expected:
+     * return SUCCESS
+     * zombie count = 1
+     */
+    @Test
+    @Order(6)
+    void handleProduceZombie() {
+        JButton button = new JButton();
+
+        button.addActionListener(gamePanel.handleProduceZombie());
+        button.doClick();
+
+        int count = 0;
+        Zombie zombie = null;
+
+        for(int i=0; i<5; i++) {
+            List<Zombie> zombies = Lane.getInstance().getLaneZombies().get(i);
+            if(zombies.size() <= 0) continue;
+            count += zombies.size();
+            zombie = zombies.get(0);
+        }
+
+        assertEquals(1, count);
+
+        zombie.setHealth(-1);
+    }
 }
