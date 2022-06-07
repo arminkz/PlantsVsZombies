@@ -56,4 +56,18 @@ class GamePanelTest {
     void getSunScore() {
         assertEquals(150, gamePanel.getSunScore());
     }
+
+    /**
+     * Purpose: Check set SunScore in GamePanel
+     * Input: setSunScore sunScore 150 -> 200
+     * Expected:
+     * return SUCCESS
+     * sunScore = 200
+     */
+    @Test
+    @Order(3)
+    void setSunScore() {
+        gamePanel.setSunScore(200);
+        assertEquals(200, gamePanel.getSunScore());
+    }
 }
