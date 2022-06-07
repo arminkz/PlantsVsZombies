@@ -83,4 +83,22 @@ class GamePanelTest {
     void makeColliders() {
         assertEquals(45, gamePanel.getColliders().length);
     }
+
+    /**
+     * Purpose: Check ActiveSun after produceSun
+     * Input: handleProduceSun
+     * Expected:
+     * return SUCCESS
+     * activeSuns.length = 1
+     */
+    @Test
+    @Order(5)
+    void handleProduceSun() {
+        JButton button = new JButton();
+
+        button.addActionListener(gamePanel.handleProduceSun());
+        button.doClick();
+
+        assertEquals(1, gamePanel.getActiveSuns().size());
+    }
 }
