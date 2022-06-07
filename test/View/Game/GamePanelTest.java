@@ -43,4 +43,17 @@ class GamePanelTest {
         gamePanel.getZombieProducer().stop();
         gamePanel.getSunProducer().stop();
     }
+
+    /**
+     * Purpose: Check set SunScore in GamePanel
+     * Input: getSunScore()
+     * Expected:
+     * return SUCCESS
+     * sunScore = 150
+     */
+    @Test
+    @Order(2)
+    void getSunScore() {
+        assertEquals(150, gamePanel.getSunScore());
+    }
 }
