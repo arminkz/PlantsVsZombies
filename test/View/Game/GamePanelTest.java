@@ -131,4 +131,33 @@ class GamePanelTest {
 
         zombie.setHealth(-1);
     }
+
+    /**
+     * Purpose: Check Move Zombie after advance zombie
+     * Input: handleProduceZombie()
+     * Expected:
+     * return SUCCESS
+     * zombie x = 1000 -> x = 999
+     */
+    @Test
+    @Order(7)
+    void handleAdvancer() {
+        JButton makeZombie = new JButton();
+        JButton advance = new JButton();
+
+        makeZombie.addActionListener(gamePanel.handleProduceZombie());
+        makeZombie.doClick();
+        advance.addActionListener(gamePanel.handleAdvancer());
+        advance.doClick();
+
+        Zombie zombie = null;
+
+        for(int i=0; i<5; i++) {
+            List<Zombie> zombies = Lane.getInstance().getLaneZombies().get(i);
+            if(zombies.size() <= 0) continue;
+            zombie = zombies.get(0);
+        }
+
+        assertEquals(999, zombie.getPosX());
+    }
 }
