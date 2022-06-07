@@ -160,4 +160,18 @@ class GamePanelTest {
 
         assertEquals(999, zombie.getPosX());
     }
+
+    /**
+     * Purpose: Check add ActivePlantingBrush after setActivePlantingBrush
+     * Input: setActivePlantingBrush GameFrame.PlantType.NormalPeashooter
+     * Expected:
+     * return SUCCESS
+     * activePlantingBrush None -> NormalPeashooter
+     */
+    @Test
+    @Order(8)
+    void setActivePlantingBrush() {
+        gamePanel.setActivePlantingBrush(GameFrame.PlantType.NormalPeashooter);
+        assertEquals(GameFrame.PlantType.NormalPeashooter, gamePanel.getActivePlantingBrush());
+    }
 }
