@@ -63,5 +63,18 @@ class GameFrameTest {
         assertEquals(8, component.getLocation().y);
     }
 
+    /**
+     * Purpose: Check place FreezePeashooterCard in Window
+     * Input: getLocation x = 0, y = 0 getComponentsInLayer length = 1
+     * Expected:
+     * return SUCCESS
+     * x = 240 y = 8
+     */
+    @Test
+    void placeFreezePeashooterCard() {
+        Component component = gameFrame.getLayeredPane().getComponentsInLayer(3)[2];
 
+        assertEquals(240, component.getLocation().x);
+        assertEquals(8, component.getLocation().y);
+    }
 }
