@@ -32,5 +32,21 @@ class GameFrameTest {
         assertEquals(1, gameFrame.getLayeredPane().getComponentsInLayer(0).length);
     }
 
+    /**
+     * Purpose: Check place SunflowerCard in Window
+     * Input: getLocation ()
+     * Expected:
+     * return SUCCESS
+     * x = 110 y = 8
+     * length = 1
+     */
+    @Test
+    void placeSunflowerCard() {
+        Component component = gameFrame.getLayeredPane().getComponentsInLayer(3)[0];
+
+        assertEquals(110, component.getLocation().x);
+        assertEquals(8, component.getLocation().y);
+    }
+
 
 }

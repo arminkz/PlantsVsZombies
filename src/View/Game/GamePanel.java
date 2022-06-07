@@ -62,7 +62,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
     private int mouseX, mouseY;
     private int sunScore;
-    
+
     public GamePanel() {
         initializeLayout();
         setSunScore(INIT_SCORE);
@@ -201,7 +201,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         Lane.getInstance().getLaneZombies().get(i).remove(z);
         setProgress(10);
     }
-    
+
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
@@ -234,7 +234,7 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-           
+
             PlantFactory.getInstance();
             Plant plant = PlantFactory.getPlant(activePlantingBrush.toString(), x, y);
             if(getSunScore() >= plant.getCost()) {
@@ -288,15 +288,23 @@ public class GamePanel extends JLayeredPane implements MouseMotionListener {
         return activeSuns;
     }
 
-    public void setActiveSuns(ArrayList<Sun> activeSuns) {
-        this.activeSuns = activeSuns;
-    }
-
     public Collider[] getColliders() {
         return colliders;
     }
 
-    public void setColliders(Collider[] colliders) {
-        this.colliders = colliders;
+    public Timer getRedrawTimer() {
+        return redrawTimer;
+    }
+
+    public Timer getAdvancerTimer() {
+        return advancerTimer;
+    }
+
+    public Timer getSunProducer() {
+        return sunProducer;
+    }
+
+    public Timer getZombieProducer() {
+        return zombieProducer;
     }
 }
