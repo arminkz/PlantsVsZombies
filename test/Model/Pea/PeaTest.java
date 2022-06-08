@@ -21,6 +21,13 @@ class PeaTest {
 	void setUp() throws Exception {
         gamePanel = GamePanel.getInstance();
 	}
+	
+	@AfterEach
+    public void tearDown() throws Exception {
+		testPea = null;
+		Lane.getInstance().getLanePeas().get(0).remove(0);
+        gamePanel = null;
+    }
 
 	/**
      * Purpose: test NormalPea.advance() function
@@ -112,6 +119,30 @@ class PeaTest {
             gamePanel.advance();
 
         assertTrue(Lane.getInstance().getLaneZombies().get(0).isEmpty());
+    }
+    
+    
+    /**
+     * Purpose: Pea can't kill Zombie
+     * Input: NormalPea(power == 300) and NormalZombie(health == 301)
+     * Expected:
+     * 		return SUCCESS 
+     *      Lane.getInstance().getLaneZombies().get(0).isEmpty() == False
+     */
+    @Test
+    public void testPeaAttackZombie301() {
+    	testPea = new NormalPea(gamePanel, 0, 1);
+    	Lane.getInstance().getLanePeas().get(0).add(testPea);
+
+        Zombie zombie = new NormalZombie(gamePanel, 0);
+        zombie.setHealth(301);
+
+        Lane.getInstance().getLaneZombies().get(0).add(zombie);
+
+        for(int i = 0; i < 100; i++)
+            gamePanel.advance();
+
+        assertFalse(Lane.getInstance().getLaneZombies().get(0).isEmpty());
     }
 
 }
