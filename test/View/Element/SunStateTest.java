@@ -80,4 +80,33 @@ class SunStateTest {
 		sunState.setDestructionTime(8);
 		assertEquals(8, sunState.getDestructionTime());
 	}
+
+    /**
+     * Purpose: test function updateState() 
+     * Input: updateState()
+     * Expected:
+     * return SUCCESS
+     * first updateState : positionX = 10, positionY = 25, endPositionY = 54, 
+     *                     destructionTim = 6
+     * second updateState with EndPosition = 29 : positionX = 10, positionY = 29, endPositionY = 29, 
+     *                                            destructionTime = 5 
+     */
+	@Test
+	public void testUpdateState() {
+		SunState sunState = new SunState(10, 25, 53);
+		sunState.setDestructionTime(6);
+		sunState.updateState();
+		
+		assertEquals(10, sunState.getPositionX());
+		assertEquals(29, sunState.getPositionY());
+		assertEquals(53, sunState.getEndPositionY());
+		assertEquals(6, sunState.getDestructionTime());
+		
+		sunState.setEndPositionY(29);
+		sunState.updateState();
+		assertEquals(10, sunState.getPositionX());
+		assertEquals(29, sunState.getPositionY());
+		assertEquals(29, sunState.getEndPositionY());
+		assertEquals(5, sunState.getDestructionTime());
+	}
 }
