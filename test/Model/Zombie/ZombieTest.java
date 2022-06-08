@@ -104,4 +104,19 @@ class ZombieTest {
 		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
 		assertEquals(1, testZombie.getSpeed());
 	}
+	
+	/**
+	 * Purpose: test Zombie.setSpeed function
+	 * Input: setSpeed(10);
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		setSpeed(10) == 10
+	 */
+
+	@Test
+	void testSetSpeed() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		
+		testZombie.setSpeed(10);
+		assertEquals(10, testZombie.getSpeed());
 }
