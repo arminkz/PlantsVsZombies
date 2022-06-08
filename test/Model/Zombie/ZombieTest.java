@@ -119,4 +119,19 @@ class ZombieTest {
 		
 		testZombie.setSpeed(10);
 		assertEquals(10, testZombie.getSpeed());
+	}
+	
+	/**
+	 * Purpose: test Zombie.getPosX function
+	 * Input: getPosX();
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		getPosX() == 1000
+	 */
+
+	@Test
+	void testGetPosX() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		assertEquals(1000, testZombie.getPosX());
+	}
 }
