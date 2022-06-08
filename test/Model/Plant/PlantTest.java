@@ -129,4 +129,25 @@ public class PlantTest {
 		assertEquals(testPlant.getX(), 40);
 		assertEquals(testPlant.getY(), 10);
 	}
+	
+	/**
+	 * Purpose: test PlantFactory getPlant, plant type is NormalPeashooter
+	 * Input: PlantFactory getPlant(type, x, y)
+	 * 		type = "NormalPeashooter", x = 40, y = 10
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		testPlant.getCost() = NormalPeashooter.SUNFLOWER_COST
+	 * 		getX() = 40
+	 * 		getY() = 10
+	 */
+	@Test
+	public void testPlantFactoryMakeNormalPeashooter() {
+		plantFactory = PlantFactory.getInstance();
+		int x = 40;
+		int y = 10;
+		Plant testPlant = plantFactory.getPlant("NormalPeashooter", x, y);
+		assertEquals(testPlant.getCost(), NormalPeashooter.NORMAL_PEASHOOTER_COST);
+		assertEquals(testPlant.getX(), 40);
+		assertEquals(testPlant.getY(), 10);
+	}
 }
