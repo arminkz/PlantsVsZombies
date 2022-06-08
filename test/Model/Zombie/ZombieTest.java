@@ -214,4 +214,18 @@ class ZombieTest {
 		testZombie.setMoving(false);
 		assertEquals(false, testZombie.isMoving());
 	}
+	
+	/**
+	 * Purpose: test Zombie.getSlowInt function
+	 * Input: getSlowInt();
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		getSlowInt() == 0
+	 */
+
+	@Test
+	void testGetSlowInt() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		assertEquals(0, testZombie.getSlowInt());
+	}
 }
