@@ -1,6 +1,6 @@
 package View.Element;
 
-public abstract class State {
+public class State {
     private int positionX;
     private int positionY;
     
@@ -25,7 +25,8 @@ public abstract class State {
     	return this.positionY;
     }
     
-    public abstract void updateState();
+    public void updateState() {
+	}
 }
 
 
