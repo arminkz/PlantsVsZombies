@@ -154,4 +154,18 @@ class ZombieTest {
 		testZombie.setPosX(0);
 		assertEquals(0, testZombie.getPosX());
 	}
+	
+	/**
+	 * Purpose: test Zombie.getLane function
+	 * Input: getLane();
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		getPosX() == 0
+	 */
+
+	@Test
+	void testGetLane() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		assertEquals(0, testZombie.getLane());
+	}
 }
