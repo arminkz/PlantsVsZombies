@@ -228,4 +228,20 @@ class ZombieTest {
 		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
 		assertEquals(0, testZombie.getSlowInt());
 	}
+	
+	/**
+	 * Purpose: test Zombie.setSlowInt function
+	 * Input: setSlowInt(1000);
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		setSlowInt(1000) == 1000
+	 */
+
+	@Test
+	void testSetSlowInt() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		
+		testZombie.setSlowInt(1000);
+		assertEquals(1000, testZombie.getSlowInt());
+	}
 }
