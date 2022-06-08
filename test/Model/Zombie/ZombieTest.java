@@ -168,4 +168,20 @@ class ZombieTest {
 		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
 		assertEquals(0, testZombie.getLane());
 	}
+	
+	/**
+	 * Purpose: test Zombie.setLane function
+	 * Input: setLane(4);
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		setLane(4) == 4
+	 */
+
+	@Test
+	void testSetLane() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		
+		testZombie.setLane(4);
+		assertEquals(4, testZombie.getLane());
+	}
 }
