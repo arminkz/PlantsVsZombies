@@ -25,6 +25,7 @@ public class PlantTest {
 		gamePanel = null;
 		lane = null;
 		plant = null;
+		plantFactory = null;
 	}
 	
 	/**
@@ -94,5 +95,18 @@ public class PlantTest {
 		assertNotNull(plantFactory);
 	}
 	
+	/**
+	 * Purpose: test PlantFactory getInstance when it already exists.
+	 * Input: PlantFactory getInstance()
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		plantFacotry == plantFactory2
+	 */
+	@Test
+	public void testPlantFactoryGetInstancAlreadyExists() {
+		plantFactory = PlantFactory.getInstance();
+		PlantFactory plantFactory2 = PlantFactory.getInstance();
+		assertEquals(plantFactory, plantFactory2);
+	}
 	
 }
