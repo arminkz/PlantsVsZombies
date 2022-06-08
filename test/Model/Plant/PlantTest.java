@@ -61,4 +61,24 @@ public class PlantTest {
 		assertEquals(plant.getX(), x);
 		assertEquals(plant.getY(), y);
 	}
+	
+	/**
+	 * Purpose: test Sunflower creator
+	 * Input: Sunflower(x, y)
+	 * 		x = 40, y = 10
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		getX() = x = 40
+	 * 		getY() = y = 10
+	 */
+	@Test
+	public void testCreateSunflower() {
+		int x = 40;
+		int y = 10;
+		plant = new Sunflower(x, y);
+		assertEquals(plant.getX(), x);
+		assertEquals(plant.getY(), y);
+	}
+	
+	
 }
