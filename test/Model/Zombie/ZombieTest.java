@@ -52,4 +52,18 @@ class ZombieTest {
 		assertEquals(ConeHeadZombie.class.getName(), testZombie.getClass().getName());
 		assertEquals(3, testZombie.getLane());
 	}
+	
+	/**
+	 * Purpose: test Zombie.getHealth function
+	 * Input: getHealth();
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		getHealth() == 1000
+	 */
+
+	@Test
+	void testGetHealth() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		assertEquals(1000, testZombie.getHealth());
+	}
 }
