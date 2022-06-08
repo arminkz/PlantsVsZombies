@@ -11,6 +11,7 @@ public class PlantTest {
 	private static GamePanel gamePanel;
 	private static Lane lane;
 	private static Plant plant;
+	private static PlantFactory plantFactory;
 	
 	
 	@BeforeClass
@@ -78,6 +79,19 @@ public class PlantTest {
 		plant = new Sunflower(x, y);
 		assertEquals(plant.getX(), x);
 		assertEquals(plant.getY(), y);
+	}
+	
+	/**
+	 * Purpose: test PlantFactory getInstance
+	 * Input: PlantFactory getInstance()
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		plantFacotry != null
+	 */
+	@Test
+	public void testPlantFactoryGetInstance() {
+		plantFactory = PlantFactory.getInstance();
+		assertNotNull(plantFactory);
 	}
 	
 	
