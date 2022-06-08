@@ -1,6 +1,9 @@
 package Model.Plant;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.awt.Graphics;
+
 import org.junit.*;
 import org.junit.jupiter.api.AfterEach;
 
@@ -12,7 +15,7 @@ public class PlantTest {
 	private static Lane lane;
 	private static Plant plant;
 	private static PlantFactory plantFactory;
-	
+	private static Graphics graphics;
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -20,8 +23,8 @@ public class PlantTest {
 		lane = Lane.getInstance();
 	}
 	
-	@AfterEach
-	public static void tearDown() {
+	@After
+	public void tearDown() {
 		gamePanel = null;
 		lane = null;
 		plant = null;
@@ -196,5 +199,47 @@ public class PlantTest {
 		assertEquals(plant.getX(), 400);
 		assertEquals(plant.getY(), 100);
 		assertEquals(plant.getHealth(), 123);
+	}
+	
+	/**
+	 * Purpose: test drawing Sunflower, but graphics is null.
+	 * 		--> Test before plant action runs.
+	 * Input: Sunflower(10, 20)
+	 * 		graphics = null
+	 * Expected:
+	 * 		NullPointerException
+	 */
+	@Test(expected = NullPointerException.class)
+	public void testDrawSunflower() {
+		plant = new Sunflower(10, 20);
+		plant.draw(0, graphics);
+	}
+	
+	/**
+	 * Purpose: test drawing NormalPeashooter, but graphics is null.
+	 * 		--> Test before plant action runs.
+	 * Input: NormalPeashooter(10, 20)
+	 * 		graphics = null
+	 * Expected:
+	 * 		NullPointerException
+	 */
+	@Test(expected = NullPointerException.class)
+	public void testDrawNomalPeashooter() {
+		plant = new NormalPeashooter(10, 20);
+		plant.draw(0, graphics);
+	}
+	
+	/**
+	 * Purpose: test drawing FreezePeashooter, but graphics is null.
+	 * 		--> Test before plant action runs.
+	 * Input: FreezePeashooter(10, 20)
+	 * 		graphics = null
+	 * Expected:
+	 * 		NullPointerException
+	 */
+	@Test(expected = NullPointerException.class)
+	public void testDrawFreezePeashooter() {
+		plant = new FreezePeashooter(10, 20);
+		plant.draw(0, graphics);
 	}
 }
