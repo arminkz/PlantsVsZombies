@@ -198,4 +198,20 @@ class ZombieTest {
 		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
 		assertEquals(true, testZombie.isMoving());
 	}
+	
+	/**
+	 * Purpose: test Zombie.setMoving function
+	 * Input: setMoving(false);
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		setMoving(false) == false
+	 */
+
+	@Test
+	void testSetMoving() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		
+		testZombie.setMoving(false);
+		assertEquals(false, testZombie.isMoving());
+	}
 }
