@@ -36,4 +36,17 @@ class SunStateTest {
 		assertEquals(25, sunState.getPositionY());
 		assertEquals(60, sunState.getEndPositionY());
 	}
+
+    /**
+     * Purpose: test function getEndPositionY() 
+     * Input: getEndPositionY()
+     * Expected:
+     * return SUCCESS
+     * endPositionY = 53
+     */
+	@Test
+	public void testGetEndPositionY() {
+		SunState sunState = new SunState(10, 25, 53);
+		assertEquals(53, sunState.getEndPositionY());
+	}
 }
