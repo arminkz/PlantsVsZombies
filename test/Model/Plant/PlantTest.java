@@ -171,4 +171,30 @@ public class PlantTest {
 		assertEquals(testPlant.getX(), 40);
 		assertEquals(testPlant.getY(), 10);
 	}
+	
+	/**
+	 * Purpose: test plant value setting
+	 * Input: NormalPeashooter(40, 10) setX(newX), setY(newY), setHealth(newHealth)
+	 * 		newX = 400, newY = 100, newHealth = 123
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		getX() = 400
+	 * 		getY() = 100
+	 * 		getHealth() = 123
+	 */
+	@Test
+	public void testPlantSetValue() {
+		plant = new NormalPeashooter(40, 10);
+		int newX = 400;
+		int newY = 100;
+		int newHealth = 123;
+		
+		plant.setX(newX);
+		plant.setY(newY);
+		plant.setHealth(newHealth);
+		
+		assertEquals(plant.getX(), 400);
+		assertEquals(plant.getY(), 100);
+		assertEquals(plant.getHealth(), 123);
+	}
 }
