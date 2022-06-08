@@ -20,4 +20,20 @@ class SunStateTest {
 		assertEquals(25, sunState.getPositionY());
 		assertEquals(53, sunState.getEndPositionY());
 	}
+
+    /**
+     * Purpose: test function setEndPositionY() 
+     * Input: setEndPositionY(60)
+     * Expected:
+     * return SUCCESS
+     * positionX = 10, positionY = 25, endPositionY = 60
+     */
+	@Test
+	public void testSetEndPositionY() {
+		SunState sunState = new SunState(10, 25, 53);
+		sunState.setEndPositionY(60);
+		assertEquals(10, sunState.getPositionX());
+		assertEquals(25, sunState.getPositionY());
+		assertEquals(60, sunState.getEndPositionY());
+	}
 }
