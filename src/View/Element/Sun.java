@@ -36,6 +36,14 @@ public class Sun extends JPanel implements MouseListener {
         super.paintComponent(graphics);
         graphics.drawImage(sunImage, START_X, START_Y, null);
     }
+    
+    public GamePanel getGamePanel() {
+    	return this.gamePanel;
+    }
+    
+    public SunState getSunState() {
+    	return this.sunState;
+    }
 
     public void advance() {
         updateLocation();
