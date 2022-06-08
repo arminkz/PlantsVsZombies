@@ -90,4 +90,18 @@ class ZombieTest {
 		testZombie.setHealth(500);
 		assertEquals(500, testZombie.getHealth());
 	}
+	
+	/**
+	 * Purpose: test Zombie.getSpeed function
+	 * Input: getSpeed();
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		getSpeed() == 1
+	 */
+
+	@Test
+	void testGetSpeed() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		assertEquals(1, testZombie.getSpeed());
+	}
 }
