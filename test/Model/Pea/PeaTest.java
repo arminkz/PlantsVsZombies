@@ -41,5 +41,28 @@ class PeaTest {
 
         assertTrue(xPositionOrigin + 15 == xPositionAfterAdvance);
     }
+    
+    
+    /**
+     * Purpose: test FreezePea.advance() function
+     * Input: FreezePea.advance() gamePanel.advance()
+     * Expected:
+     *      return SUCCESS
+     *      (xPositionOrigin + 15 == xPositionAfterAdvance) == True
+     */
+	
+    @Test
+    public void testFreezePeaAdvance() {
+    	testPea = new FreezePea(gamePanel, 0, 1);
+    	Lane.getInstance().getLanePeas().get(0).add(testPea);
+
+        int xPositionOrigin = Lane.getInstance().getLanePeas().get(0).get(0).getPositionX();
+
+        gamePanel.advance();
+
+        int xPositionAfterAdvance = Lane.getInstance().getLanePeas().get(0).get(0).getPositionX();
+
+        assertTrue(xPositionOrigin + 15 == xPositionAfterAdvance);
+    }
 
 }
