@@ -184,4 +184,18 @@ class ZombieTest {
 		testZombie.setLane(4);
 		assertEquals(4, testZombie.getLane());
 	}
+	
+	/**
+	 * Purpose: test Zombie.isMoving function
+	 * Input: isMoving();
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		isMoving() == true
+	 */
+
+	@Test
+	void testIsMoving() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		assertEquals(true, testZombie.isMoving());
+	}
 }
