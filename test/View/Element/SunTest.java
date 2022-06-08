@@ -30,4 +30,17 @@ class SunTest {
 		assertEquals(25, sun.getSunState().getPositionY());
 		assertEquals(53, sun.getSunState().getEndPositionY());
 	}
+	
+    /**
+     * Purpose: test function getGamePanel() 
+     * Input: getGamePanel()
+     * Expected:
+     * return SUCCESS
+     * equal gamePanel and element get from getGamePanel()
+     */
+	@Test
+	public void testGetGamePanel() {
+		Sun sun = new Sun(gamePanel, 10, 25, 53);
+		assertEquals(gamePanel, sun.getGamePanel());
+	}
 }
