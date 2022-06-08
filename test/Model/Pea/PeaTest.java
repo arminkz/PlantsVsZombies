@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Model.Lane.Lane;
+import Model.Zombie.NormalZombie;
+import Model.Zombie.Zombie;
 import View.Game.GamePanel;
 
 class PeaTest {
@@ -63,6 +65,30 @@ class PeaTest {
         int xPositionAfterAdvance = Lane.getInstance().getLanePeas().get(0).get(0).getPositionX();
 
         assertTrue(xPositionOrigin + 15 == xPositionAfterAdvance);
+    }
+    
+    
+    /**
+     * Purpose: Pea kills Zombie
+     * Input: NormalPea(power == 300) and NormalZombie(health == 299)
+     * Expected:
+     * 		return SUCCESS 
+     *      Lane.getInstance().getLaneZombies().get(0).isEmpty() == True
+     */
+    @Test
+    public void testPeaAttackZombie299() {
+    	testPea = new NormalPea(gamePanel, 0, 1);
+    	Lane.getInstance().getLanePeas().get(0).add(testPea);
+
+        Zombie zombie = new NormalZombie(gamePanel, 0);
+        zombie.setHealth(299);
+
+        Lane.getInstance().getLaneZombies().get(0).add(zombie);
+
+        for(int i = 0; i < 100; i++)
+            gamePanel.advance();
+
+        assertTrue(Lane.getInstance().getLaneZombies().get(0).isEmpty());
     }
 
 }
