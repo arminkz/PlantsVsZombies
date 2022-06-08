@@ -14,7 +14,6 @@ public class PlantTest {
 	private static PlantFactory plantFactory;
 	
 	
-	
 	@BeforeClass
 	public static void setUp() throws Exception {
 		gamePanel = GamePanel.getInstance();
@@ -110,24 +109,4 @@ public class PlantTest {
 		assertEquals(plantFactory, plantFactory2);
 	}
 	
-	/**
-	 * Purpose: test PlantFactory getInstance when it already exists.
-	 * Input: PlantFactory getPlant(ID, x, y)
-	 * 		ID = "Sunflower", x = 40, y = 10
-	 * Expected:
-	 * 		return SUCCESS
-	 * 		testPlant.getCost() = Sunflower.SUNFLOWER_COST
-	 * 		getX() = 40
-	 * 		getY() = 10
-	 */
-	@Test
-	public void testPlantFactoryMakeSunflower() {
-		plantFactory = PlantFactory.getInstance();
-		int x = 40;
-		int y = 10;
-		Plant testPlant = plantFactory.getPlant("Sunflower", x, y);
-		assertEquals(testPlant.getCost(), Sunflower.SUNFLOWER_COST);
-		assertEquals(testPlant.getX(), 40);
-		assertEquals(testPlant.getY(), 10);
-	}
 }
