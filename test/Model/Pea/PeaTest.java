@@ -144,5 +144,34 @@ class PeaTest {
 
         assertFalse(Lane.getInstance().getLaneZombies().get(0).isEmpty());
     }
+    
+    
+    /**
+     * Purpose: Zombie getSlowInt
+     * Input: zombie.getSlowInt()
+     * Expected:
+     * 		return SUCCESS 
+     *      0 < zombie.getSlowInt() && zombie.getSlowInt() < 1001
+     *      
+     */
+    @Test
+    public void testPeaAttackZombieSlow() {
+    	testPea = new FreezePea(gamePanel, 0, 1);
+    	Lane.getInstance().getLanePeas().get(0).add(testPea);
+
+        Zombie zombie = new NormalZombie(gamePanel, 0);
+        zombie.setHealth(50000);
+
+        Lane.getInstance().getLaneZombies().get(0).add(zombie);
+
+        for(int i = 0; i < 100; i++) {
+        	gamePanel.advance();
+        }
+            
+        assertTrue(0 < zombie.getSlowInt() && zombie.getSlowInt() < 1001);
+        
+		Lane.getInstance().getLaneZombies().get(0).remove(0);
+
+    }
 
 }
