@@ -66,4 +66,28 @@ class ZombieTest {
 		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
 		assertEquals(1000, testZombie.getHealth());
 	}
+	
+	/**
+	 * Purpose: test Zombie.setHealth function
+	 * Input: setHealth(0);, setHealth(100);, setHealth(500);
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		setHealth(0) == 0
+	 * 		setHealth(100) == 100
+	 * 		setHealth(500) == 500
+	 */
+
+	@Test
+	void testSetHealth() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		
+		testZombie.setHealth(0);
+		assertEquals(0, testZombie.getHealth());
+		
+		testZombie.setHealth(100);
+		assertEquals(100, testZombie.getHealth());
+		
+		testZombie.setHealth(500);
+		assertEquals(500, testZombie.getHealth());
+	}
 }
