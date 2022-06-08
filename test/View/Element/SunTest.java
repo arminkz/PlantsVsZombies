@@ -43,4 +43,19 @@ class SunTest {
 		Sun sun = new Sun(gamePanel, 10, 25, 53);
 		assertEquals(gamePanel, sun.getGamePanel());
 	}
+	
+    /**
+     * Purpose: test function getSunState
+     * Input: getSunState()
+     * Expected:
+     * return SUCCESS
+     * positionX = 10, positionY = 25, endPositionY = 53
+     */
+	@Test
+	public void testGetSunState() {
+		Sun sun = new Sun(gamePanel, 10, 25, 53);
+		assertEquals(10, sun.getSunState().getPositionX());
+		assertEquals(25, sun.getSunState().getPositionY());
+		assertEquals(53, sun.getSunState().getEndPositionY());
+	}
 }
