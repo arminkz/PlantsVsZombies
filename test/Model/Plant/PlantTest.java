@@ -136,7 +136,7 @@ public class PlantTest {
 	 * 		type = "NormalPeashooter", x = 40, y = 10
 	 * Expected:
 	 * 		return SUCCESS
-	 * 		testPlant.getCost() = NormalPeashooter.SUNFLOWER_COST
+	 * 		testPlant.getCost() = NormalPeashooter.NORMAL_PEASHOOTER_COST
 	 * 		getX() = 40
 	 * 		getY() = 10
 	 */
@@ -147,6 +147,27 @@ public class PlantTest {
 		int y = 10;
 		Plant testPlant = plantFactory.getPlant("NormalPeashooter", x, y);
 		assertEquals(testPlant.getCost(), NormalPeashooter.NORMAL_PEASHOOTER_COST);
+		assertEquals(testPlant.getX(), 40);
+		assertEquals(testPlant.getY(), 10);
+	}
+	
+	/**
+	 * Purpose: test PlantFactory getPlant, plant type is FreezePeashooter
+	 * Input: PlantFactory getPlant(type, x, y)
+	 * 		type = "FreezePeashooter", x = 40, y = 10
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		testPlant.getCost() = FreezePeashooter.FREEZE_PEASHOOTER_COST
+	 * 		getX() = 40
+	 * 		getY() = 10
+	 */
+	@Test
+	public void testPlantFactoryMakeFreezePeashooter() {
+		plantFactory = PlantFactory.getInstance();
+		int x = 40;
+		int y = 10;
+		Plant testPlant = plantFactory.getPlant("FreezePeashooter", x, y);
+		assertEquals(testPlant.getCost(), FreezePeashooter.FREEZE_PEASHOOTER_COST);
 		assertEquals(testPlant.getX(), 40);
 		assertEquals(testPlant.getY(), 10);
 	}
