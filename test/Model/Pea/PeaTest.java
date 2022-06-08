@@ -90,5 +90,28 @@ class PeaTest {
 
         assertTrue(Lane.getInstance().getLaneZombies().get(0).isEmpty());
     }
+    
+    /**
+     * Purpose: Pea kills Zombie
+     * Input: NormalPea(power == 300) and NormalZombie(health == 300)
+     * Expected:
+     * 		return SUCCESS 
+     *      Lane.getInstance().getLaneZombies().get(0).isEmpty() == True
+     */
+    @Test
+    public void testPeaAttackZombie300() {
+    	testPea = new NormalPea(gamePanel, 0, 1);
+    	Lane.getInstance().getLanePeas().get(0).add(testPea);
+
+        Zombie zombie = new NormalZombie(gamePanel, 0);
+        zombie.setHealth(300);
+
+        Lane.getInstance().getLaneZombies().get(0).add(zombie);
+
+        for(int i = 0; i < 100; i++)
+            gamePanel.advance();
+
+        assertTrue(Lane.getInstance().getLaneZombies().get(0).isEmpty());
+    }
 
 }
