@@ -1,3 +1,7 @@
+package View.Menu;
+
+import View.Game.GameFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,17 +14,17 @@ import java.awt.*;
 /**
  * @author Vaibhav Sikarwar
  */
-public class Menu extends JPanel {
+public class MenuPanel extends JPanel {
 
     /**
      * Creates new form Menu
      */
     private Image bgImage;
 
-    public Menu() {
+    public MenuPanel() {
         initComponents();
         setSize(1012, 785);
-        bgImage = new ImageIcon(this.getClass().getResource("images/menu.jpg")).getImage();
+        bgImage = new ImageIcon(this.getClass().getResource("../../images/menu.jpg")).getImage();
 
     }
 
@@ -82,7 +86,7 @@ public class Menu extends JPanel {
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        GameWindow.begin();
+        GameFrame.begin();
     }//GEN-LAST:event_jPanel1MouseClicked
 
 
