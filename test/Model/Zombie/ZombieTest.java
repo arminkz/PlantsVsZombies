@@ -134,4 +134,24 @@ class ZombieTest {
 		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
 		assertEquals(1000, testZombie.getPosX());
 	}
+	
+	/**
+	 * Purpose: test Zombie.setPosX function
+	 * Input: setPosX(500);, setPosX(0);
+	 * Expected:
+	 * 		return SUCCESS
+	 * 		setPosX(500) == 500
+	 * 		setPosX(0) == 0
+	 */
+
+	@Test
+	void testSetPosX() {
+		testZombie = Zombie.getZombie("NormalZombie", gamePanel, 0);
+		
+		testZombie.setPosX(500);
+		assertEquals(500, testZombie.getPosX());
+		
+		testZombie.setPosX(0);
+		assertEquals(0, testZombie.getPosX());
+	}
 }
