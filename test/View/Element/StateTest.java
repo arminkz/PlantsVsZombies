@@ -34,4 +34,18 @@ class StateTest {
 		assertEquals(15, state.getPositionX());
 		assertEquals(25, state.getPositionY());
 	}
+
+    /**
+     * Purpose: test function getPositionX() 
+     * Input: getPositionX()
+     * Expected:
+     * return SUCCESS
+     * positionX = 10
+     */
+	@Test
+	public void testGetPositionX() {
+		State state = new State(10, 25);
+		int getX = state.getPositionX();
+		assertEquals(10, getX);
+	}
 }
