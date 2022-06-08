@@ -214,4 +214,19 @@ public class PlantTest {
 		plant = new Sunflower(10, 20);
 		plant.draw(0, graphics);
 	}
+	
+	/**
+	 * Purpose: test drawing NormalPeashooter, but graphics is null.
+	 * 		--> Test before plant action runs.
+	 * Input: NormalPeashooter(10, 20)
+	 * 		graphics = null
+	 * Expected:
+	 * 		NullPointerException
+	 */
+	@Test(expected = NullPointerException.class)
+	public void testDrawNomalPeashooter() {
+		plant = new NormalPeashooter(10, 20);
+		plant.draw(0, graphics);
+	}
+
 }
