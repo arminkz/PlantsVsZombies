@@ -228,5 +228,18 @@ public class PlantTest {
 		plant = new NormalPeashooter(10, 20);
 		plant.draw(0, graphics);
 	}
-
+	
+	/**
+	 * Purpose: test drawing FreezePeashooter, but graphics is null.
+	 * 		--> Test before plant action runs.
+	 * Input: FreezePeashooter(10, 20)
+	 * 		graphics = null
+	 * Expected:
+	 * 		NullPointerException
+	 */
+	@Test(expected = NullPointerException.class)
+	public void testDrawFreezePeashooter() {
+		plant = new FreezePeashooter(10, 20);
+		plant.draw(0, graphics);
+	}
 }
